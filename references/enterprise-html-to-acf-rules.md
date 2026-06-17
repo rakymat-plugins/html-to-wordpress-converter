@@ -4,6 +4,8 @@ This reference is mandatory for every HTML-to-Sage WordPress conversion. Read it
 
 Also read `full-acf-editability-rules.md` before mapping content to fields or deciding whether any content can remain hardcoded.
 
+Also read `global-template-parts-rules.md` before mapping header, footer, navigation, global CTA, or any site-wide repeated UI.
+
 ## Non-Breakable Rules
 
 The original HTML is the visual source of truth.
@@ -57,7 +59,9 @@ Every ACF block must include editor notes covering what the block controls, reco
 
 Classify HTML as editable content, structural markup, behavior hooks, or global elements.
 
-Editable content becomes ACF fields. Structural markup stays in templates. Behavior hooks must be preserved. Global elements become template parts unless the user wants editor control.
+Editable content becomes ACF fields. Structural markup stays in templates. Behavior hooks must be preserved. Global elements become template parts unless the user explicitly wants editor control inside page content.
+
+Headers, footers, navigation, mobile menus, global CTAs, and repeated site-wide UI should become Sage template parts/layout partials by default. Their editable data should come from WordPress menus, ACF options pages, Customizer/theme options, or approved plugins, not page-local ACF blocks.
 
 Do not over-dynamicize everything. Not every div needs a field.
 
@@ -138,6 +142,7 @@ The skill must generate or update:
 .html-to-sage/SECTION-MAP.md
 .html-to-sage/ACF-BLOCKS.md
 .html-to-sage/CPT-TAXONOMY-MAP.md
+.html-to-sage/GLOBAL-TEMPLATE-PARTS.md
 .html-to-sage/ASSET-MAP.md
 .html-to-sage/JS-BEHAVIOR-MAP.md
 .html-to-sage/PERFORMANCE-RISKS.md

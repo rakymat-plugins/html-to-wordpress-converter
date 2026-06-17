@@ -5,7 +5,7 @@ description: Map static HTML sections to ACF Block contracts with code-owned ACF
 
 # ACF Block Mapper
 
-Read `../../references/enterprise-html-to-acf-rules.md` and `../../references/full-acf-editability-rules.md` before mapping blocks.
+Read `../../references/enterprise-html-to-acf-rules.md`, `../../references/full-acf-editability-rules.md`, and `../../references/global-template-parts-rules.md` before mapping blocks.
 
 Classify each HTML section. Prefer ACF blocks for editable page sections. Use global template parts for header/footer/navigation. Use reusable components for small repeated UI primitives.
 
@@ -24,5 +24,7 @@ Do not create one giant block, bloated unrelated fields, dashboard-only ACF fiel
 All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
 Do not map wrappers, CSS classes, layout containers, animation hooks, or JS hooks into fields just because they exist in the HTML. Keep those in the template unless the editor genuinely needs to control them.
+
+Do not map header, footer, navigation, mobile menu, or site-wide repeated UI as normal ACF blocks unless page-level editor control is explicitly approved. Map them to global template parts/layout partials and document them in `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md`.
 
 Use `../../templates/acf-block-contract.md` per block and write `.html-to-sage/ACF-BLOCKS.md`.

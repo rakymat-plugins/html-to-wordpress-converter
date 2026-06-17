@@ -21,8 +21,11 @@ Required before implementation:
 - each section has an ACF block/template/CPT/component decision
 - enterprise rules are referenced in the implementation tasks
 - full editability rules are referenced in the implementation tasks
+- global template part rules are referenced in the implementation tasks
 - no meaningful text, image URL, button label, or URL from the original HTML remains hardcoded in templates
 - every repeated content group uses an ACF repeater or justified CPT
 - `PAGES.md` exists for multi-page websites
+- `GLOBAL-TEMPLATE-PARTS.md` exists when header/footer/navigation/site-wide UI is present
+- header/footer/navigation are Sage template parts/layout partials unless page-level editor control was explicitly approved
 
 Visual mismatch is a blocker, not a minor issue.

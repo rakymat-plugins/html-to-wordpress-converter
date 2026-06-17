@@ -110,6 +110,7 @@ Also collect project name, theme name, WordPress path, one-page or multi-page sc
 - Read `developer-wordpress-from-html/SKILL.md` for the end-to-end command.
 - Read `references/enterprise-html-to-acf-rules.md` before any planning, mapping, package decision, implementation, or QA work.
 - Read `references/full-acf-editability-rules.md` before mapping content into fields or writing implementation tasks.
+- Read `references/global-template-parts-rules.md` before mapping header, footer, navigation, global CTAs, or site-wide repeated UI.
 - Read `references/sage-theme-architecture.md` before designing the theme structure.
 - Read `references/acf-block-rules.md` before mapping sections into ACF blocks.
 - Read `references/wordpress-cpt-taxonomy-rules.md` before proposing CPTs or taxonomies.
@@ -123,4 +124,6 @@ Do not start implementation until Spec Kit constitution, spec, clarification not
 Apply the enterprise rules from `references/enterprise-html-to-acf-rules.md` to every `SKILL.md`, template, constitution prompt, plan prompt, tasks prompt, analyze prompt, and implementation gate.
 
 Apply the full editability rules from `references/full-acf-editability-rules.md` to prevent hardcoded client-editable content and to require `.html-to-sage/PAGES.md` for multi-page websites.
+
+Apply the global template part rules from `references/global-template-parts-rules.md` so headers, footers, navigation, and site-wide UI become Sage partials/layout template parts by default, not page ACF blocks.
 

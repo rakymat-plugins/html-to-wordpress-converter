@@ -18,6 +18,8 @@ Ask before planning:
 - Which HTML files are in scope?
 - Expected editor flexibility level?
 - Should sections be reusable across pages?
+- Should header/footer/navigation be global Sage template parts? Default: yes.
+- Does the user explicitly want page-level editor control over header/footer/navigation? Default: no.
 - Are CPTs needed? Possible CPTs: services, projects, products, testimonials, team, branches, FAQs, careers, news, events, downloads.
 - Are taxonomies needed?
 - Forms: Gravity Forms, Contact Form 7, custom form, or static markup?

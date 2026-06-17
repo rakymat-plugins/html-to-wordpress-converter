@@ -12,7 +12,7 @@ Do not over-dynamicize structural markup. ACF field maps should cover content, n
 
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
-Check that `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md` are enforced:
+Check that `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editability-rules.md`, and `references/global-template-parts-rules.md` are enforced:
 
 - no giant catch-all block
 - no unowned global CSS/JS migration
@@ -32,5 +32,7 @@ Check that `references/enterprise-html-to-acf-rules.md` and `references/full-acf
 - no missing field map with original HTML values
 - no fields created only for structural wrappers/classes/hooks without editor need
 - no missing `PAGES.md` for multi-page sites
+- no header/footer/navigation converted into normal page ACF blocks without explicit approval
+- no missing `GLOBAL-TEMPLATE-PARTS.md` for site-wide UI
 
 Fail analysis if any section lacks a WordPress target, ACF contract, editable field map, CSS ownership, JS ownership, visual QA task, or security escaping notes.

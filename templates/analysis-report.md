@@ -24,6 +24,8 @@ Confirm `references/enterprise-html-to-acf-rules.md` was enforced: no giant catc
 
 Confirm `references/full-acf-editability-rules.md` was enforced: no hardcoded meaningful content, every original content item mapped to ACF or justified CPT fields, original HTML values documented, and `PAGES.md` generated for multi-page websites.
 
+Confirm `references/global-template-parts-rules.md` was enforced: header/footer/navigation/global UI mapped to Sage template parts/layout partials by default, editable global data sourced from menus/options/plugins, and `GLOBAL-TEMPLATE-PARTS.md` completed when site-wide UI exists.
+
 ## Section Results
 
 | HTML Section | WordPress Target | Visual Status | Issues | Approved Changes |

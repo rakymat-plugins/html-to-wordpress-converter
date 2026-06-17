@@ -5,13 +5,14 @@ description: Approval and QA gate for starting implementation of HTML-to-Sage Wo
 
 # Implementation Gate
 
-Read `../../references/enterprise-html-to-acf-rules.md` and `../../references/full-acf-editability-rules.md` before allowing implementation.
+Read `../../references/enterprise-html-to-acf-rules.md`, `../../references/full-acf-editability-rules.md`, and `../../references/global-template-parts-rules.md` before allowing implementation.
 
 Do not implement until all exist:
 
 - `stock/`
 - `.html-to-sage/INTAKE.md`
 - `.html-to-sage/PAGES.md` for multi-page websites
+- `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md` when header/footer/navigation/site-wide UI exists
 - `.html-to-sage/HTML-AUDIT.md`
 - `.html-to-sage/SECTION-MAP.md`
 - `.html-to-sage/ACF-BLOCKS.md`
@@ -33,5 +34,7 @@ All meaningful content from the original HTML must be editable through ACF field
 Fail the gate if any section lacks a comparison method or if a mismatch is accepted without user approval.
 
 Fail the gate if meaningful original content remains hardcoded without a documented user-approved exception.
+
+Fail the gate if header/footer/navigation were converted to page ACF blocks without explicit user approval.
 
 

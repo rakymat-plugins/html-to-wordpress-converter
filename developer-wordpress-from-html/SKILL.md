@@ -12,14 +12,15 @@ Use this as `/developer-wordpress-from-html`, `/html-to-wordpress`, `/html-to-sa
 1. Ask the mandatory intake questions from `../templates/intake-questions.md`.
 2. Read `../references/enterprise-html-to-acf-rules.md` and enforce it throughout the workflow.
 3. Read `../references/full-acf-editability-rules.md` and enforce full ACF editability.
-4. Confirm these defaults unless the user overrides them:
+4. Read `../references/global-template-parts-rules.md` and enforce template-part handling for header/footer/navigation.
+5. Confirm these defaults unless the user overrides them:
    - pixel-perfect conversion: yes
    - visual improvements allowed: no
    - all editable content in ACF: yes
    - CPTs only when justified: yes
    - preserve originals in `stock/`: yes
-5. Inspect HTML/CSS/JS/assets without modifying originals.
-6. Copy originals into `stock/` before any migration work.
+6. Inspect HTML/CSS/JS/assets without modifying originals.
+7. Copy originals into `stock/` before any migration work.
 
 ## Spec Kit Foundation
 
@@ -65,6 +66,7 @@ stock/
   PAGES.md
   HTML-AUDIT.md
   SECTION-MAP.md
+  GLOBAL-TEMPLATE-PARTS.md
   CPT-TAXONOMY-MAP.md
   ACF-BLOCKS.md
   ASSET-MAP.md
@@ -94,6 +96,8 @@ Every ACF block must include registration, code-owned fields, frontend template,
 Never flatten the full page into one block, never put all CSS/JS into global files without ownership, never remove behavior hooks/classes randomly, and never hardcode editable content in templates.
 
 All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
+
+Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI must be mapped as global template parts/layout partials by default. Use ACF blocks only when the user explicitly wants page-level editor control.
 
 ## Stop Conditions
 

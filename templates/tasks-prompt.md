@@ -10,7 +10,7 @@ Generate implementation tasks with these phases:
 - Phase 3: HTML section mapping
 - Phase 4: ACF block contracts
 - Phase 5: CPT/taxonomy contracts
-- Phase 6: CSS/JS/assets migration plan
+- Phase 6: global template parts, CSS/JS/assets migration plan
 - Phase 7: WordPress editor/admin UX plan
 - Phase 8: visual QA and responsive QA plan
 - Phase 9: implementation tasks
@@ -49,6 +49,8 @@ Do not create ACF fields for wrappers, CSS classes, layout containers, animation
 
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
-Apply `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md`. Add tasks for `.html-to-sage/PAGES.md`, `.html-to-sage/ASSET-MAP.md`, `.html-to-sage/JS-BEHAVIOR-MAP.md`, `.html-to-sage/PERFORMANCE-RISKS.md`, `.html-to-sage/SECURITY-CHECKLIST.md`, and `.html-to-sage/VISUAL-QA.md`.
+Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editability-rules.md`, and `references/global-template-parts-rules.md`. Add tasks for `.html-to-sage/PAGES.md`, `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md`, `.html-to-sage/ASSET-MAP.md`, `.html-to-sage/JS-BEHAVIOR-MAP.md`, `.html-to-sage/PERFORMANCE-RISKS.md`, `.html-to-sage/SECURITY-CHECKLIST.md`, and `.html-to-sage/VISUAL-QA.md`.
+
+Create task groups for header/footer/navigation as template parts, not ACF blocks, unless the user explicitly approves page-level editor control.
 
 

@@ -37,7 +37,9 @@ Do not over-dynamicize the DOM: wrappers, classes, layout containers, animation 
 
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
-Apply `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md`. The plan must include PAGES, ASSET-MAP, JS-BEHAVIOR-MAP, PERFORMANCE-RISKS, SECURITY-CHECKLIST, and VISUAL-QA artifacts.
+Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editability-rules.md`, and `references/global-template-parts-rules.md`. The plan must include PAGES, GLOBAL-TEMPLATE-PARTS, ASSET-MAP, JS-BEHAVIOR-MAP, PERFORMANCE-RISKS, SECURITY-CHECKLIST, and VISUAL-QA artifacts.
+
+Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI should become Sage template parts/layout partials by default. Use WordPress menus and ACF options/theme options for editable global data. Do not turn them into page ACF blocks unless the user explicitly approves page-level editor control.
 
 Include this table:
 

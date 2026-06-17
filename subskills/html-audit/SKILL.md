@@ -5,7 +5,7 @@ description: Audit static HTML/CSS/JS/assets before converting to Sage WordPress
 
 # HTML Audit
 
-Read `../../references/enterprise-html-to-acf-rules.md` and `../../references/full-acf-editability-rules.md` before auditing.
+Read `../../references/enterprise-html-to-acf-rules.md`, `../../references/full-acf-editability-rules.md`, and `../../references/global-template-parts-rules.md` before auditing.
 
 Inspect source files without changing them. Copy all original HTML/CSS/JS/assets into `stock/` before migration. Treat `stock/` as read-only.
 
@@ -24,5 +24,6 @@ Create `.html-to-sage/HTML-AUDIT.md` with:
 - JS behavior ownership and hover/animation risks
 - multi-page page inventory for `.html-to-sage/PAGES.md`
 - meaningful content inventory that must become ACF or justified CPT fields
+- global template part inventory for header, footer, navigation, global CTA, and site-wide repeated UI
 
 Use `scripts/workflow.py audit --source <source> --project <target>` for a safe first pass.

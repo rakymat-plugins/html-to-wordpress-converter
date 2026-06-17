@@ -4,6 +4,7 @@
 VISUAL_RULE = "Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change."
 EDITABILITY_RULE = "All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content."
 PAGES_RULE = "For multi-page HTML websites, generate .html-to-sage/PAGES.md showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block."
+GLOBAL_PARTS_RULE = "Header, footer, navigation, and other site-wide repeated elements should become Sage template parts or layout partials by default, not normal ACF blocks."
 
 
 def ensure_state(project: Path) -> Path:
@@ -24,6 +25,7 @@ def write_initial_artifacts(project: Path) -> None:
         "PAGES.md": "For each original HTML page, document the WordPress title, slug, ACF block order, field groups, source sections, template paths, SCSS paths, JS paths, CPT dependencies, and editor instructions. Required for multi-page websites.",
         "HTML-AUDIT.md": "Record source files, sections, dependencies, and risks here.",
         "SECTION-MAP.md": "| Original HTML Section Selector | Section Purpose | WordPress Target | Block Name | ACF Fields | Editable Fields Count | Hardcoded Allowed? | CPT Needed? | CSS Source | JS Source | Visual Match Risk | Notes |\n|--------------------------------|-----------------|------------------|------------|------------|-----------------------|--------------------|-------------|------------|-----------|-------------------|-------|",
+        "GLOBAL-TEMPLATE-PARTS.md": "| Source Selector | Element | WordPress Target | Template Part Path | Editable Data Source | ACF Options Fields | Menu Location | CSS Path | JS Path | Visual Match Risk | Notes |\n|-----------------|---------|------------------|--------------------|----------------------|--------------------|---------------|----------|---------|-------------------|-------|",
         "CPT-TAXONOMY-MAP.md": "| Content Type | Decision | Justification | Taxonomies | Archive? | Single? | Admin Workflow |\n|--------------|----------|---------------|------------|----------|---------|----------------|",
         "ACF-BLOCKS.md": "Create one ACF block contract per converted section. Include block name, field group key, field list, original HTML values, required/optional status, repeaters, media fields, buttons/links, editor instructions, template path, SCSS path, and JS path.",
         "ASSET-MAP.md": "Map every image, icon, font, video, SVG, and document from stock/ to its theme or media-library destination.",
@@ -39,6 +41,6 @@ def write_initial_artifacts(project: Path) -> None:
     for filename, body in placeholders.items():
         path = state / filename
         if not path.exists():
-            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{body}")
+            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{GLOBAL_PARTS_RULE}\n\n{body}")
 
 
