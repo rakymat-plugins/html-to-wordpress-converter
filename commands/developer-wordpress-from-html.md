@@ -4,16 +4,18 @@ Run the HTML-to-Sage WordPress conversion workflow.
 
 Route to `developer-wordpress-from-html/SKILL.md` in the `html-to-wordpress-converter` skill repository and follow the same workflow:
 
-1. Ask intake questions.
-2. Audit HTML/CSS/JS/assets.
-3. Copy original files into `stock/`.
-4. Check or initialize real Spec Kit.
-5. Run constitution/specify/clarify/plan/tasks/analyze through Spec Kit.
-6. Produce the Sage setup plan.
-7. Map sections to ACF blocks.
-8. Model CPTs/taxonomies only when justified.
-9. Enforce visual parity gates and full ACF editability.
-10. Stop before implementation unless the user explicitly approves implementation.
+1. Ask only blocking choices first: WordPress install path, final theme slug, and whether source files may be moved into `stock/`.
+2. Run the real workflow helper:
+
+   ```bash
+   python <skill>/scripts/workflow.py prepare --source . --project . --theme-name <theme-name> --wp-path <wordpress-install-path>
+   ```
+
+   If WordPress path is unknown, omit `--wp-path`; the helper must write `.html-to-sage/BLOCKERS.md` and stop before implementation.
+
+3. Let the helper audit HTML/CSS/JS/assets, preserve/move source into `stock/`, check/install/init real Spec Kit, and generate Spec Kit constitution/spec/plan/research/data-model/quickstart/tasks/analyze artifacts.
+4. Enforce visual parity, full ACF editability, justified CPTs, global template parts, and stock protection.
+5. Stop before implementation unless the user explicitly approves implementation and blockers are resolved.
 
 Required aliases for this same workflow:
 
@@ -25,4 +27,3 @@ Required aliases for this same workflow:
 - `$html-to-sage`
 
 If slash commands are unavailable, tell the agent: "Use the html-to-wordpress-converter skill and run developer-wordpress-from-html."
-

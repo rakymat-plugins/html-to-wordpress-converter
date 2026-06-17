@@ -116,16 +116,33 @@ Codex skill mode may expose equivalent aliases such as `$speckit-constitution`, 
 /developer-wordpress-from-html
 ```
 
-The command asks intake questions, audits the static source, creates planning artifacts, initializes Spec Kit, and stops before implementation unless explicitly approved.
+The command asks only blocking intake questions, audits the static source, creates planning artifacts, initializes Spec Kit, and stops before implementation unless explicitly approved.
 
 ## How It Works
 
 1. The command routes to `SKILL.md`.
 2. `SKILL.md` loads the `developer-wordpress-from-html` workflow.
-3. The workflow checks Spec Kit.
-4. The workflow audits the source HTML.
-5. The workflow generates planning artifacts.
-6. The workflow stops before implementation unless approved.
+3. The workflow runs the bundled prepare helper.
+4. The helper audits the source HTML and moves preserved static source into `stock/`.
+5. The helper checks/installs/initializes real Spec Kit.
+6. The helper generates Spec Kit constitution/spec/plan/research/data-model/quickstart/tasks/analyze artifacts.
+7. The workflow stops before implementation unless approved.
+
+Preferred planning command:
+
+```bash
+python scripts/workflow.py prepare --source . --project . --theme-name mei-sage --wp-path <wordpress-install-path>
+```
+
+If the WordPress path is not known yet, omit `--wp-path`. The workflow will generate `.html-to-sage/BLOCKERS.md` and stop before implementation.
+
+Useful prepare options:
+
+- `--copy-source`: preserve source in `stock/` without removing root copies.
+- `--skip-stock`: do not copy or move source files.
+- `--no-install-speckit`: do not attempt Spec Kit installation.
+- `--no-init-speckit`: do not attempt Spec Kit initialization.
+- `--no-overwrite-stock`: keep existing files in `stock/`.
 
 ## Stock Folder Behavior
 
@@ -136,6 +153,8 @@ python scripts/workflow.py stock --source . --project . --overwrite --move-sourc
 ```
 
 This preserves static source files under `stock/` and removes the original root copies so the root can become the WordPress/Sage project. The helper excludes `.git`, `.html-to-sage`, `.specify`, agent folders, `node_modules`, `vendor`, and this skill repository.
+
+The `prepare` command runs this behavior automatically by default.
 
 ## Troubleshooting: Command Not Showing
 

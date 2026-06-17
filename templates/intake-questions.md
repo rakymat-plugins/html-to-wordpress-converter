@@ -4,33 +4,23 @@ Apply `references/enterprise-html-to-acf-rules.md`.
 
 Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
-Ask before planning:
+Ask only blocking choices before running `workflow.py prepare`:
 
-- Should the conversion be pixel-perfect? Default: yes.
-- Are visual improvements allowed? Default: no.
-- Should all editable content be in ACF? Default: yes.
-- Are CPTs allowed only when justified? Default: yes.
-- Should original files be preserved in `stock/`? Default: yes.
-- Should root static source files be moved into `stock/` after preservation? Default: yes.
-- Project name?
-- Theme name?
-- WordPress install path?
-- One-page or multi-page?
-- Which HTML files are in scope?
-- Expected editor flexibility level?
-- Should sections be reusable across pages?
-- Should header/footer/navigation be global Sage template parts? Default: yes.
-- Does the user explicitly want page-level editor control over header/footer/navigation? Default: no.
-- Are CPTs needed? Possible CPTs: services, projects, products, testimonials, team, branches, FAQs, careers, news, events, downloads.
-- Are taxonomies needed?
-- Forms: Gravity Forms, Contact Form 7, custom form, or static markup?
-- Multilingual support needed?
-- CSS approach: Bootstrap, Tailwind, plain SCSS, or existing CSS?
-- JS libraries present: jQuery, Slick, GSAP, Swiper, other?
-- Must animations be preserved?
-- Must SEO metadata be migrated?
-- Does WordPress admin UX matter?
-- Must ACF field groups be code-only?
-- Planning only or implementation later?
-- Is this a multi-page site that requires `.html-to-sage/PAGES.md`?
-- Should every meaningful content item be editable through ACF or justified CPT fields?
+- WordPress install path? Required before implementation; if unknown, omit `--wp-path` and stop after planning.
+- Final Sage theme slug? Default: `mei-sage`.
+- May root static source files be moved into `stock/` after preservation? Default: yes.
+
+Apply these defaults automatically unless the user explicitly changes them:
+
+- Pixel-perfect conversion: yes.
+- Visual improvements allowed: no.
+- All meaningful client-editable content must use ACF fields, ACF options, WordPress menus, approved plugin fields, or justified CPT fields.
+- Structural wrappers, container classes, grid classes, animation hooks, JS hooks, ARIA structure, and technical layout markup stay in templates.
+- CPTs are allowed only when justified by reuse, archive/single URLs, filtering, search, independent admin workflow, or cross-page management.
+- Original files must be preserved in `stock/`.
+- Header, footer, navigation, announcement bars, mobile sticky CTAs, schema data, and site-wide UI are global Sage template parts/options/menus by default.
+- Page-level editor control over header/footer/navigation: no.
+- ACF field groups are code-owned.
+- Implementation does not start until the user explicitly approves it.
+
+Record assumptions and answers in `.html-to-sage/INTAKE.md`. If a blocker remains unresolved, write it to `.html-to-sage/BLOCKERS.md` and do not implement.

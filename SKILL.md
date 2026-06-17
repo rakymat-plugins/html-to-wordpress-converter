@@ -61,7 +61,15 @@ Treat any visual mismatch as a failed task.
 
 ## Required Spec Kit Behavior
 
-Before producing final planning artifacts, run the bundled helper so real command output is recorded:
+Before producing final planning artifacts, run the end-to-end prepare helper:
+
+```bash
+python <skill>/scripts/workflow.py prepare --source . --project . --theme-name <theme-name> --wp-path <wordpress-path>
+```
+
+If the WordPress path is unknown, omit `--wp-path`; the helper must write `.html-to-sage/BLOCKERS.md`, generate planning artifacts, and stop before implementation.
+
+To rerun only Spec Kit setup, run:
 
 ```bash
 python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init
@@ -103,15 +111,13 @@ Codex skills mode may expose equivalent names such as `$speckit-constitution`, `
 
 ## Mandatory Intake Before Planning
 
-Ask these questions before planning:
+Ask only blocking questions before `prepare`; use defaults for the rest and let `prepare` record/update artifacts.
 
-- Should the conversion be pixel-perfect? Default: yes.
-- Are visual improvements allowed? Default: no.
-- Should all editable content be in ACF? Default: yes.
-- Are CPTs allowed only when justified? Default: yes.
-- Should original files be preserved in `stock/`? Default: yes.
+- WordPress install path, if implementation may follow.
+- Final Sage theme slug, if the default is not acceptable.
+- Whether root static source files may be moved into `stock/`; default: yes.
 
-Also collect project name, theme name, WordPress path, one-page or multi-page scope, HTML files, editor flexibility, reusable sections, possible CPTs, taxonomies, forms, multilingual needs, CSS framework, JS libraries, animation requirements, SEO migration, admin UX expectations, and whether the user wants planning only or implementation.
+Defaults: pixel-perfect yes, visual improvements no, editable meaningful content yes, CPTs only when justified yes, preserve originals in `stock/` yes, header/footer/navigation as global template parts yes, implementation requires explicit approval.
 
 ## Stock Behavior
 
@@ -137,7 +143,7 @@ This archives the static website files into `stock/` and removes the old root co
 
 ## Implementation Gate
 
-Do not start implementation until Spec Kit constitution, spec, clarification notes, plan, tasks, and analysis exist or the user explicitly accepts a smaller workflow. Stop after planning unless the user explicitly asks to implement.
+Do not start implementation until `workflow.py prepare` has completed, `.html-to-sage/BLOCKERS.md` has no unresolved implementation blockers, Spec Kit constitution/spec/plan/tasks/analyze artifacts exist, and the user explicitly asks to implement.
 
 Apply the enterprise rules from `references/enterprise-html-to-acf-rules.md` to every `SKILL.md`, template, constitution prompt, plan prompt, tasks prompt, analyze prompt, and implementation gate.
 

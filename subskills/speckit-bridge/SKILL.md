@@ -7,7 +7,15 @@ description: Bridge the HTML-to-Sage WordPress workflow to the real GitHub Spec 
 
 Read `../../references/enterprise-html-to-acf-rules.md` and `../../references/full-acf-editability-rules.md`, then pass both constraint sets into the Spec Kit prompts.
 
-Do not fake Spec Kit. Run the bundled helper first:
+Do not fake Spec Kit. Run the bundled prepare helper first from the target project root:
+
+```bash
+python <skill>/scripts/workflow.py prepare --source . --project . --theme-name <theme-name> --wp-path <wordpress-install-path>
+```
+
+If the WordPress install path is unknown, omit `--wp-path`; the helper writes `.html-to-sage/BLOCKERS.md` and stops before implementation.
+
+To rerun only the Spec Kit setup/logging step:
 
 ```bash
 python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init
