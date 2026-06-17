@@ -116,8 +116,19 @@ def cmd_speckit(args: argparse.Namespace) -> int:
                 init_args.append("--ignore-agent-tools")
             if args.skills:
                 init_args.append("--integration-options=--skills")
-            init_result = run_specify(init_args, project)
-            lines.append(format_result(["specify", *init_args], init_result))
+            if (project / ".specify").exists():
+                lines.extend(
+                    [
+                        "",
+                        f"## `specify {' '.join(init_args)}`",
+                        "",
+                        "- exit code: `already-initialized`",
+                        "- result: `.specify/` already exists; preserving existing Spec Kit project files.",
+                    ]
+                )
+            else:
+                init_result = run_specify(init_args, project)
+                lines.append(format_result(["specify", *init_args], init_result))
     else:
         lines.extend(
             [
