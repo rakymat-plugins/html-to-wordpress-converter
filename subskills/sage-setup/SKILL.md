@@ -5,6 +5,8 @@ description: Sage setup instructions for installing Roots Sage, configuring Acor
 
 # Sage Setup
 
+Read `../../references/enterprise-html-to-acf-rules.md` before setup decisions.
+
 Use after planning approval, not during planning-only mode unless verification requires it.
 
 Required setup:
@@ -38,4 +40,3 @@ resources/js/
 ```
 
 Write `.html-to-sage/SAGE-SETUP.md` with commands, results, failures, and manual WordPress requirements.
-

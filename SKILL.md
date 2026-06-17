@@ -1,4 +1,4 @@
----
+﻿---
 name: html-to-wordpress-converter
 description: Spec Kit-backed workflow layer for converting existing static HTML/CSS/JS websites into WordPress Sage themes with Acorn, Blade, Vite, SCSS, ACF Pro blocks, justified CPTs/taxonomies, stock-folder preservation, and mandatory 100% visual parity. Use when planning or implementing an HTML-to-Sage WordPress conversion, especially with `/developer-wordpress-from-html`, ACF block mapping, Sage setup, or Spec Kit artifacts.
 ---
@@ -48,7 +48,7 @@ $html-to-wordpress-converter
 
 ## Non-Negotiable Rule
 
-Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, and visual hierarchy unless the user explicitly approves a change.
+Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
 Treat any visual mismatch as a failed task.
 
@@ -101,6 +101,7 @@ Also collect project name, theme name, WordPress path, one-page or multi-page sc
 ## Resource Routing
 
 - Read `developer-wordpress-from-html/SKILL.md` for the end-to-end command.
+- Read `references/enterprise-html-to-acf-rules.md` before any planning, mapping, package decision, implementation, or QA work.
 - Read `references/sage-theme-architecture.md` before designing the theme structure.
 - Read `references/acf-block-rules.md` before mapping sections into ACF blocks.
 - Read `references/wordpress-cpt-taxonomy-rules.md` before proposing CPTs or taxonomies.
@@ -110,3 +111,6 @@ Also collect project name, theme name, WordPress path, one-page or multi-page sc
 ## Implementation Gate
 
 Do not start implementation until Spec Kit constitution, spec, clarification notes, plan, tasks, and analysis exist or the user explicitly accepts a smaller workflow. Stop after planning unless the user explicitly asks to implement.
+
+Apply the enterprise rules from `references/enterprise-html-to-acf-rules.md` to every `SKILL.md`, template, constitution prompt, plan prompt, tasks prompt, analyze prompt, and implementation gate.
+

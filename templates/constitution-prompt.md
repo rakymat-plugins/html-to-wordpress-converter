@@ -1,4 +1,4 @@
-# Spec Kit Constitution Prompt
+﻿# Spec Kit Constitution Prompt
 
 Use `/speckit.constitution` or `$speckit-constitution` with this content.
 
@@ -6,7 +6,7 @@ Create governing principles for converting an existing static HTML/CSS/JS websit
 
 Include this exact non-negotiable rule:
 
-Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, and visual hierarchy unless the user explicitly approves a change.
+Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
 Constitution articles:
 
@@ -34,4 +34,7 @@ Constitution articles:
    - Implementation is not complete until every converted section is compared against the original HTML.
 
 Also include secure escaping/sanitization in PHP templates, responsive QA, accessibility basics, performance budgets, and editor usability.
+
+Also enforce `references/enterprise-html-to-acf-rules.md`: no giant catch-all blocks, no unowned global CSS/JS, no page builders, no manual-only ACF setup, no random class renames, no unjustified packages, no unpaginated public queries, and no raw ACF output.
+
 

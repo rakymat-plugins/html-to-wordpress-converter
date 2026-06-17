@@ -5,6 +5,8 @@ description: Decide whether WordPress custom post types and taxonomies are justi
 
 # CPT and Taxonomy Modeler
 
+Read `../../references/enterprise-html-to-acf-rules.md` before proposing CPTs or taxonomies.
+
 CPTs are only allowed when content is:
 
 - repeatable
@@ -18,3 +20,4 @@ Prefer ACF repeaters for one-page card lists, small FAQ groups, one-off testimon
 
 Write `.html-to-sage/CPT-TAXONOMY-MAP.md` using `../../templates/cpt-taxonomy-map.md`.
 
+Include query performance notes for every accepted CPT.

@@ -5,6 +5,8 @@ description: Map static HTML sections to ACF Block contracts with code-owned ACF
 
 # ACF Block Mapper
 
+Read `../../references/enterprise-html-to-acf-rules.md` before mapping blocks.
+
 Classify each HTML section. Prefer ACF blocks for editable page sections. Use global template parts for header/footer/navigation. Use reusable components for small repeated UI primitives.
 
 Every ACF block must define:
@@ -17,5 +19,6 @@ Every ACF block must define:
 - editor preview behavior
 - visual parity checklist
 
-Use `../../templates/acf-block-contract.md` per block and write `.html-to-sage/ACF-BLOCKS.md`.
+Do not create one giant block, bloated unrelated fields, dashboard-only ACF field groups, or templates with hardcoded editable content.
 
+Use `../../templates/acf-block-contract.md` per block and write `.html-to-sage/ACF-BLOCKS.md`.

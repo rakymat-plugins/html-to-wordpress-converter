@@ -1,4 +1,4 @@
-# Spec Kit Tasks Prompt
+﻿# Spec Kit Tasks Prompt
 
 Use `/speckit.tasks` or `$speckit-tasks`.
 
@@ -40,5 +40,8 @@ For each section, create one task group:
 - compare visually with original
 - fix mismatch until 100% match
 
-Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, and visual hierarchy unless the user explicitly approves a change.
+Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
+
+Apply `references/enterprise-html-to-acf-rules.md`. Add tasks for `.html-to-sage/ASSET-MAP.md`, `.html-to-sage/JS-BEHAVIOR-MAP.md`, `.html-to-sage/PERFORMANCE-RISKS.md`, `.html-to-sage/SECURITY-CHECKLIST.md`, and `.html-to-sage/VISUAL-QA.md`.
+
 

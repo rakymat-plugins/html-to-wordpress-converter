@@ -1,5 +1,9 @@
 # Intake Questions
 
+Apply `references/enterprise-html-to-acf-rules.md`.
+
+Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
+
 Ask before planning:
 
 - Should the conversion be pixel-perfect? Default: yes.
@@ -25,4 +29,3 @@ Ask before planning:
 - Does WordPress admin UX matter?
 - Must ACF field groups be code-only?
 - Planning only or implementation later?
-

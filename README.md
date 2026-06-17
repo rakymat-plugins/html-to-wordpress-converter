@@ -1,4 +1,4 @@
-# HTML to WordPress Converter
+﻿# HTML to WordPress Converter
 
 Reusable agent skill repository for planning static HTML/CSS/JS website conversions into WordPress Sage themes with ACF Blocks.
 
@@ -52,7 +52,12 @@ The command asks intake questions, audits the static source, creates planning ar
 
 ## Non-Negotiable Rule
 
-Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, and visual hierarchy unless the user explicitly approves a change.
+Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
 Visual mismatch is a failed task.
+
+## Enterprise Rules
+
+Every agent must read `references/enterprise-html-to-acf-rules.md` before planning or implementation. It prevents common failures: one giant block, unowned global CSS/JS, unjustified CPTs, dashboard-only ACF fields, edited `stock/` files, removed classes/hooks, casual packages, unpaginated queries, full-size card images, raw ACF output, and incomplete responsive/hover/animation QA.
+
 

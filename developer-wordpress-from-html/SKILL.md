@@ -10,14 +10,15 @@ Use this as `/developer-wordpress-from-html`. It coordinates the full workflow b
 ## Start
 
 1. Ask the mandatory intake questions from `../templates/intake-questions.md`.
-2. Confirm these defaults unless the user overrides them:
+2. Read `../references/enterprise-html-to-acf-rules.md` and enforce it throughout the workflow.
+3. Confirm these defaults unless the user overrides them:
    - pixel-perfect conversion: yes
    - visual improvements allowed: no
    - all editable content in ACF: yes
    - CPTs only when justified: yes
    - preserve originals in `stock/`: yes
-3. Inspect HTML/CSS/JS/assets without modifying originals.
-4. Copy originals into `stock/` before any migration work.
+4. Inspect HTML/CSS/JS/assets without modifying originals.
+5. Copy originals into `stock/` before any migration work.
 
 ## Spec Kit Foundation
 
@@ -64,6 +65,11 @@ stock/
   SECTION-MAP.md
   CPT-TAXONOMY-MAP.md
   ACF-BLOCKS.md
+  ASSET-MAP.md
+  JS-BEHAVIOR-MAP.md
+  PERFORMANCE-RISKS.md
+  SECURITY-CHECKLIST.md
+  VISUAL-QA.md
   SAGE-SETUP.md
   SPECKIT-RUNS.md
   RISKS.md
@@ -83,7 +89,8 @@ Classify every HTML section as one of:
 
 Every ACF block must include registration, code-owned fields, frontend template, SCSS file, optional JS module, editor preview behavior, and a visual parity checklist.
 
+Never flatten the full page into one block, never put all CSS/JS into global files without ownership, never remove behavior hooks/classes randomly, and never hardcode editable content in templates.
+
 ## Stop Conditions
 
 Stop before implementation unless the user explicitly asks for implementation. Treat visual mismatch as failed work.
-

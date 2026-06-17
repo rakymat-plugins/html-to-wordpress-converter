@@ -1,4 +1,6 @@
-# ACF Block Contract
+﻿# ACF Block Contract
+
+Apply `references/enterprise-html-to-acf-rules.md`.
 
 ## Block
 
@@ -11,6 +13,10 @@
 - SCSS path: `resources/css/blocks/_<block>.scss`
 - JS path:
 - Editor preview behavior:
+- Editor notes:
+- Recommended image dimensions:
+- Max repeater count:
+- Visual parity dependencies:
 
 ## Fields
 
@@ -25,7 +31,7 @@
 
 ## Visual Parity Checklist
 
-Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, and visual hierarchy unless the user explicitly approves a change.
+Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
 - Desktop compared
 - Tablet compared
@@ -34,4 +40,6 @@ Every converted WordPress/Sage/ACF section must match the original HTML section 
 - Typography compared
 - Spacing compared
 - Colors compared
+
+
 
