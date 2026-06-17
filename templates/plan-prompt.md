@@ -39,11 +39,18 @@ For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every Wo
 
 Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editability-rules.md`, and `references/global-template-parts-rules.md`. The plan must include PAGES, GLOBAL-TEMPLATE-PARTS, ASSET-MAP, JS-BEHAVIOR-MAP, PERFORMANCE-RISKS, SECURITY-CHECKLIST, and VISUAL-QA artifacts.
 
-Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI should become Sage template parts/layout partials by default. Use WordPress menus and ACF options/theme options for editable global data. Do not turn them into page ACF blocks unless the user explicitly approves page-level editor control.
+Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI should become Sage template parts/layout partials by default. Use WordPress menus, ACF options pages, Customizer/theme options, or approved plugins for editable global data. Do not turn them into page ACF blocks unless the user explicitly approves page-level editor control.
+
+The plan must keep page-owned ACF block order separate from global site chrome. If a header/footer/nav appears in the original HTML file, map it in `GLOBAL-TEMPLATE-PARTS.md`, not in the page ACF block order, unless explicit page-level control was approved and documented in `DECISIONS.md`.
 
 Include this table:
 
 | Original HTML Section Selector | Section Purpose | WordPress Target | Block Name | ACF Fields | Editable Fields Count | Hardcoded Allowed? | CPT Needed? | CSS Source | JS Source | Visual Match Risk | Notes |
 |--------------------------------|-----------------|------------------|------------|------------|-----------------------|--------------------|-------------|------------|-----------|-------------------|-------|
+
+Also include this global-template table when global site UI exists:
+
+| Source Selector | Element | WordPress Target | Template Part Path | Editable Data Source | ACF Options Fields | Menu Location | CSS Path | JS Path | Appears On | Explicit Page-Level Control Approved? | Visual Match Risk | Notes |
+|-----------------|---------|------------------|--------------------|----------------------|--------------------|---------------|----------|---------|------------|---------------------------------------|-------------------|-------|
 
 

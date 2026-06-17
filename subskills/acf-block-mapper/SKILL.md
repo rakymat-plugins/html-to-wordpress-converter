@@ -27,4 +27,6 @@ Do not map wrappers, CSS classes, layout containers, animation hooks, or JS hook
 
 Do not map header, footer, navigation, mobile menu, or site-wide repeated UI as normal ACF blocks unless page-level editor control is explicitly approved. Map them to global template parts/layout partials and document them in `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md`.
 
+Keep those global elements out of page ACF block order. Their editable values should be sourced from WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, not page-local block fields.
+
 Use `../../templates/acf-block-contract.md` per block and write `.html-to-sage/ACF-BLOCKS.md`.

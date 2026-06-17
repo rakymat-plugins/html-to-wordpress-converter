@@ -37,4 +37,10 @@ Fail the gate if meaningful original content remains hardcoded without a documen
 
 Fail the gate if header/footer/navigation were converted to page ACF blocks without explicit user approval.
 
+Fail the gate if header/footer/navigation are included in page ACF block order without approval documented in `.html-to-sage/DECISIONS.md`.
+
+Fail the gate if editable global header/footer/navigation data is duplicated in page-local ACF fields instead of WordPress menus, ACF options pages, theme options, Customizer, or approved plugins.
+
+Fail the gate if header/footer/navigation markup is duplicated across page templates, block templates, or CPT templates.
+
 

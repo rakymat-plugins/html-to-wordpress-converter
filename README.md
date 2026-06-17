@@ -191,6 +191,12 @@ Visual mismatch is a failed task.
 
 Every agent must read `references/enterprise-html-to-acf-rules.md` before planning or implementation. It prevents common failures: one giant block, unowned global CSS/JS, unjustified CPTs, dashboard-only ACF fields, edited `stock/` files, removed classes/hooks, casual packages, unpaginated queries, full-size card images, raw ACF output, and incomplete responsive/hover/animation QA.
 
+## Header, Footer, And Global UI
+
+Header, footer, navigation, mobile menus, global CTAs, language switchers, search overlays, and other site-wide UI must be mapped to Sage template parts/layout partials by default, not normal page ACF blocks.
+
+Editable global data belongs in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins. Do not duplicate global content in page-local ACF fields unless the user explicitly approves page-level editor control and the decision is documented.
+
 ## Output Artifacts
 
 The workflow creates durable project state for handoff between agent sessions:

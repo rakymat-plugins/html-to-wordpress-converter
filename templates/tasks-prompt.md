@@ -53,4 +53,16 @@ Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editabi
 
 Create task groups for header/footer/navigation as template parts, not ACF blocks, unless the user explicitly approves page-level editor control.
 
+For each global template part:
+- analyze original HTML for the global element
+- identify editable global data
+- map navigation links to WordPress menu locations
+- map logos/contact/social/legal/newsletter/form values to ACF options, theme options, Customizer, or approved plugins
+- create or update the Sage partial path
+- migrate layout SCSS into `resources/css/layout/`
+- migrate behavior JS into `resources/js/header.js`, `resources/js/navigation.js`, or `resources/js/footer.js`
+- verify the global element is not duplicated in page templates or ACF block templates
+- verify it is not listed in page ACF block order unless page-level control was explicitly approved
+- compare visually with the original across desktop, tablet, and mobile
+
 

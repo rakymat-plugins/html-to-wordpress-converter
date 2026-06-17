@@ -27,5 +27,9 @@ Required before implementation:
 - `PAGES.md` exists for multi-page websites
 - `GLOBAL-TEMPLATE-PARTS.md` exists when header/footer/navigation/site-wide UI is present
 - header/footer/navigation are Sage template parts/layout partials unless page-level editor control was explicitly approved
+- header/footer/navigation are not included in page ACF block order unless that approval is documented in `DECISIONS.md`
+- global editable data is sourced from WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, not duplicated page-local ACF fields
+- header/footer/navigation markup is not duplicated across page templates, block templates, CPT templates, or partials
+- header/footer/navigation CSS and JS live in layout-owned files, not random block-owned files
 
 Visual mismatch is a blocker, not a minor issue.

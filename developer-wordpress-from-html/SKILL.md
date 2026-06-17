@@ -99,6 +99,8 @@ All meaningful content from the original HTML must be editable through ACF field
 
 Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI must be mapped as global template parts/layout partials by default. Use ACF blocks only when the user explicitly wants page-level editor control.
 
+Keep global site chrome out of page ACF block order. Store editable global data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, and document those sources in `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md` and `.html-to-sage/DECISIONS.md`.
+
 ## Stop Conditions
 
 Stop before implementation unless the user explicitly asks for implementation. Treat visual mismatch as failed work.

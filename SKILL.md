@@ -125,5 +125,5 @@ Apply the enterprise rules from `references/enterprise-html-to-acf-rules.md` to 
 
 Apply the full editability rules from `references/full-acf-editability-rules.md` to prevent hardcoded client-editable content and to require `.html-to-sage/PAGES.md` for multi-page websites.
 
-Apply the global template part rules from `references/global-template-parts-rules.md` so headers, footers, navigation, and site-wide UI become Sage partials/layout template parts by default, not page ACF blocks.
+Apply the global template part rules from `references/global-template-parts-rules.md` so headers, footers, navigation, and site-wide UI become Sage partials/layout template parts by default, not page ACF blocks. Keep their editable data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins; do not duplicate global values in page-local ACF fields.
 

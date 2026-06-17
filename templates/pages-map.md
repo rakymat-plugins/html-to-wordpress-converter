@@ -35,6 +35,13 @@ Block details:
 | Order | Block Name | ACF Field Group | Source HTML Section | Template File | SCSS File | JS File |
 |------|------------|-----------------|---------------------|---------------|-----------|---------|
 
+Global template parts:
+
+List header, footer, navigation, mobile menu, global search, language switcher, and site-wide CTA references here instead of adding them to the ACF block order.
+
+| Element | Source HTML Section | Template Part | Editable Data Source | CSS File | JS File | Notes |
+|---------|---------------------|---------------|----------------------|----------|---------|-------|
+
 Required CPT dependencies:
 
 - None unless justified.
