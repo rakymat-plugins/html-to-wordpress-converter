@@ -29,6 +29,7 @@ Required before implementation:
 - header/footer/navigation are Sage template parts/layout partials unless page-level editor control was explicitly approved
 - header/footer/navigation are not included in page ACF block order unless that approval is documented in `DECISIONS.md`
 - global editable data is sourced from WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, not duplicated page-local ACF fields
+- global options pages can be saved with partial data when defaults/fallbacks exist; header/footer/logo/contact/schema option fields must not be unnecessarily required
 - header/footer/navigation markup is not duplicated across page templates, block templates, CPT templates, or partials
 - header/footer/navigation CSS and JS live in layout-owned files, not random block-owned files
 - WordPress clone-readiness is verified: valid theme `style.css`, bootstrap `functions.php`, render templates or verified Sage/Acorn routing, required plugins in README, install/build commands in README, and ignored local agent/skill/cache/dependency folders

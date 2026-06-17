@@ -43,6 +43,8 @@ Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI
 
 The plan must state that header, footer, navigation, announcement bars, mobile sticky actions, schema, and other global site UI render by default from Sage layout partials and are editable through global options, menus, theme settings, Customizer, or approved plugins.
 
+The plan must state that global options fields are optional when defaults/fallbacks exist. Header/footer/logo/contact/schema fields should not block saving the options page merely because one link, logo, footer item, or schema value is empty.
+
 The plan must keep page-owned ACF block order separate from global site chrome. If a header/footer/nav appears in the original HTML file, map it in `GLOBAL-TEMPLATE-PARTS.md`, not in the page ACF block order, unless explicit page-level control was approved and documented in `DECISIONS.md`.
 
 The plan must include a final WordPress clone-readiness phase. The phase must verify that the theme can be cloned into `wp-content/themes/<theme-slug>` and activated, with valid `style.css`, `functions.php`, render templates or verified Sage/Acorn routing, documented required plugins, documented install/build commands, and ignored local agent/skill/cache/dependency folders.

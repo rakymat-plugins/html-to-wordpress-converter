@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_PARTS_RULE, PAGES_RULE, VISUAL_RULE
+from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, PAGES_RULE, VISUAL_RULE
 from project_detector import detect_files
 
 
@@ -98,6 +98,8 @@ Every ACF block MUST define registration, fields, frontend template, SCSS file, 
 
 Global site UI MUST use Sage partials, layout SCSS, WordPress menus, ACF options, theme options, Customizer, or approved plugins.
 
+{GLOBAL_OPTIONS_SAVE_RULE}
+
 ## Spec Kit Workflow
 
 Spec Kit artifacts are the planning source of truth for implementation. The workflow MUST produce and keep aligned `.specify/memory/constitution.md`, `specs/<feature>/spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `tasks.md`, and `.html-to-sage/*`.
@@ -175,6 +177,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **FR-011**: Dynamic output MUST be escaped/sanitized with WordPress-appropriate functions.
 - **FR-012**: Completion MUST be blocked until visual QA passes.
 - **FR-013**: The delivered theme MUST work when cloned into `wp-content/themes/<theme-slug>` and activated, or the final report MUST document exactly which runtime checks could not be run and why.
+- **FR-014**: Global header/footer/logo/contact/schema option fields MUST be optional when template defaults/fallbacks exist, so the options page can save partial data.
 
 ## Success Criteria
 
@@ -406,6 +409,7 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T006 Register ACF block category and shared render callback in `{theme_name}/framework/builder/blocks.php`
 - [ ] T007 Register ACF options page and global options field group
 - [ ] T008 Register WordPress menu locations for primary and footer menus
+- [ ] T008a Register global options fields as optional when frontend defaults/fallbacks exist
 - [ ] T009 Split source CSS into common, components, layout, and blocks
 - [ ] T010 Split source JS into navigation, reveal/shared behavior, and block modules
 - [ ] T011 Confirm no CPTs are needed or document justified CPTs

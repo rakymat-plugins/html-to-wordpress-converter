@@ -149,6 +149,8 @@ Apply the enterprise rules from `references/enterprise-html-to-acf-rules.md` to 
 
 Header, footer, navigation, announcement bars, mobile sticky actions, schema, and global site UI must render by default from the theme layout. Do not make editors add header/footer blocks to normal pages unless they explicitly approve page-level control. Make all meaningful global UI content editable through ACF options, WordPress menus, theme settings, Customizer, or approved plugins.
 
+Global options fields should be optional when defaults/fallbacks exist. Do not block saving a global settings page because logo, CTA links, footer links, contact data, or schema values are partially empty.
+
 Apply the full editability rules from `references/full-acf-editability-rules.md` to prevent hardcoded client-editable content and to require `.html-to-sage/PAGES.md` for multi-page websites.
 
 Apply the global template part rules from `references/global-template-parts-rules.md` so headers, footers, navigation, and site-wide UI become Sage partials/layout template parts by default, not page ACF blocks. Keep their editable data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins; do not duplicate global values in page-local ACF fields.

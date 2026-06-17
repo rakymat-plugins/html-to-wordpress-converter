@@ -78,6 +78,8 @@ Use ACF options pages for global editable content when appropriate. Document:
 - render locations
 - fallback behavior
 
+Global option fields should not be marked required when the theme provides defaults or fallbacks. Required global settings create a bad admin experience because editors cannot save partial changes until every logo/link/footer/schema field is filled. Prefer optional fields plus documented fallbacks for header/footer/logo/contact/schema data.
+
 Recommended artifact:
 
 ```text

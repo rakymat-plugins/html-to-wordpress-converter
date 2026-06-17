@@ -137,6 +137,8 @@ Keep global site chrome out of page ACF block order. Store editable global data 
 
 Header and footer must show by default from the theme layout on every applicable page. Do not require editors to add header/footer blocks manually. Their meaningful content, images, links, schema data, and contact data must be editable through global options, menus, theme settings, Customizer, or approved plugins.
 
+When global options have frontend defaults/fallbacks, do not mark those ACF option fields as required. Editors must be able to save partial header/footer/logo/contact/schema settings without filling every field.
+
 ## WordPress Clone Readiness
 
 Before final delivery, make the theme usable when cloned into `wp-content/themes/<theme-slug>` and activated:

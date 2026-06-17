@@ -63,6 +63,7 @@ For each global template part:
 - identify editable global data
 - map navigation links to WordPress menu locations
 - map logos/contact/social/legal/newsletter/form values to ACF options, theme options, Customizer, or approved plugins
+- make global option fields optional when template defaults/fallbacks exist, so the options page can be saved with partial data
 - create or update the Sage partial path
 - migrate layout SCSS into `resources/css/layout/`
 - migrate behavior JS into `resources/js/header.js`, `resources/js/navigation.js`, or `resources/js/footer.js`
