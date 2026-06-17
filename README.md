@@ -1,16 +1,50 @@
-﻿# HTML to WordPress Converter
+# HTML to WordPress Converter
 
-Reusable agent skill repository for planning static HTML/CSS/JS website conversions into WordPress Sage themes with ACF Blocks.
+Spec Kit-backed skill for converting static HTML/CSS/JS websites into planned WordPress Sage themes with ACF Blocks.
 
-This package is built on top of the real GitHub Spec Kit project: <https://github.com/github/spec-kit>. Spec Kit is the foundation; this repository is the WordPress/Sage/ACF specialization layer.
+This repository is not a standalone website converter. It is a reusable agent workflow layer:
 
-## Layers
+- **Spec Kit Core**: constitution, specify, clarify, plan, tasks, analyze, implement.
+- **HTML-to-Sage WordPress Extension**: source audit, `stock/`, Sage setup, ACF block mapping, CPT/taxonomy decisions, CSS/JS/assets migration, and visual QA.
+- **Agent Adapters**: Claude Code commands, Codex skill files, and generic `SKILL.md` instructions.
 
-1. **Spec Kit Core**: constitution, specify, clarify, plan, tasks, analyze, implement.
-2. **HTML-to-Sage WordPress Extension**: source audit, `stock/`, Sage setup, ACF mapping, CPT/taxonomy decisions, migration planning, visual QA.
-3. **Agent Adapters**: Claude Code commands, Codex skill files, and generic `SKILL.md` instructions.
+## Installation
 
-## Install Spec Kit
+### Recommended
+
+```bash
+npx skills add yousefabdallah171/html-to-wordpress-converter
+```
+
+Then invoke:
+
+```text
+/developer-wordpress-from-html
+```
+
+This is the preferred installation path. Do not manually clone the repository unless you need an advanced/manual setup.
+
+### Advanced / Manual
+
+Use manual installation only when your agent environment does not support `npx skills add`.
+
+macOS/Linux:
+
+```bash
+./install.sh
+```
+
+Windows PowerShell:
+
+```powershell
+.\install.ps1
+```
+
+## Spec Kit Requirement
+
+This skill is built on the real GitHub Spec Kit project: <https://github.com/github/spec-kit>.
+
+Install Spec Kit if it is not already available:
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
@@ -22,13 +56,13 @@ Verify:
 specify --version
 ```
 
-Initialize in a target project:
+Initialize Spec Kit inside each target project with the correct agent integration:
 
 ```bash
 specify init <project-name> --integration <agent>
 ```
 
-Use the real Spec Kit commands:
+The workflow uses real Spec Kit commands whenever possible:
 
 ```text
 /speckit.constitution
@@ -40,7 +74,7 @@ Use the real Spec Kit commands:
 /speckit.implement
 ```
 
-Codex skill mode may expose `$speckit-constitution`, `$speckit-specify`, `$speckit-clarify`, `$speckit-plan`, `$speckit-tasks`, `$speckit-analyze`, and `$speckit-implement`.
+Codex skill mode may expose equivalent aliases such as `$speckit-constitution`, `$speckit-specify`, `$speckit-clarify`, `$speckit-plan`, `$speckit-tasks`, `$speckit-analyze`, and `$speckit-implement`.
 
 ## Primary Command
 
@@ -60,4 +94,35 @@ Visual mismatch is a failed task.
 
 Every agent must read `references/enterprise-html-to-acf-rules.md` before planning or implementation. It prevents common failures: one giant block, unowned global CSS/JS, unjustified CPTs, dashboard-only ACF fields, edited `stock/` files, removed classes/hooks, casual packages, unpaginated queries, full-size card images, raw ACF output, and incomplete responsive/hover/animation QA.
 
+## Output Artifacts
 
+The workflow creates durable project state for handoff between agent sessions:
+
+```text
+stock/
+.html-to-sage/
+  INTAKE.md
+  HTML-AUDIT.md
+  SECTION-MAP.md
+  CPT-TAXONOMY-MAP.md
+  ACF-BLOCKS.md
+  ASSET-MAP.md
+  JS-BEHAVIOR-MAP.md
+  PERFORMANCE-RISKS.md
+  SECURITY-CHECKLIST.md
+  VISUAL-QA.md
+  SAGE-SETUP.md
+  SPECKIT-RUNS.md
+  RISKS.md
+  DECISIONS.md
+.specify/
+specs/
+```
+
+## Safety
+
+- Never edit files inside `stock/`.
+- Never start implementation before planning artifacts exist.
+- Never create CPTs without documented justification.
+- Never use page builders.
+- Never fake Spec Kit artifacts when real Spec Kit can be installed and used.
