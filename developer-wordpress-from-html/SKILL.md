@@ -20,26 +20,36 @@ Use this as `/developer-wordpress-from-html`, `/html-to-wordpress`, `/html-to-sa
    - CPTs only when justified: yes
    - preserve originals in `stock/`: yes
 6. Inspect HTML/CSS/JS/assets without modifying originals.
-7. Copy originals into `stock/` before any migration work.
+7. Run the stock helper before any migration work. Default behavior should move the original static source files into `stock/` after copying so the project root is ready for WordPress/Sage work:
+   `python <skill>/scripts/workflow.py stock --source . --project . --overwrite --move-source`.
+   Keep `stock/` read-only after this.
 
 ## Spec Kit Foundation
 
-Run or instruct the user to run:
+Run the helper, not just manual notes:
+
+```bash
+python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init
+```
+
+This must write `.html-to-sage/SPECKIT-RUNS.md` from real command output.
+
+The helper performs:
 
 ```bash
 specify --version
 ```
 
-If unavailable:
+If unavailable and `--install` is set, it attempts:
 
 ```bash
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
 
-Initialize with the current agent integration:
+Initialize with the current agent integration in the current project:
 
 ```bash
-specify init <project-name> --integration <agent>
+specify init --here --force --integration codex --integration-options="--skills"
 ```
 
 Then use real Spec Kit commands with the prompts in `../templates/`:

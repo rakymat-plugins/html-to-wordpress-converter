@@ -32,7 +32,8 @@ Constitution articles:
 5. No Unjustified CPTs
    - CPTs are only allowed when content is repeatable, reusable, filterable, archiveable, or needs an independent admin workflow.
 6. Stock Folder Protection
-   - All original HTML/CSS/JS/assets must be copied into `stock/`.
+   - All original HTML/CSS/JS/assets must be preserved in `stock/`.
+   - Root static source files should be moved into `stock/` after preservation so the root can become the WordPress/Sage project.
    - The `stock/` folder is read-only source material. Never edit it.
 7. QA Gate
    - Implementation is not complete until every converted section is compared against the original HTML.

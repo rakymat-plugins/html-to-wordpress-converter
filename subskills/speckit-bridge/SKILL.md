@@ -7,7 +7,13 @@ description: Bridge the HTML-to-Sage WordPress workflow to the real GitHub Spec 
 
 Read `../../references/enterprise-html-to-acf-rules.md` and `../../references/full-acf-editability-rules.md`, then pass both constraint sets into the Spec Kit prompts.
 
-Do not fake Spec Kit. Verify the real CLI:
+Do not fake Spec Kit. Run the bundled helper first:
+
+```bash
+python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init
+```
+
+This verifies the real CLI:
 
 ```bash
 specify --version
@@ -19,10 +25,10 @@ If missing:
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
 
-Initialize:
+For Codex skills mode, initialize:
 
 ```bash
-specify init <project-name> --integration <agent>
+specify init --here --force --integration codex --integration-options="--skills"
 ```
 
 Use the current integration. For Claude Code use the Claude integration. For Codex CLI, use the Codex integration or skills mode if available. For generic agents, initialize with the closest supported integration and keep reusable prompts in project files.

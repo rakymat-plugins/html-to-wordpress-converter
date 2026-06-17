@@ -11,6 +11,7 @@ Ask before planning:
 - Should all editable content be in ACF? Default: yes.
 - Are CPTs allowed only when justified? Default: yes.
 - Should original files be preserved in `stock/`? Default: yes.
+- Should root static source files be moved into `stock/` after preservation? Default: yes.
 - Project name?
 - Theme name?
 - WordPress install path?

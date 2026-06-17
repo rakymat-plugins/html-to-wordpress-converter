@@ -61,7 +61,13 @@ Treat any visual mismatch as a failed task.
 
 ## Required Spec Kit Behavior
 
-Before producing planning artifacts, verify Spec Kit is available:
+Before producing final planning artifacts, run the bundled helper so real command output is recorded:
+
+```bash
+python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init
+```
+
+The helper verifies Spec Kit:
 
 ```bash
 specify --version
@@ -73,10 +79,10 @@ If unavailable, install the real Spec Kit CLI:
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 ```
 
-Then initialize Spec Kit in the target project using the current agent integration:
+Then initializes Spec Kit in the target project using the current agent integration:
 
 ```bash
-specify init <project-name> --integration <agent>
+specify init --here --force --integration codex --integration-options="--skills"
 ```
 
 Use the real Spec Kit commands whenever possible:
@@ -104,6 +110,16 @@ Ask these questions before planning:
 - Should original files be preserved in `stock/`? Default: yes.
 
 Also collect project name, theme name, WordPress path, one-page or multi-page scope, HTML files, editor flexibility, reusable sections, possible CPTs, taxonomies, forms, multilingual needs, CSS framework, JS libraries, animation requirements, SEO migration, admin UX expectations, and whether the user wants planning only or implementation.
+
+## Stock Behavior
+
+Run the stock helper before migration:
+
+```bash
+python <skill>/scripts/workflow.py stock --source . --project . --overwrite --move-source
+```
+
+This archives the static website files into `stock/` and removes the old root copies so the root does not keep both the original HTML and the preserved stock source. The helper excludes agent folders, generated artifacts, `.git`, `node_modules`, `vendor`, and the skill repository.
 
 ## Resource Routing
 

@@ -70,6 +70,12 @@ Windows PowerShell:
 
 This skill is built on the real GitHub Spec Kit project: <https://github.com/github/spec-kit>.
 
+The skill command should run the bundled helper so `.html-to-sage/SPECKIT-RUNS.md` contains real command output:
+
+```bash
+python scripts/workflow.py speckit --project . --integration codex --skills --install --init
+```
+
 Install Spec Kit if it is not already available:
 
 ```bash
@@ -82,10 +88,10 @@ Verify:
 specify --version
 ```
 
-Initialize Spec Kit inside each target project with the correct agent integration:
+Initialize Spec Kit inside each target project with the correct agent integration. For Codex skills mode:
 
 ```bash
-specify init <project-name> --integration <agent>
+specify init --here --force --integration codex --integration-options="--skills"
 ```
 
 The workflow uses real Spec Kit commands whenever possible:
@@ -118,6 +124,16 @@ The command asks intake questions, audits the static source, creates planning ar
 4. The workflow audits the source HTML.
 5. The workflow generates planning artifacts.
 6. The workflow stops before implementation unless approved.
+
+## Stock Folder Behavior
+
+The preferred stock command is:
+
+```bash
+python scripts/workflow.py stock --source . --project . --overwrite --move-source
+```
+
+This preserves static source files under `stock/` and removes the original root copies so the root can become the WordPress/Sage project. The helper excludes `.git`, `.html-to-sage`, `.specify`, agent folders, `node_modules`, `vendor`, and this skill repository.
 
 ## Troubleshooting: Command Not Showing
 

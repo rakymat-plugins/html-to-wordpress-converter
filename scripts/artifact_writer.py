@@ -34,7 +34,7 @@ def write_initial_artifacts(project: Path) -> None:
         "SECURITY-CHECKLIST.md": "Record escaping, sanitization, nonce, form, URL, image, and raw-output checks.",
         "VISUAL-QA.md": "Record desktop, tablet, mobile, hover, animation, image-ratio, spacing, typography, console, and link checks.",
         "SAGE-SETUP.md": "Record Sage setup commands and verification here.",
-        "SPECKIT-RUNS.md": "Record real Spec Kit commands and outcomes here.",
+        "SPECKIT-RUNS.md": "Run `python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init` and record real Spec Kit commands and outcomes here. Do not fake Spec Kit artifacts.",
         "RISKS.md": "Record visual, technical, content, and integration risks here.",
         "DECISIONS.md": "Record user-approved decisions and deviations here.",
     }
