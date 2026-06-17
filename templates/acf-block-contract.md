@@ -4,6 +4,8 @@ Apply `references/enterprise-html-to-acf-rules.md` and `references/full-acf-edit
 
 All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
+Do not create fields for wrappers, CSS classes, layout containers, animation hooks, or JS hooks unless the user explicitly needs editor control over them.
+
 ## Block
 
 - Name:

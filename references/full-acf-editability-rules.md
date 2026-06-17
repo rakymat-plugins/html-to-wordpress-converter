@@ -6,6 +6,8 @@ Use this reference for every static HTML to Sage + ACF Blocks conversion.
 
 All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
+This does not mean every HTML node becomes an ACF field. Only client-editable content becomes ACF/CPT data. Wrappers, classes, layout containers, grid markup, animation hooks, JS hooks, and accessibility structure should stay in templates unless the user explicitly needs editor control over them.
+
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
 ## No Hardcoded Meaningful Content
@@ -31,11 +33,11 @@ Allowed to stay hardcoded:
 - layout markup
 - SVG shape markup only when decorative and not content-controlled
 
-If there is doubt, make it editable.
+If there is doubt about whether something is client-editable content, make it editable. If the doubt is only about layout, wrappers, CSS classes, animation hooks, or JS hooks, keep it in the template and document why.
 
 ## Field Mirroring
 
-For every HTML section, ACF fields must mirror the original content structure.
+For every HTML section, ACF fields must mirror the original content structure, not the entire DOM tree. The field model should be editor-friendly and content-focused; the template should preserve the DOM structure needed for visual parity.
 
 Example source section:
 
@@ -59,6 +61,8 @@ Required ACF shape:
   - `card_link`: optional link
 
 Do not create vague fields such as `content_block_1`, `section_data`, `html_content`, `custom_html`, or `text_1`.
+
+Do not create fields for purely structural wrappers, Bootstrap/grid classes, animation classes, or data attributes unless the editor genuinely needs to change them. Over-dynamic blocks are a failure mode because they make WordPress administration brittle and unpleasant.
 
 ## Original Values
 

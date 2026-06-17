@@ -8,6 +8,8 @@ Every converted WordPress/Sage/ACF section must match the original HTML section 
 
 All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
+Do not over-dynamicize structural markup. ACF field maps should cover content, not every wrapper/class/hook in the DOM.
+
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
 Check that `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md` are enforced:
@@ -28,6 +30,7 @@ Check that `references/enterprise-html-to-acf-rules.md` and `references/full-acf
 - no raw ACF output
 - no missing responsive, hover, image ratio, or animation QA
 - no missing field map with original HTML values
+- no fields created only for structural wrappers/classes/hooks without editor need
 - no missing `PAGES.md` for multi-page sites
 
 Fail analysis if any section lacks a WordPress target, ACF contract, editable field map, CSS ownership, JS ownership, visual QA task, or security escaping notes.
