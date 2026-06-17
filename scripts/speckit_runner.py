@@ -23,8 +23,11 @@ def has_uv() -> bool:
     return shutil.which("uv") is not None
 
 
-def uv_env(cwd: Path) -> dict[str, str]:
+def command_env(cwd: Path) -> dict[str, str]:
     env = os.environ.copy()
+    env.setdefault("PYTHONIOENCODING", "utf-8")
+    env.setdefault("PYTHONUTF8", "1")
+    env.setdefault("NO_COLOR", "1")
     env.setdefault("UV_CACHE_DIR", str(cwd / ".uv-cache"))
     env.setdefault("UV_TOOL_DIR", str(cwd / ".uv-tools"))
     env.setdefault("UV_TOOL_BIN_DIR", str(cwd / ".uv-bin"))
@@ -46,11 +49,11 @@ def run_command(command: list[str], cwd: Path, env: dict[str, str] | None = None
 
 def run_specify(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
     executable = specify_executable(cwd) or "specify"
-    return run_command([executable, *args], cwd)
+    return run_command([executable, *args], cwd, env=command_env(cwd))
 
 
 def run_uv(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
-    return run_command(["uv", *args], cwd, env=uv_env(cwd))
+    return run_command(["uv", *args], cwd, env=command_env(cwd))
 
 
 def install_command() -> str:
