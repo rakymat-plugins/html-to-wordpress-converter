@@ -76,6 +76,8 @@ The skill command should run the bundled helper so `.html-to-sage/SPECKIT-RUNS.m
 python scripts/workflow.py speckit --project . --integration codex --skills --install --init
 ```
 
+The helper sets project-local uv paths by default (`.uv-cache`, `.uv-tools`, `.uv-bin`) so restricted Windows user cache folders do not block installation.
+
 Install Spec Kit if it is not already available:
 
 ```bash

@@ -67,6 +67,8 @@ Before producing final planning artifacts, run the bundled helper so real comman
 python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init
 ```
 
+The helper uses project-local uv paths (`.uv-cache`, `.uv-tools`, `.uv-bin`) and can run `specify` from `.uv-bin` after install when the command is not on `PATH`.
+
 The helper verifies Spec Kit:
 
 ```bash

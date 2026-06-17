@@ -11,7 +11,7 @@ from speckit_runner import format_result, has_specify, has_uv, install_command, 
 def cmd_check(args: argparse.Namespace) -> int:
     project = Path(args.project).resolve()
     write_initial_artifacts(project)
-    spec = "available" if has_specify() else f"missing; install with `{install_command()}`"
+    spec = "available" if has_specify(project) else f"missing; install with `{install_command()}`"
     print(f"Project: {project}")
     print(f"Spec Kit: {spec}")
     print(VISUAL_RULE)
@@ -70,7 +70,7 @@ def cmd_speckit(args: argparse.Namespace) -> int:
         "",
     ]
 
-    if has_specify():
+    if has_specify(project):
         version_result = run_specify(["--version"], project)
         lines.append(format_result(["specify", "--version"], version_result))
     else:
@@ -106,7 +106,7 @@ def cmd_speckit(args: argparse.Namespace) -> int:
                 install_result = run_uv(install_args, project)
                 lines.append(format_result(["uv", *install_args], install_result))
 
-    if has_specify():
+    if has_specify(project):
         integration_result = run_specify(["integration", "list"], project)
         lines.append(format_result(["specify", "integration", "list"], integration_result))
 
