@@ -19,6 +19,9 @@ Generate implementation tasks with these phases:
 Phase 2 must always include:
 
 - install Sage
+- create/verify `style.css` with a valid WordPress theme header
+- create/verify `functions.php` with Composer/autoload and theme bootstrap
+- create/verify `index.php` and standard WordPress fallback templates when Sage/Acorn routing cannot be verified
 - configure `vite.config.js` base path
 - `npm install`
 - `npm run build`
@@ -66,5 +69,16 @@ For each global template part:
 - verify the global element is not duplicated in page templates or ACF block templates
 - verify it is not listed in page ACF block order unless page-level control was explicitly approved
 - compare visually with the original across desktop, tablet, and mobile
+
+Add a final WordPress clone-readiness task group:
+
+- verify the repository/theme folder can be cloned into `wp-content/themes/<theme-slug>`
+- verify WordPress recognizes the theme from `style.css`
+- verify activation will not fail because `functions.php`, Composer/autoload handling, or template entry files are missing
+- verify required plugins are documented in `README.md`
+- verify Home page block order and global header/footer/options setup are documented in `README.md`
+- verify `.gitignore` excludes local agent folders (`.codex/`, `.claude/`, `.cursor/`, `.gemini/`, `.agents/`), skill source folders, uv caches, `node_modules/`, `vendor/`, and build artifacts unless explicitly intended
+- run `composer install`, `npm install`, `npm run build`, PHP syntax checks, and WordPress activation/front-end smoke test when the environment supports them
+- if the environment cannot run any check, record the skipped check and reason in `.html-to-sage/FINAL-REPORT.md`
 
 

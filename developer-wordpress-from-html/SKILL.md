@@ -137,6 +137,18 @@ Keep global site chrome out of page ACF block order. Store editable global data 
 
 Header and footer must show by default from the theme layout on every applicable page. Do not require editors to add header/footer blocks manually. Their meaningful content, images, links, schema data, and contact data must be editable through global options, menus, theme settings, Customizer, or approved plugins.
 
+## WordPress Clone Readiness
+
+Before final delivery, make the theme usable when cloned into `wp-content/themes/<theme-slug>` and activated:
+
+- Ensure `style.css` has a valid WordPress theme header.
+- Ensure `functions.php` loads Composer when present and boots theme setup/framework files.
+- Ensure a valid frontend render path exists after activation. Add standard WordPress fallbacks (`index.php`, `header.php`, `footer.php`, `front-page.php`, `page.php`) when the project cannot rely on fully verified Sage/Acorn Blade routing in the target environment.
+- Ensure header/footer/global UI render by default from layout/templates.
+- Document required plugins and install/build commands in `README.md`.
+- Ignore local agent folders, skill folders, uv caches, dependency folders, and generated build folders unless the user explicitly wants them committed.
+- Update `.html-to-sage/FINAL-REPORT.md` with activation readiness and any checks that could not be run.
+
 ## Stop Conditions
 
 Stop before implementation unless the user explicitly asks for implementation. If `.html-to-sage/BLOCKERS.md` contains unresolved items, ask the user for those answers and do not implement. Treat visual mismatch as failed work.

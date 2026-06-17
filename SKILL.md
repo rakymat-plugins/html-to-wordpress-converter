@@ -153,3 +153,18 @@ Apply the full editability rules from `references/full-acf-editability-rules.md`
 
 Apply the global template part rules from `references/global-template-parts-rules.md` so headers, footers, navigation, and site-wide UI become Sage partials/layout template parts by default, not page ACF blocks. Keep their editable data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins; do not duplicate global values in page-local ACF fields.
 
+## WordPress Clone Readiness Gate
+
+The delivered theme must work when the repository or theme folder is cloned into `wp-content/themes/<theme-slug>` and activated in WordPress.
+
+Before final delivery, verify or document:
+
+- `style.css` contains a valid WordPress theme header.
+- `functions.php` loads Composer when present and bootstraps theme setup/framework files.
+- The theme has a valid render path after activation: either standard WordPress templates such as `index.php`, `header.php`, `footer.php`, `front-page.php`, and `page.php`, or a verified Sage/Acorn Blade routing setup that works after `composer install`.
+- Global header/footer/navigation render by default on normal pages without requiring page ACF header/footer blocks.
+- Required plugins are listed in `README.md`, especially ACF PRO.
+- Install commands are listed in `README.md`: `composer install`, `npm install`, and `npm run build` when applicable.
+- No local agent folders, skill source folders, uv caches, `node_modules/`, `vendor/`, or build artifacts are committed unless explicitly intended.
+- `.html-to-sage/FINAL-REPORT.md` records which activation/build/visual checks were run and which could not be run in the current environment.
+

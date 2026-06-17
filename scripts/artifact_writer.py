@@ -5,6 +5,7 @@ VISUAL_RULE = "Every converted WordPress/Sage/ACF section must match the origina
 EDITABILITY_RULE = "All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content."
 PAGES_RULE = "For multi-page HTML websites, generate .html-to-sage/PAGES.md showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block."
 GLOBAL_PARTS_RULE = "Header, footer, navigation, and other site-wide repeated elements should become Sage template parts or layout partials by default, not normal ACF blocks. Keep editable global data in menus, options, Customizer, theme options, or approved plugins, not page-local ACF fields."
+CLONE_READINESS_RULE = "The delivered theme must work when cloned into wp-content/themes/<theme-slug> and activated: valid style.css theme header, functions.php bootstrap, render templates or verified Sage/Acorn routing, documented required plugins and install/build commands, ignored local agent/skill/cache/dependency folders, and final report notes for checks that could not run."
 
 
 def ensure_state(project: Path) -> Path:
@@ -35,12 +36,13 @@ def write_initial_artifacts(project: Path) -> None:
         "VISUAL-QA.md": "Record desktop, tablet, mobile, hover, animation, image-ratio, spacing, typography, console, and link checks.",
         "SAGE-SETUP.md": "Record Sage setup commands and verification here.",
         "SPECKIT-RUNS.md": "Run `python <skill>/scripts/workflow.py prepare --source . --project . --theme-name <theme-name> --wp-path <wordpress-install-path>` first. To rerun only setup logging, run `python <skill>/scripts/workflow.py speckit --project . --integration codex --skills --install --init`. Record real Spec Kit commands and outcomes here. Do not fake Spec Kit artifacts.",
+        "FINAL-REPORT.md": "Record completed implementation, WordPress clone-readiness, required plugins, install/build commands, activation checks, visual checks, and any skipped checks with reasons.",
         "RISKS.md": "Record visual, technical, content, and integration risks here.",
         "DECISIONS.md": "Record user-approved decisions and deviations here.",
     }
     for filename, body in placeholders.items():
         path = state / filename
         if not path.exists():
-            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{GLOBAL_PARTS_RULE}\n\n{body}")
+            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{GLOBAL_PARTS_RULE}\n\n{CLONE_READINESS_RULE}\n\n{body}")
 
 

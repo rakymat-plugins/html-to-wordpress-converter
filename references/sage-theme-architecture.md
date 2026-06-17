@@ -2,6 +2,30 @@
 
 The converted theme must use Sage with Acorn, Blade, Vite, SCSS, and ACF Pro.
 
+The delivered theme must also be WordPress clone-ready: cloning the repository or theme folder into `wp-content/themes/<theme-slug>` and activating it must not fail because of missing theme entry files or undocumented dependencies.
+
+Required root files:
+
+```text
+style.css        WordPress theme header
+functions.php    Composer/autoload and theme bootstrap
+index.php        minimum WordPress template fallback
+README.md        install commands, required plugins, page/block structure
+composer.json    PHP dependencies when Sage/Acorn is used
+package.json     frontend build scripts when Vite/SCSS/JS are used
+```
+
+When Sage/Acorn routing cannot be verified in the current environment, add standard WordPress template fallbacks such as:
+
+```text
+header.php
+footer.php
+front-page.php
+page.php
+```
+
+These fallbacks may delegate to shared render helpers, but they must preserve the same header/footer/global UI behavior and avoid hardcoded client-editable content.
+
 Required framework layer:
 
 ```text

@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from artifact_writer import EDITABILITY_RULE, GLOBAL_PARTS_RULE, PAGES_RULE, VISUAL_RULE
+from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_PARTS_RULE, PAGES_RULE, VISUAL_RULE
 from project_detector import detect_files
 
 
@@ -106,7 +106,9 @@ The source HTML/CSS/JS/assets MUST be preserved in `stock/` and treated as read-
 
 ## Quality Gates
 
-Implementation MUST NOT begin until stock source is preserved, every HTML section has a WordPress target decision, every ACF block has a field contract, every meaningful content item has an editable source or documented exception, every global template part has a data source, CPT decisions are justified, visual QA tasks exist, and Spec Kit spec/plan/tasks exist.
+Implementation MUST NOT begin until stock source is preserved, every HTML section has a WordPress target decision, every ACF block has a field contract, every meaningful content item has an editable source or documented exception, every global template part has a data source, CPT decisions are justified, visual QA tasks exist, Spec Kit spec/plan/tasks exist, and WordPress clone-readiness tasks exist.
+
+{CLONE_READINESS_RULE}
 
 ## Governance
 
@@ -172,6 +174,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **FR-010**: The implementation MUST avoid live frontend references to `stock/`.
 - **FR-011**: Dynamic output MUST be escaped/sanitized with WordPress-appropriate functions.
 - **FR-012**: Completion MUST be blocked until visual QA passes.
+- **FR-013**: The delivered theme MUST work when cloned into `wp-content/themes/<theme-slug>` and activated, or the final report MUST document exactly which runtime checks could not be run and why.
 
 ## Success Criteria
 
@@ -181,6 +184,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **SC-004**: 0 header/footer/navigation elements are implemented as page ACF blocks unless explicitly approved.
 - **SC-005**: 0 unjustified CPTs or taxonomies are introduced.
 - **SC-006**: 0 live frontend template references point to `stock/`.
+- **SC-007**: WordPress recognizes the cloned theme from `style.css`, and activation has a valid bootstrap/render path.
 
 ## Assumptions
 
@@ -239,6 +243,8 @@ Convert preserved static HTML from `stock/` into `{theme_name}` using Sage, Acor
 **Project Type**: WordPress theme conversion
 
 **Constraints**: No redesign; no page builders; no hardcoded meaningful content; no unjustified CPTs; no live `stock/` references; visual mismatch fails the task.
+
+**WordPress Clone Readiness**: {CLONE_READINESS_RULE}
 
 ## Constitution Check
 
@@ -369,6 +375,7 @@ Rationale: `stock/` is the immutable source of visual truth and QA comparison ba
 3. Render global UI using `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md`.
 4. Compare WordPress output against `stock/`.
 5. Confirm no meaningful content is hardcoded and no frontend path references `stock/`.
+6. Confirm the theme can be cloned into `wp-content/themes/<theme-slug>` and activated, or record skipped runtime checks in `.html-to-sage/FINAL-REPORT.md`.
 
 ## Pass Condition
 
@@ -427,16 +434,27 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T025 Run PHP syntax checks and Vite production build
 - [ ] T026 Complete `.html-to-sage/VISUAL-QA.md`, `SECURITY-CHECKLIST.md`, and final report
 
+## Phase 6: WordPress Clone Readiness
+
+- [ ] T027 Verify `style.css` contains a valid WordPress theme header
+- [ ] T028 Verify `functions.php` bootstraps Composer/autoload and theme setup/framework files
+- [ ] T029 Verify a valid render path exists after activation: standard WordPress templates or verified Sage/Acorn routing
+- [ ] T030 Verify required plugins and install/build commands are documented in `README.md`
+- [ ] T031 Verify Home/page block order and global header/footer/options setup are documented in `README.md`
+- [ ] T032 Verify local agent folders, skill source folders, uv caches, `node_modules/`, `vendor/`, and build outputs are ignored unless intentionally committed
+- [ ] T033 Run or document Composer, Node, PHP syntax, WordPress activation, and frontend smoke checks in `.html-to-sage/FINAL-REPORT.md`
+
 ## Dependencies
 
 - Phase 1 blocks all implementation.
 - Phase 2 blocks section conversion.
 - Phase 3 and Phase 4 must both pass before QA completion.
 - Phase 5 blocks final delivery.
+- Phase 6 blocks final delivery.
 
 ## Implementation Strategy
 
-Implement global template parts first, then page ACF blocks in page order, then editability audit, then visual QA. Do not start implementation without explicit user approval.
+Implement global template parts first, then page ACF blocks in page order, then editability audit, visual QA, and WordPress clone-readiness verification. Do not start implementation without explicit user approval.
 """,
     )
 
@@ -462,6 +480,7 @@ def write_analyze(project: Path, feature_dir: Path) -> None:
 | ACF editability | yes | Covered by plan and tasks. |
 | Global template parts | yes | Covered by plan and tasks. |
 | Visual QA | yes | Covered by plan and tasks. |
+| WordPress clone-readiness | yes | Covered by plan and tasks. |
 
 ## Constitution Alignment Issues
 

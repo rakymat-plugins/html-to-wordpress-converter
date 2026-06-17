@@ -45,6 +45,8 @@ The plan must state that header, footer, navigation, announcement bars, mobile s
 
 The plan must keep page-owned ACF block order separate from global site chrome. If a header/footer/nav appears in the original HTML file, map it in `GLOBAL-TEMPLATE-PARTS.md`, not in the page ACF block order, unless explicit page-level control was approved and documented in `DECISIONS.md`.
 
+The plan must include a final WordPress clone-readiness phase. The phase must verify that the theme can be cloned into `wp-content/themes/<theme-slug>` and activated, with valid `style.css`, `functions.php`, render templates or verified Sage/Acorn routing, documented required plugins, documented install/build commands, and ignored local agent/skill/cache/dependency folders.
+
 Include this table:
 
 | Original HTML Section Selector | Section Purpose | WordPress Target | Block Name | ACF Fields | Editable Fields Count | Hardcoded Allowed? | CPT Needed? | CSS Source | JS Source | Visual Match Risk | Notes |

@@ -234,6 +234,20 @@ Header, footer, navigation, mobile menus, global CTAs, language switchers, searc
 
 Editable global data belongs in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins. Do not duplicate global content in page-local ACF fields unless the user explicitly approves page-level editor control and the decision is documented.
 
+## WordPress Clone Readiness
+
+Final delivery must verify that the theme works when cloned into `wp-content/themes/<theme-slug>` and activated.
+
+The workflow must check or document:
+
+- valid WordPress theme header in `style.css`
+- `functions.php` bootstrap
+- render templates or verified Sage/Acorn routing
+- required plugins and install/build commands in `README.md`
+- Home page block order and global header/footer setup in `README.md`
+- ignored local agent folders, skill folders, uv caches, dependency folders, and build outputs
+- `.html-to-sage/FINAL-REPORT.md` listing checks run and any checks skipped because the environment lacks PHP, Composer, Node, WordPress, or a browser
+
 ## Output Artifacts
 
 The workflow creates durable project state for handoff between agent sessions:

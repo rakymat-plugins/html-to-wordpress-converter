@@ -31,5 +31,7 @@ Required before implementation:
 - global editable data is sourced from WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, not duplicated page-local ACF fields
 - header/footer/navigation markup is not duplicated across page templates, block templates, CPT templates, or partials
 - header/footer/navigation CSS and JS live in layout-owned files, not random block-owned files
+- WordPress clone-readiness is verified: valid theme `style.css`, bootstrap `functions.php`, render templates or verified Sage/Acorn routing, required plugins in README, install/build commands in README, and ignored local agent/skill/cache/dependency folders
+- if PHP, Composer, Node, WordPress, or browser checks cannot be run in the current environment, `.html-to-sage/FINAL-REPORT.md` records exactly what was skipped and why
 
 Visual mismatch is a blocker, not a minor issue.
