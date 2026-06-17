@@ -32,7 +32,16 @@ def uv_env(cwd: Path) -> dict[str, str]:
 
 
 def run_command(command: list[str], cwd: Path, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=str(cwd), text=True, capture_output=True, check=False, env=env)
+    return subprocess.run(
+        command,
+        cwd=str(cwd),
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        capture_output=True,
+        check=False,
+        env=env,
+    )
 
 
 def run_specify(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
@@ -54,8 +63,8 @@ def format_result(command: list[str], result: subprocess.CompletedProcess[str]) 
         "",
         f"- exit code: `{result.returncode}`",
     ]
-    stdout = result.stdout.strip()
-    stderr = result.stderr.strip()
+    stdout = (result.stdout or "").strip()
+    stderr = (result.stderr or "").strip()
     if stdout:
         lines.extend(["", "stdout:", "", "```text", stdout, "```"])
     if stderr:
