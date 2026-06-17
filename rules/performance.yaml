@@ -1,0 +1,6 @@
+performance:
+  require_production_build: true
+  build_command: "npm run build"
+  manifest: "public/build/manifest.json"
+  avoid_unused_libraries: true
+  preserve_visual_behavior_over_micro_optimizations: true

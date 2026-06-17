@@ -1,0 +1,18 @@
+cpt_decision:
+  allow_when:
+    - repeatable
+    - reusable
+    - filterable
+    - archiveable
+    - needs_single_url
+    - needs_independent_admin_workflow
+  avoid_when:
+    - section_local_small_list
+    - one_off_content
+    - decorative_items
+  prefer_acf_repeater_for:
+    - section_cards
+    - small_faq_lists
+    - one_page_testimonials
+    - icon_lists
+

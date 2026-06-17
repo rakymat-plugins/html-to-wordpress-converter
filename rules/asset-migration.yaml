@@ -1,0 +1,9 @@
+asset_migration:
+  stock_folder: "read-only source of truth"
+  never_edit_stock: true
+  organize_theme_assets_under:
+    - resources/images
+    - resources/fonts
+  preserve_filenames_when_possible: true
+  update_urls_in_templates: true
+

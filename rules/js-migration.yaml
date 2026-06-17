@@ -1,0 +1,7 @@
+js_migration:
+  audit_every_dependency: true
+  module_location: "resources/js"
+  import_from: "resources/js/app.js"
+  preserve_animations: true
+  replace_library_only_with_approval: true
+

@@ -1,0 +1,21 @@
+acf_fields:
+  ownership: "code-owned"
+  required_plugin: "ACF Pro"
+  prefer:
+    - text
+    - textarea
+    - wysiwyg
+    - image
+    - file
+    - link
+    - repeater
+    - group
+    - true_false
+  image_return_format: "array"
+  link_return_format: "array"
+  escaping:
+    text: "esc_html"
+    url: "esc_url"
+    attributes: "esc_attr"
+    wysiwyg: "wp_kses_post"
+

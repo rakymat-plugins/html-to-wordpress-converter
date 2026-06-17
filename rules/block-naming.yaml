@@ -1,0 +1,9 @@
+block_naming:
+  format: "kebab-case"
+  prefix: "none unless project requires one"
+  registration: "acf/<block-name>"
+  template: "framework/builder/front-end/block-content-<block-name>.php"
+  fields: "framework/builder/acf-blocks/<block-name>.php"
+  scss: "resources/css/blocks/_<block-name>.scss"
+  js: "resources/js/<block-name>.js"
+

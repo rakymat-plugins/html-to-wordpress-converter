@@ -1,0 +1,21 @@
+{
+  "name": "html-to-wordpress-converter",
+  "version": "1.0.0",
+  "description": "Spec Kit-backed agent skill for converting static HTML sites into WordPress Sage themes with ACF Blocks.",
+  "private": false,
+  "scripts": {
+    "check": "python scripts/workflow.py check --project .",
+    "audit": "python scripts/workflow.py audit --source . --project .",
+    "postinstall": "node -e \"console.log('Install this skill by copying the repository folder into your agent skills directory, then run specify init in each target project.')\""
+  },
+  "keywords": [
+    "spec-kit",
+    "wordpress",
+    "sage",
+    "acf",
+    "codex",
+    "claude-code"
+  ],
+  "license": "MIT"
+}
+

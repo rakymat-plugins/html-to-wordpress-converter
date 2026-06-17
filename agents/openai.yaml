@@ -1,0 +1,5 @@
+interface:
+  display_name: "HTML to Sage WordPress"
+  short_description: "Spec Kit-backed Sage ACF conversion"
+  default_prompt: "Use $html-to-wordpress-converter to plan a Spec Kit-backed conversion from static HTML into a Sage WordPress theme."
+

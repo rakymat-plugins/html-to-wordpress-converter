@@ -1,0 +1,8 @@
+.html-to-sage/
+.specify/
+specs/
+stock/
+__pycache__/
+*.pyc
+node_modules/
+vendor/

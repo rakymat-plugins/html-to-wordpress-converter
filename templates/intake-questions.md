@@ -1,0 +1,28 @@
+# Intake Questions
+
+Ask before planning:
+
+- Should the conversion be pixel-perfect? Default: yes.
+- Are visual improvements allowed? Default: no.
+- Should all editable content be in ACF? Default: yes.
+- Are CPTs allowed only when justified? Default: yes.
+- Should original files be preserved in `stock/`? Default: yes.
+- Project name?
+- Theme name?
+- WordPress install path?
+- One-page or multi-page?
+- Which HTML files are in scope?
+- Expected editor flexibility level?
+- Should sections be reusable across pages?
+- Are CPTs needed? Possible CPTs: services, projects, products, testimonials, team, branches, FAQs, careers, news, events, downloads.
+- Are taxonomies needed?
+- Forms: Gravity Forms, Contact Form 7, custom form, or static markup?
+- Multilingual support needed?
+- CSS approach: Bootstrap, Tailwind, plain SCSS, or existing CSS?
+- JS libraries present: jQuery, Slick, GSAP, Swiper, other?
+- Must animations be preserved?
+- Must SEO metadata be migrated?
+- Does WordPress admin UX matter?
+- Must ACF field groups be code-only?
+- Planning only or implementation later?
+
