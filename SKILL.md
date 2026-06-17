@@ -38,13 +38,20 @@ Use `developer-wordpress-from-html/SKILL.md` for the main workflow. If the user'
 
 ```text
 /developer-wordpress-from-html
+/html-to-wordpress
+/html-to-sage
 ```
 
 For Codex skill mode, use:
 
 ```text
 $html-to-wordpress-converter
+$developer-wordpress-from-html
+$html-to-wordpress
+$html-to-sage
 ```
+
+Different agents expose commands differently. Claude Code may show slash commands or skills. Codex CLI may show `$command` skills. Generic agents should be told: "Use the html-to-wordpress-converter skill and run developer-wordpress-from-html."
 
 ## Non-Negotiable Rule
 

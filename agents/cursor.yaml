@@ -1,0 +1,9 @@
+interface:
+  display_name: "HTML to Sage WordPress"
+  short_description: "Static HTML to Sage ACF workflow"
+  default_prompt: "Use the html-to-wordpress-converter skill and run developer-wordpress-from-html."
+commands:
+  - "/developer-wordpress-from-html"
+  - "/html-to-wordpress"
+  - "/html-to-sage"
+

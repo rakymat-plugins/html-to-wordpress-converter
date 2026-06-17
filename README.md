@@ -16,13 +16,39 @@ This repository is not a standalone website converter. It is a reusable agent wo
 npx skills add yousefabdallah171/html-to-wordpress-converter
 ```
 
-Then invoke:
+Then restart the agent.
+
+## Commands
+
+Depending on the agent, use one of:
 
 ```text
 /developer-wordpress-from-html
+/html-to-wordpress
+/html-to-sage
 ```
 
-This is the preferred installation path. Do not manually clone the repository unless you need an advanced/manual setup.
+or:
+
+```text
+$developer-wordpress-from-html
+$html-to-wordpress
+$html-to-sage
+```
+
+or say:
+
+```text
+Use the html-to-wordpress-converter skill.
+```
+
+Different agents expose commands differently:
+
+- Claude Code: slash command or skill command
+- Codex CLI: skill command may appear as `$command`
+- Cursor/Gemini/generic agents: tell the agent to use the `developer-wordpress-from-html` skill
+
+The recommended install path is `npx skills add yousefabdallah171/html-to-wordpress-converter`. Do not manually clone the repository unless you need an advanced/manual setup.
 
 ### Advanced / Manual
 
@@ -83,6 +109,77 @@ Codex skill mode may expose equivalent aliases such as `$speckit-constitution`, 
 ```
 
 The command asks intake questions, audits the static source, creates planning artifacts, initializes Spec Kit, and stops before implementation unless explicitly approved.
+
+## How It Works
+
+1. The command routes to `SKILL.md`.
+2. `SKILL.md` loads the `developer-wordpress-from-html` workflow.
+3. The workflow checks Spec Kit.
+4. The workflow audits the source HTML.
+5. The workflow generates planning artifacts.
+6. The workflow stops before implementation unless approved.
+
+## Troubleshooting: Command Not Showing
+
+If the command does not appear:
+
+1. Restart the agent.
+
+2. Re-run:
+
+   ```bash
+   npx skills add yousefabdallah171/html-to-wordpress-converter
+   ```
+
+3. Verify install:
+
+   ```bash
+   node scripts/verify-install.js
+   ```
+
+4. Use direct prompt fallback:
+
+   ```text
+   Use the html-to-wordpress-converter skill and run developer-wordpress-from-html.
+   ```
+
+5. Manual Claude Code fallback:
+
+   Copy commands from:
+
+   ```text
+   commands/
+   ```
+
+   into:
+
+   ```text
+   ~/.claude/commands/
+   ```
+
+6. Manual Codex fallback:
+
+   Copy:
+
+   ```text
+   developer-wordpress-from-html/SKILL.md
+   ```
+
+   into:
+
+   ```text
+   ~/.codex/skills/developer-wordpress-from-html/SKILL.md
+   ```
+
+7. Project-local fallback:
+
+   Create:
+
+   ```text
+   .claude/commands/developer-wordpress-from-html.md
+   ```
+
+   and paste the command router content from `commands/developer-wordpress-from-html.md`.
 
 ## Non-Negotiable Rule
 

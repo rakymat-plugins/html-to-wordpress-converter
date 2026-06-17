@@ -5,7 +5,7 @@ description: Command workflow for planning and optionally implementing static HT
 
 # Developer WordPress From HTML
 
-Use this as `/developer-wordpress-from-html`. It coordinates the full workflow but must keep Spec Kit as the source planning engine.
+Use this as `/developer-wordpress-from-html`, `/html-to-wordpress`, `/html-to-sage`, `$developer-wordpress-from-html`, `$html-to-wordpress`, or `$html-to-sage`. It coordinates the full workflow but must keep Spec Kit as the source planning engine.
 
 ## Start
 

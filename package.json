@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Spec Kit-backed agent skill for converting static HTML sites into WordPress Sage themes with ACF Blocks.",
   "private": false,
+  "bin": {
+    "html-to-wordpress-converter-register": "./scripts/register-skill.js",
+    "html-to-wordpress-converter-verify": "./scripts/verify-install.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yousefabdallah171/html-to-wordpress-converter.git"
@@ -15,6 +19,9 @@
     "SKILL.md",
     "README.md",
     "agents",
+    "commands",
+    ".claude",
+    ".codex",
     "developer-wordpress-from-html",
     "subskills",
     "templates",
@@ -28,7 +35,8 @@
   "scripts": {
     "check": "python scripts/workflow.py check --project .",
     "audit": "python scripts/workflow.py audit --source . --project .",
-    "postinstall": "node -e \"console.log('Recommended install: npx skills add yousefabdallah171/html-to-wordpress-converter'); console.log('Then invoke: /developer-wordpress-from-html');\""
+    "postinstall": "node scripts/register-skill.js",
+    "verify-install": "node scripts/verify-install.js"
   },
   "keywords": [
     "spec-kit",
@@ -36,7 +44,11 @@
     "sage",
     "acf",
     "codex",
-    "claude-code"
+    "claude-code",
+    "cursor",
+    "gemini",
+    "slash-command",
+    "skills"
   ],
   "license": "MIT"
 }

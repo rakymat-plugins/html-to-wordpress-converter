@@ -1,0 +1,9 @@
+interface:
+  display_name: "HTML to Sage WordPress"
+  short_description: "Slash commands for Sage ACF conversion"
+  default_prompt: "Use /developer-wordpress-from-html to plan a Spec Kit-backed static HTML to Sage WordPress conversion."
+commands:
+  - "/developer-wordpress-from-html"
+  - "/html-to-wordpress"
+  - "/html-to-sage"
+
