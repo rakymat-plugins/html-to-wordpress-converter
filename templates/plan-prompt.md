@@ -47,6 +47,8 @@ The plan must keep page-owned ACF block order separate from global site chrome. 
 
 The plan must include a final WordPress clone-readiness phase. The phase must verify that the theme can be cloned into `wp-content/themes/<theme-slug>` and activated, with valid `style.css`, `functions.php`, render templates or verified Sage/Acorn routing, documented required plugins, documented install/build commands, and ignored local agent/skill/cache/dependency folders.
 
+The plan must explicitly distinguish the generated WordPress theme repo/folder from the reusable skill repo. It must state that `html-to-wordpress-converter` is a skill repository and must not be cloned or copied into `wp-content/themes`. If a WordPress admin screen shows a broken theme named `html-to-wordpress-converter`, the remediation is to delete that wrong folder from `wp-content/themes` and install the actual generated theme folder.
+
 Include this table:
 
 | Original HTML Section Selector | Section Purpose | WordPress Target | Block Name | ACF Fields | Editable Fields Count | Hardcoded Allowed? | CPT Needed? | CSS Source | JS Source | Visual Match Risk | Notes |

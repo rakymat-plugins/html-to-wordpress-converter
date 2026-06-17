@@ -4,6 +4,8 @@ The converted theme must use Sage with Acorn, Blade, Vite, SCSS, and ACF Pro.
 
 The delivered theme must also be WordPress clone-ready: cloning the repository or theme folder into `wp-content/themes/<theme-slug>` and activating it must not fail because of missing theme entry files or undocumented dependencies.
 
+Only the generated WordPress theme repository/folder belongs in `wp-content/themes`. Never place the reusable skill repository `html-to-wordpress-converter` inside `wp-content/themes`; it is not a theme and WordPress will list it as broken because it has no theme `style.css`.
+
 Required root files:
 
 ```text

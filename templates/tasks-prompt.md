@@ -78,6 +78,8 @@ Add a final WordPress clone-readiness task group:
 - verify required plugins are documented in `README.md`
 - verify Home page block order and global header/footer/options setup are documented in `README.md`
 - verify `.gitignore` excludes local agent folders (`.codex/`, `.claude/`, `.cursor/`, `.gemini/`, `.agents/`), skill source folders, uv caches, `node_modules/`, `vendor/`, and build artifacts unless explicitly intended
+- verify the reusable skill repo/folder `html-to-wordpress-converter` is not inside the delivered theme and is not installed under `wp-content/themes`
+- if WordPress reports a broken theme named `html-to-wordpress-converter`, delete that wrong folder from `wp-content/themes` and install the generated theme repo/folder instead
 - run `composer install`, `npm install`, `npm run build`, PHP syntax checks, and WordPress activation/front-end smoke test when the environment supports them
 - if the environment cannot run any check, record the skipped check and reason in `.html-to-sage/FINAL-REPORT.md`
 

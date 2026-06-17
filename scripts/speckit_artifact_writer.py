@@ -442,7 +442,9 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T030 Verify required plugins and install/build commands are documented in `README.md`
 - [ ] T031 Verify Home/page block order and global header/footer/options setup are documented in `README.md`
 - [ ] T032 Verify local agent folders, skill source folders, uv caches, `node_modules/`, `vendor/`, and build outputs are ignored unless intentionally committed
-- [ ] T033 Run or document Composer, Node, PHP syntax, WordPress activation, and frontend smoke checks in `.html-to-sage/FINAL-REPORT.md`
+- [ ] T033 Verify the reusable skill repo/folder `html-to-wordpress-converter` is not inside the delivered theme and is not installed under `wp-content/themes`
+- [ ] T034 If WordPress reports a broken theme named `html-to-wordpress-converter`, delete that wrong folder from `wp-content/themes` and install the generated theme repo/folder instead
+- [ ] T035 Run or document Composer, Node, PHP syntax, WordPress activation, and frontend smoke checks in `.html-to-sage/FINAL-REPORT.md`
 
 ## Dependencies
 

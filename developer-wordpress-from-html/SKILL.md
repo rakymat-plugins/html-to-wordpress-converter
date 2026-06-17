@@ -147,6 +147,7 @@ Before final delivery, make the theme usable when cloned into `wp-content/themes
 - Ensure header/footer/global UI render by default from layout/templates.
 - Document required plugins and install/build commands in `README.md`.
 - Ignore local agent folders, skill folders, uv caches, dependency folders, and generated build folders unless the user explicitly wants them committed.
+- Never copy or clone the reusable skill repository `html-to-wordpress-converter` into `wp-content/themes`. Only the generated WordPress theme belongs there. If WordPress reports a broken theme named `html-to-wordpress-converter` with "Stylesheet is missing", instruct the user to delete that wrong folder from `wp-content/themes` and clone the actual theme repo/folder instead.
 - Update `.html-to-sage/FINAL-REPORT.md` with activation readiness and any checks that could not be run.
 
 ## Stop Conditions

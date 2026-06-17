@@ -166,5 +166,6 @@ Before final delivery, verify or document:
 - Required plugins are listed in `README.md`, especially ACF PRO.
 - Install commands are listed in `README.md`: `composer install`, `npm install`, and `npm run build` when applicable.
 - No local agent folders, skill source folders, uv caches, `node_modules/`, `vendor/`, or build artifacts are committed unless explicitly intended.
+- The reusable skill repository itself (`html-to-wordpress-converter`) is never copied, nested, or cloned into `wp-content/themes`; if WordPress shows `html-to-wordpress-converter` as a broken theme, that folder is the skill repo in the wrong place and must be removed from the WordPress themes directory.
 - `.html-to-sage/FINAL-REPORT.md` records which activation/build/visual checks were run and which could not be run in the current environment.
 
