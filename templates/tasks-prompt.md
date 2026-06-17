@@ -32,6 +32,7 @@ For each section, create one task group:
 
 - analyze original HTML
 - identify fields
+- map all meaningful content to ACF fields or justified CPT fields
 - create ACF block registration
 - create ACF fields in code
 - create frontend template
@@ -42,6 +43,10 @@ For each section, create one task group:
 
 Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
-Apply `references/enterprise-html-to-acf-rules.md`. Add tasks for `.html-to-sage/ASSET-MAP.md`, `.html-to-sage/JS-BEHAVIOR-MAP.md`, `.html-to-sage/PERFORMANCE-RISKS.md`, `.html-to-sage/SECURITY-CHECKLIST.md`, and `.html-to-sage/VISUAL-QA.md`.
+All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
+
+For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
+
+Apply `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md`. Add tasks for `.html-to-sage/PAGES.md`, `.html-to-sage/ASSET-MAP.md`, `.html-to-sage/JS-BEHAVIOR-MAP.md`, `.html-to-sage/PERFORMANCE-RISKS.md`, `.html-to-sage/SECURITY-CHECKLIST.md`, and `.html-to-sage/VISUAL-QA.md`.
 
 

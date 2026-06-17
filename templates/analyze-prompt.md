@@ -6,12 +6,17 @@ Analyze the constitution, specification, plan, and tasks for cross-artifact cons
 
 Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
-Check that `references/enterprise-html-to-acf-rules.md` is enforced:
+All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
+
+For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
+
+Check that `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md` are enforced:
 
 - no giant catch-all block
 - no unowned global CSS/JS migration
 - no unjustified CPTs
 - no hardcoded editable content
+- no meaningful original text, image URL, button label, or button URL hardcoded in templates
 - no edits to `stock/`
 - no random class renames or removed behavior hooks
 - no page builders
@@ -22,6 +27,7 @@ Check that `references/enterprise-html-to-acf-rules.md` is enforced:
 - no full-size card/grid images
 - no raw ACF output
 - no missing responsive, hover, image ratio, or animation QA
+- no missing field map with original HTML values
+- no missing `PAGES.md` for multi-page sites
 
-Fail analysis if any section lacks a WordPress target, ACF contract, CSS ownership, JS ownership, visual QA task, or security escaping notes.
-
+Fail analysis if any section lacks a WordPress target, ACF contract, editable field map, CSS ownership, JS ownership, visual QA task, or security escaping notes.

@@ -29,3 +29,5 @@ Ask before planning:
 - Does WordPress admin UX matter?
 - Must ACF field groups be code-only?
 - Planning only or implementation later?
+- Is this a multi-page site that requires `.html-to-sage/PAGES.md`?
+- Should every meaningful content item be editable through ACF or justified CPT fields?

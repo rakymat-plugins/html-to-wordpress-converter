@@ -5,7 +5,7 @@ description: Intake workflow for HTML-to-Sage WordPress conversions, collecting 
 
 # Intake
 
-Read `../../references/enterprise-html-to-acf-rules.md` before recording assumptions.
+Read `../../references/enterprise-html-to-acf-rules.md` and `../../references/full-acf-editability-rules.md` before recording assumptions.
 
 Ask the questions in `../../templates/intake-questions.md` before planning. Use these defaults unless the user overrides them:
 

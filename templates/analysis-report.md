@@ -14,9 +14,15 @@
 
 Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
+All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
+
+For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
+
 ## Enterprise Gate
 
 Confirm `references/enterprise-html-to-acf-rules.md` was enforced: no giant catch-all blocks, no unowned global CSS/JS, no unjustified CPTs, no edited `stock/` files, no removed classes/hooks, no casual packages, no unpaginated public queries, no full-size card/grid images, and no raw ACF output.
+
+Confirm `references/full-acf-editability-rules.md` was enforced: no hardcoded meaningful content, every original content item mapped to ACF or justified CPT fields, original HTML values documented, and `PAGES.md` generated for multi-page websites.
 
 ## Section Results
 

@@ -5,7 +5,7 @@ description: Bridge the HTML-to-Sage WordPress workflow to the real GitHub Spec 
 
 # Spec Kit Bridge
 
-Read `../../references/enterprise-html-to-acf-rules.md` and pass its constraints into the Spec Kit prompts.
+Read `../../references/enterprise-html-to-acf-rules.md` and `../../references/full-acf-editability-rules.md`, then pass both constraint sets into the Spec Kit prompts.
 
 Do not fake Spec Kit. Verify the real CLI:
 

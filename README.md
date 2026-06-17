@@ -102,6 +102,7 @@ The workflow creates durable project state for handoff between agent sessions:
 stock/
 .html-to-sage/
   INTAKE.md
+  PAGES.md
   HTML-AUDIT.md
   SECTION-MAP.md
   CPT-TAXONOMY-MAP.md

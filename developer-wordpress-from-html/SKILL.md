@@ -11,14 +11,15 @@ Use this as `/developer-wordpress-from-html`. It coordinates the full workflow b
 
 1. Ask the mandatory intake questions from `../templates/intake-questions.md`.
 2. Read `../references/enterprise-html-to-acf-rules.md` and enforce it throughout the workflow.
-3. Confirm these defaults unless the user overrides them:
+3. Read `../references/full-acf-editability-rules.md` and enforce full ACF editability.
+4. Confirm these defaults unless the user overrides them:
    - pixel-perfect conversion: yes
    - visual improvements allowed: no
    - all editable content in ACF: yes
    - CPTs only when justified: yes
    - preserve originals in `stock/`: yes
-4. Inspect HTML/CSS/JS/assets without modifying originals.
-5. Copy originals into `stock/` before any migration work.
+5. Inspect HTML/CSS/JS/assets without modifying originals.
+6. Copy originals into `stock/` before any migration work.
 
 ## Spec Kit Foundation
 
@@ -61,6 +62,7 @@ Create and maintain:
 stock/
 .html-to-sage/
   INTAKE.md
+  PAGES.md
   HTML-AUDIT.md
   SECTION-MAP.md
   CPT-TAXONOMY-MAP.md
@@ -90,6 +92,8 @@ Classify every HTML section as one of:
 Every ACF block must include registration, code-owned fields, frontend template, SCSS file, optional JS module, editor preview behavior, and a visual parity checklist.
 
 Never flatten the full page into one block, never put all CSS/JS into global files without ownership, never remove behavior hooks/classes randomly, and never hardcode editable content in templates.
+
+All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
 ## Stop Conditions
 

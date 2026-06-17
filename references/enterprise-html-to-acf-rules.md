@@ -2,6 +2,8 @@
 
 This reference is mandatory for every HTML-to-Sage WordPress conversion. Read it before planning, mapping blocks, modeling CPTs, migrating CSS/JS, implementing, or writing final QA.
 
+Also read `full-acf-editability-rules.md` before mapping content to fields or deciding whether any content can remain hardcoded.
+
 ## Non-Breakable Rules
 
 The original HTML is the visual source of truth.

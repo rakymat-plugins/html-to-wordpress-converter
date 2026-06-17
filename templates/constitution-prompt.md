@@ -8,6 +8,10 @@ Include this exact non-negotiable rule:
 
 Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
+All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
+
+For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
+
 Constitution articles:
 
 1. HTML Visual Parity First
@@ -36,5 +40,7 @@ Constitution articles:
 Also include secure escaping/sanitization in PHP templates, responsive QA, accessibility basics, performance budgets, and editor usability.
 
 Also enforce `references/enterprise-html-to-acf-rules.md`: no giant catch-all blocks, no unowned global CSS/JS, no page builders, no manual-only ACF setup, no random class renames, no unjustified packages, no unpaginated public queries, and no raw ACF output.
+
+Also enforce `references/full-acf-editability-rules.md`: no hardcoded meaningful content, clear ACF field mirroring, original HTML values in field maps, page-level ACF documentation, and editor rebuildability.
 
 

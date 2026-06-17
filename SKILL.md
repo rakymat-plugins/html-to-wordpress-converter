@@ -102,6 +102,7 @@ Also collect project name, theme name, WordPress path, one-page or multi-page sc
 
 - Read `developer-wordpress-from-html/SKILL.md` for the end-to-end command.
 - Read `references/enterprise-html-to-acf-rules.md` before any planning, mapping, package decision, implementation, or QA work.
+- Read `references/full-acf-editability-rules.md` before mapping content into fields or writing implementation tasks.
 - Read `references/sage-theme-architecture.md` before designing the theme structure.
 - Read `references/acf-block-rules.md` before mapping sections into ACF blocks.
 - Read `references/wordpress-cpt-taxonomy-rules.md` before proposing CPTs or taxonomies.
@@ -113,4 +114,6 @@ Also collect project name, theme name, WordPress path, one-page or multi-page sc
 Do not start implementation until Spec Kit constitution, spec, clarification notes, plan, tasks, and analysis exist or the user explicitly accepts a smaller workflow. Stop after planning unless the user explicitly asks to implement.
 
 Apply the enterprise rules from `references/enterprise-html-to-acf-rules.md` to every `SKILL.md`, template, constitution prompt, plan prompt, tasks prompt, analyze prompt, and implementation gate.
+
+Apply the full editability rules from `references/full-acf-editability-rules.md` to prevent hardcoded client-editable content and to require `.html-to-sage/PAGES.md` for multi-page websites.
 

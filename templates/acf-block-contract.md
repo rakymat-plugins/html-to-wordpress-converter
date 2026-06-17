@@ -1,6 +1,8 @@
 ﻿# ACF Block Contract
 
-Apply `references/enterprise-html-to-acf-rules.md`.
+Apply `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md`.
+
+All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
 ## Block
 
@@ -20,14 +22,18 @@ Apply `references/enterprise-html-to-acf-rules.md`.
 
 ## Fields
 
-| Field | Type | Required | Notes |
-|-------|------|----------|-------|
+| Field | Type | Original Value | Source | Required | Notes |
+|-------|------|----------------|--------|----------|-------|
 
 ## Repeaters
 
 ## Media
 
 ## Links and Buttons
+
+## Hardcoded Content Exceptions
+
+Record any content intentionally left hardcoded and the approved reason.
 
 ## Visual Parity Checklist
 
