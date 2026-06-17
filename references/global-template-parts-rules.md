@@ -8,6 +8,12 @@ Header, footer, navigation, and other site-wide repeated elements should become 
 
 This is a hard classification rule for normal website chrome. A header or footer is not a page section just because it appears in the original HTML file. Treat it as global site structure unless the user explicitly asks for page-level insertion, reordering, or per-page variation.
 
+Header, footer, navigation, announcement bars, mobile sticky actions, schema, and other global site UI must render by default from the theme layout on every applicable page. Editors should not need to add a header block or footer block for normal site chrome to appear.
+
+All meaningful global UI content must remain editable through WordPress menus, ACF options pages, theme options, Customizer, or approved plugins. This includes logos, image alt text, brand names, subtitles, navigation links, CTA labels and URLs, phone numbers, emails, addresses, map links, footer columns, legal text, schema/business data, social links, and contact links.
+
+Structural wrappers, layout classes, ARIA structure, animation hooks, and JS hooks stay in the template partials unless the editor explicitly needs control over them.
+
 Use ACF blocks for header/footer only when the user explicitly wants editors to insert, remove, reorder, or vary those elements per page. Most sites should keep them in:
 
 ```text
@@ -33,6 +39,16 @@ Classify global HTML as:
 - `component`: small repeated UI piece used by blocks or template parts
 
 Do not classify a site header or footer as an ACF block merely because it contains editable content. Editable global content still belongs to global data sources, not page-local block fields.
+
+The default theme layout should include global partials when they exist:
+
+```text
+@include('partials.announcement') optional
+@include('partials.header')
+@include('partials.footer')
+@include('partials.mobile-sticky') optional
+@include('partials.schema-local-business') optional
+```
 
 ## Editable Data
 

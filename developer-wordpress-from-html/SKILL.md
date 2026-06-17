@@ -135,6 +135,8 @@ Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI
 
 Keep global site chrome out of page ACF block order. Store editable global data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, and document those sources in `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md` and `.html-to-sage/DECISIONS.md`.
 
+Header and footer must show by default from the theme layout on every applicable page. Do not require editors to add header/footer blocks manually. Their meaningful content, images, links, schema data, and contact data must be editable through global options, menus, theme settings, Customizer, or approved plugins.
+
 ## Stop Conditions
 
 Stop before implementation unless the user explicitly asks for implementation. If `.html-to-sage/BLOCKERS.md` contains unresolved items, ask the user for those answers and do not implement. Treat visual mismatch as failed work.

@@ -41,6 +41,8 @@ Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editabi
 
 Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI should become Sage template parts/layout partials by default. Use WordPress menus, ACF options pages, Customizer/theme options, or approved plugins for editable global data. Do not turn them into page ACF blocks unless the user explicitly approves page-level editor control.
 
+The plan must state that header, footer, navigation, announcement bars, mobile sticky actions, schema, and other global site UI render by default from Sage layout partials and are editable through global options, menus, theme settings, Customizer, or approved plugins.
+
 The plan must keep page-owned ACF block order separate from global site chrome. If a header/footer/nav appears in the original HTML file, map it in `GLOBAL-TEMPLATE-PARTS.md`, not in the page ACF block order, unless explicit page-level control was approved and documented in `DECISIONS.md`.
 
 Include this table:

@@ -53,6 +53,8 @@ Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editabi
 
 Create task groups for header/footer/navigation as template parts, not ACF blocks, unless the user explicitly approves page-level editor control.
 
+Add explicit global-template-part tasks for header, footer, navigation, announcement bars, mobile sticky actions, schema, and global site UI. These tasks must ensure the UI renders by default from the theme layout and does not require page-level header/footer blocks.
+
 For each global template part:
 - analyze original HTML for the global element
 - identify editable global data
