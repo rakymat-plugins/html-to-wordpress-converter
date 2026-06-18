@@ -245,6 +245,7 @@ The workflow must check or document:
 - render templates or verified Sage/Acorn routing
 - required plugins and install/build commands in `README.md`
 - Home page block order and global header/footer setup in `README.md`
+- `ready-pages/` with one paste-ready `.md` file per WordPress page containing exact Gutenberg ACF block comments in order
 - ignored local agent folders, skill folders, uv caches, dependency folders, and build outputs
 - the reusable skill repo `html-to-wordpress-converter` is not placed in `wp-content/themes`; if WordPress shows a broken theme named `html-to-wordpress-converter`, delete that wrong folder and clone the actual generated theme repository instead
 - `.html-to-sage/FINAL-REPORT.md` listing checks run and any checks skipped because the environment lacks PHP, Composer, Node, WordPress, or a browser

@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, PAGES_RULE, VISUAL_RULE
+from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
 from project_detector import detect_files
 
 
@@ -112,6 +112,8 @@ Implementation MUST NOT begin until stock source is preserved, every HTML sectio
 
 {CLONE_READINESS_RULE}
 
+{READY_PAGES_RULE}
+
 ## Governance
 
 This constitution supersedes conflicting implementation shortcuts. Changes require updating this file, affected Spec Kit artifacts, and `.html-to-sage/DECISIONS.md`.
@@ -178,6 +180,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **FR-012**: Completion MUST be blocked until visual QA passes.
 - **FR-013**: The delivered theme MUST work when cloned into `wp-content/themes/<theme-slug>` and activated, or the final report MUST document exactly which runtime checks could not be run and why.
 - **FR-014**: Global header/footer/logo/contact/schema option fields MUST be optional when template defaults/fallbacks exist, so the options page can save partial data.
+- **FR-015**: The implementation MUST include `ready-pages/` with one paste-ready `.md` file per WordPress page containing exact Gutenberg ACF block comments in page order.
 
 ## Success Criteria
 
@@ -379,6 +382,7 @@ Rationale: `stock/` is the immutable source of visual truth and QA comparison ba
 4. Compare WordPress output against `stock/`.
 5. Confirm no meaningful content is hardcoded and no frontend path references `stock/`.
 6. Confirm the theme can be cloned into `wp-content/themes/<theme-slug>` and activated, or record skipped runtime checks in `.html-to-sage/FINAL-REPORT.md`.
+7. Paste the matching `ready-pages/<page>.md` content into the WordPress Code Editor to create the page block structure.
 
 ## Pass Condition
 
@@ -448,7 +452,8 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T032 Verify local agent folders, skill source folders, uv caches, `node_modules/`, `vendor/`, and build outputs are ignored unless intentionally committed
 - [ ] T033 Verify the reusable skill repo/folder `html-to-wordpress-converter` is not inside the delivered theme and is not installed under `wp-content/themes`
 - [ ] T034 If WordPress reports a broken theme named `html-to-wordpress-converter`, delete that wrong folder from `wp-content/themes` and install the generated theme repo/folder instead
-- [ ] T035 Run or document Composer, Node, PHP syntax, WordPress activation, and frontend smoke checks in `.html-to-sage/FINAL-REPORT.md`
+- [ ] T035 Create `ready-pages/` and one paste-ready `.md` file per WordPress page with exact Gutenberg ACF block comments in page order
+- [ ] T036 Run or document Composer, Node, PHP syntax, WordPress activation, and frontend smoke checks in `.html-to-sage/FINAL-REPORT.md`
 
 ## Dependencies
 

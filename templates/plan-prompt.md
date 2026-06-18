@@ -51,6 +51,8 @@ The plan must include a final WordPress clone-readiness phase. The phase must ve
 
 The plan must explicitly distinguish the generated WordPress theme repo/folder from the reusable skill repo. It must state that `html-to-wordpress-converter` is a skill repository and must not be cloned or copied into `wp-content/themes`. If a WordPress admin screen shows a broken theme named `html-to-wordpress-converter`, the remediation is to delete that wrong folder from `wp-content/themes` and install the actual generated theme folder.
 
+The plan must include a `ready-pages/` deliverable: one `.md` file per WordPress page containing paste-ready Gutenberg ACF block comments in the exact page block order.
+
 Include this table:
 
 | Original HTML Section Selector | Section Purpose | WordPress Target | Block Name | ACF Fields | Editable Fields Count | Hardcoded Allowed? | CPT Needed? | CSS Source | JS Source | Visual Match Risk | Notes |

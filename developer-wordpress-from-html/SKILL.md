@@ -150,6 +150,7 @@ Before final delivery, make the theme usable when cloned into `wp-content/themes
 - Document required plugins and install/build commands in `README.md`.
 - Ignore local agent folders, skill folders, uv caches, dependency folders, and generated build folders unless the user explicitly wants them committed.
 - Never copy or clone the reusable skill repository `html-to-wordpress-converter` into `wp-content/themes`. Only the generated WordPress theme belongs there. If WordPress reports a broken theme named `html-to-wordpress-converter` with "Stylesheet is missing", instruct the user to delete that wrong folder from `wp-content/themes` and clone the actual theme repo/folder instead.
+- Create `ready-pages/` with one paste-ready `.md` file per WordPress page. Each file must contain the exact Gutenberg ACF block comments in the correct order so the user can paste it into the WordPress Code Editor.
 - Update `.html-to-sage/FINAL-REPORT.md` with activation readiness and any checks that could not be run.
 
 ## Stop Conditions

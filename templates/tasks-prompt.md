@@ -78,6 +78,7 @@ Add a final WordPress clone-readiness task group:
 - verify activation will not fail because `functions.php`, Composer/autoload handling, or template entry files are missing
 - verify required plugins are documented in `README.md`
 - verify Home page block order and global header/footer/options setup are documented in `README.md`
+- create `ready-pages/` and one paste-ready `.md` file per WordPress page with exact Gutenberg ACF block comments in page order
 - verify `.gitignore` excludes local agent folders (`.codex/`, `.claude/`, `.cursor/`, `.gemini/`, `.agents/`), skill source folders, uv caches, `node_modules/`, `vendor/`, and build artifacts unless explicitly intended
 - verify the reusable skill repo/folder `html-to-wordpress-converter` is not inside the delivered theme and is not installed under `wp-content/themes`
 - if WordPress reports a broken theme named `html-to-wordpress-converter`, delete that wrong folder from `wp-content/themes` and install the generated theme repo/folder instead

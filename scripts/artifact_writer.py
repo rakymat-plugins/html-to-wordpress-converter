@@ -7,6 +7,7 @@ PAGES_RULE = "For multi-page HTML websites, generate .html-to-sage/PAGES.md show
 GLOBAL_PARTS_RULE = "Header, footer, navigation, and other site-wide repeated elements should become Sage template parts or layout partials by default, not normal ACF blocks. Keep editable global data in menus, options, Customizer, theme options, or approved plugins, not page-local ACF fields."
 GLOBAL_OPTIONS_SAVE_RULE = "Global ACF option fields should be optional when frontend defaults/fallbacks exist. Do not block saving header/footer/logo/contact/schema settings because one logo, link, footer item, or schema value is empty."
 CLONE_READINESS_RULE = "The delivered theme must work when cloned into wp-content/themes/<theme-slug> and activated: valid style.css theme header, functions.php bootstrap, render templates or verified Sage/Acorn routing, documented required plugins and install/build commands, ignored local agent/skill/cache/dependency folders, no html-to-wordpress-converter skill repo inside wp-content/themes, and final report notes for checks that could not run."
+READY_PAGES_RULE = "Generate ready-pages/ with one paste-ready .md file per WordPress page. Each file must contain the exact Gutenberg ACF block comments in the correct page order."
 
 
 def ensure_state(project: Path) -> Path:
@@ -44,6 +45,6 @@ def write_initial_artifacts(project: Path) -> None:
     for filename, body in placeholders.items():
         path = state / filename
         if not path.exists():
-            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{GLOBAL_PARTS_RULE}\n\n{GLOBAL_OPTIONS_SAVE_RULE}\n\n{CLONE_READINESS_RULE}\n\n{body}")
+            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{GLOBAL_PARTS_RULE}\n\n{GLOBAL_OPTIONS_SAVE_RULE}\n\n{CLONE_READINESS_RULE}\n\n{READY_PAGES_RULE}\n\n{body}")
 
 
