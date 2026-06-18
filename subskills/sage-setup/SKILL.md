@@ -40,3 +40,5 @@ resources/js/
 ```
 
 Write `.html-to-sage/SAGE-SETUP.md` with commands, results, failures, and manual WordPress requirements.
+
+When adding WordPress fallback templates for activation readiness, keep page content editor-owned. `index.php`, `page.php`, and any optional `front-page.php` must render `the_content()` or the Sage equivalent and shared global layout. Do not hardcode converted homepage/page sections in fallback templates. A neutral `index.php` empty state is allowed only when no content exists.

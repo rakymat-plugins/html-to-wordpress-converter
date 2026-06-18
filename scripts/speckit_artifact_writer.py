@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_FIELD_MINIMALISM_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, MEDIA_LIBRARY_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
+from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_FIELD_MINIMALISM_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, MEDIA_LIBRARY_RULE, PAGE_TEMPLATE_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
 from project_detector import detect_files
 
 
@@ -89,6 +89,8 @@ The WordPress theme MUST use Sage, Acorn, Blade, Vite, SCSS, ACF Pro, and code-o
 Wrappers, container classes, grid classes, animation hooks, JS hooks, ARIA structure, and technical layout markup SHOULD remain in templates unless the editor explicitly needs control over them.
 
 {MEDIA_LIBRARY_RULE}
+
+{PAGE_TEMPLATE_RULE}
 
 ### V. Justified CPTs Only
 
@@ -190,6 +192,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **FR-016**: Original client-editable media MUST be imported or seedable into the WordPress Media Library and referenced through ACF/options/CPT/menu attachment data, not permanent hardcoded `stock/` or theme asset URLs.
 - **FR-017**: Header navigation and footer link columns MUST use WordPress menus when they are normal label/URL links, and generated default menus MUST be seeded idempotently without overwriting editor-assigned menus.
 - **FR-018**: Global option pages MUST include only fields that are rendered or required by approved integrations; unused, duplicate, speculative, or non-working fields MUST be removed.
+- **FR-019**: Page templates MUST render editor/block content as the single source of truth and MUST NOT hardcode converted homepage/page sections in `front-page.php`, `page.php`, `index.php`, Blade templates, CPT templates, or fallback templates.
 
 ## Success Criteria
 
@@ -201,6 +204,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **SC-006**: 0 live frontend template references point to `stock/`.
 - **SC-007**: WordPress recognizes the cloned theme from `style.css`, and activation has a valid bootstrap/render path.
 - **SC-008**: Default ACF block previews show seeded original media or documented seeded preview fallbacks after the media seed/import step.
+- **SC-009**: Editing a Home page ACF block in WordPress changes the frontend Home page, proving no hardcoded fallback template overrides editor content.
 
 ## Assumptions
 
@@ -263,6 +267,8 @@ Convert preserved static HTML from `stock/` into `{theme_name}` using Sage, Acor
 **WordPress Clone Readiness**: {CLONE_READINESS_RULE}
 
 **Media Library Seeding**: {MEDIA_LIBRARY_RULE}
+
+**Page Template Content Source**: {PAGE_TEMPLATE_RULE}
 
 **Global Field Minimalism**: {GLOBAL_FIELD_MINIMALISM_RULE}
 
@@ -472,6 +478,8 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T019a Verify no client-editable original media is permanently hardcoded from theme asset paths and default ACF previews resolve seeded Media Library attachments or documented seeded fallbacks
 - [ ] T019b Verify each global option field changes the frontend or is documented as an approved integration field
 - [ ] T019c Verify header/footer link columns are editable from Appearance > Menus, not duplicated in ACF repeaters
+- [ ] T019d Verify no page template, `front-page.php`, `page.php`, `index.php`, Blade template, CPT template, or fallback template duplicates converted sections outside the editor/block content pipeline
+- [ ] T019e Verify editing a Home page ACF block changes the frontend Home page
 
 ## Phase 5: QA and Gates
 
@@ -488,6 +496,7 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T027 Verify `style.css` contains a valid WordPress theme header
 - [ ] T028 Verify `functions.php` bootstraps Composer/autoload and theme setup/framework files
 - [ ] T029 Verify a valid render path exists after activation: standard WordPress templates or verified Sage/Acorn routing
+- [ ] T029a Verify fallback templates render `the_content()` or the Sage equivalent and do not hardcode converted homepage/page sections
 - [ ] T030 Verify required plugins and install/build commands are documented in `README.md`
 - [ ] T031 Verify Home/page block order and global header/footer/options setup are documented in `README.md`
 - [ ] T032 Verify local agent folders, skill source folders, uv caches, `node_modules/`, `vendor/`, and build outputs are ignored unless intentionally committed

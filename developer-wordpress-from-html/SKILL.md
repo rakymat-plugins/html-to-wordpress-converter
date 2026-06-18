@@ -147,14 +147,17 @@ Global option pages must stay lean. Add only fields that are actually rendered o
 
 When global options have frontend defaults/fallbacks, do not mark those ACF option fields as required. Editors must be able to save partial header/footer/logo/contact/schema settings without filling every field.
 
+Page templates must keep WordPress editor content as the single source of truth. Do not rebuild converted homepage/page sections in `front-page.php`, `page.php`, Blade page templates, CPT templates, or fallback templates. Those templates may load global header/footer/layout and call `the_content()` or the Sage equivalent; they must not contain hidden hardcoded copies of ACF block sections. If `index.php` needs an empty-site fallback, it may show only a neutral placeholder/credit screen when no posts or page content exist.
+
 ## WordPress Clone Readiness
 
 Before final delivery, make the theme usable when cloned into `wp-content/themes/<theme-slug>` and activated:
 
 - Ensure `style.css` has a valid WordPress theme header.
 - Ensure `functions.php` loads Composer when present and boots theme setup/framework files.
-- Ensure a valid frontend render path exists after activation. Add standard WordPress fallbacks (`index.php`, `header.php`, `footer.php`, `front-page.php`, `page.php`) when the project cannot rely on fully verified Sage/Acorn Blade routing in the target environment.
+- Ensure a valid frontend render path exists after activation. Add standard WordPress fallbacks (`index.php`, `header.php`, `footer.php`, `page.php`) when the project cannot rely on fully verified Sage/Acorn Blade routing in the target environment. Only add `front-page.php` when there is an explicit need, and it must render editor/block content rather than hardcoded converted sections.
 - Ensure header/footer/global UI render by default from layout/templates.
+- Verify page/editor content changes affect the frontend on the Home page and normal pages; fail delivery if a hardcoded fallback template overrides or bypasses the editor.
 - Register and seed default WordPress menus for header/footer links when the source has them, without overwriting editor-assigned menus.
 - Keep global option field groups limited to real rendered fields and remove unused or duplicate fields.
 - Document required plugins and install/build commands in `README.md`.

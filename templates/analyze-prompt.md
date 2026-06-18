@@ -21,6 +21,8 @@ Check that `references/enterprise-html-to-acf-rules.md`, `references/full-acf-ed
 - no unjustified CPTs
 - no hardcoded editable content
 - no meaningful original text, image URL, button label, or button URL hardcoded in templates
+- no converted page sections duplicated in `front-page.php`, `page.php`, `index.php`, Blade page templates, CPT templates, or fallback templates outside `the_content()`/Sage editor content rendering
+- no Home page frontend path that ignores ACF block edits made in the WordPress editor
 - no client-editable original media permanently hardcoded from `stock/` or theme asset paths
 - no missing `.html-to-sage/MEDIA-LIBRARY-SEED.md` when the source contains client-editable media
 - no empty default ACF media previews caused by unseeded source media

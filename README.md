@@ -238,6 +238,14 @@ Use Appearance > Menus for header navigation and footer link columns. Generated 
 
 Keep global ACF options lean. Every option field must be rendered by the frontend or required by an approved integration. Remove unused, duplicate, speculative, or non-working fields.
 
+## Page Templates And Front Page
+
+Converted page sections must live in WordPress page content as ACF blocks. Do not rebuild those sections as hardcoded fallback markup in `front-page.php`, `page.php`, `index.php`, Blade page templates, CPT templates, or other fallback templates.
+
+Page templates should render editor/block content through `the_content()` or the Sage equivalent and load shared global layout. Add `front-page.php` only when there is a real technical need, and then it must still render editor content as the source of truth. A generic `index.php` fallback may show only a neutral placeholder or maker credit when no content exists; it must not contain converted client website sections.
+
+QA must verify that editing a Home page ACF block in WordPress changes the frontend Home page. If it does not, the conversion has a hidden hardcoded template conflict and fails the implementation gate.
+
 ## Media Library Seeding
 
 Original client-editable media must be imported or seedable into the WordPress Media Library, then referenced from ACF image/file/gallery fields, global options, CPT fields, menus, or documented WordPress data.
@@ -255,6 +263,7 @@ The workflow must check or document:
 - valid WordPress theme header in `style.css`
 - `functions.php` bootstrap
 - render templates or verified Sage/Acorn routing
+- page templates render editor/block content and do not hardcode converted homepage/page sections
 - required plugins and install/build commands in `README.md`
 - Home page block order and global header/footer setup in `README.md`
 - default menu seeding and menu locations in `README.md`

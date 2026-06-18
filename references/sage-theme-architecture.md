@@ -22,11 +22,14 @@ When Sage/Acorn routing cannot be verified in the current environment, add stand
 ```text
 header.php
 footer.php
-front-page.php
 page.php
 ```
 
+Add `front-page.php` only when there is an explicit technical reason. If it exists, it must render normal WordPress editor/block content and global layout only. It must not rebuild converted homepage sections as hardcoded fallback markup.
+
 These fallbacks may delegate to shared render helpers, but they must preserve the same header/footer/global UI behavior and avoid hardcoded client-editable content.
+
+`index.php` is the minimum safe fallback. It may show a neutral empty-site placeholder or maker credit when there are no posts or page contents, but it must not contain converted client website sections.
 
 Required framework layer:
 
@@ -81,6 +84,8 @@ resources/js/footer.js optional
 ```
 
 Do not create normal page ACF blocks for header/footer/navigation unless the user explicitly wants page-level editor control. Use WordPress menus, ACF options pages, theme options, Customizer, or approved plugins for editable global data. Do not duplicate that global data in page-local fields.
+
+Do not duplicate ACF block output or converted page sections in `front-page.php`, `page.php`, `index.php`, Blade page templates, CPT templates, or fallback templates. Page-owned sections must be inserted into WordPress pages as ACF blocks and rendered through `the_content()` or the Sage equivalent.
 
 Each block is a feature unit:
 

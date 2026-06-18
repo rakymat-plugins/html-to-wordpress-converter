@@ -161,6 +161,8 @@ Apply the media library seeding rules from `references/media-library-seeding-rul
 
 Apply the global template part rules from `references/global-template-parts-rules.md` so headers, footers, navigation, and site-wide UI become Sage partials/layout template parts by default, not page ACF blocks. Keep their editable data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins; do not duplicate global values in page-local ACF fields.
 
+Page templates must not duplicate converted ACF block sections. `front-page.php`, `page.php`, Blade page templates, CPT templates, and other fallback templates must render WordPress editor/block content through the normal content pipeline (`the_content()` or the Sage equivalent) and shared global layout only. Do not hardcode a homepage rebuild, section fallback, or alternate copy of any converted page section in `front-page.php` or another template. If a generic `index.php` fallback is needed, it may show only a neutral placeholder/credit screen when no content exists; it must not contain converted client website sections.
+
 ## WordPress Clone Readiness Gate
 
 The delivered theme must work when the repository or theme folder is cloned into `wp-content/themes/<theme-slug>` and activated in WordPress.
@@ -169,7 +171,8 @@ Before final delivery, verify or document:
 
 - `style.css` contains a valid WordPress theme header.
 - `functions.php` loads Composer when present and bootstraps theme setup/framework files.
-- The theme has a valid render path after activation: either standard WordPress templates such as `index.php`, `header.php`, `footer.php`, `front-page.php`, and `page.php`, or a verified Sage/Acorn Blade routing setup that works after `composer install`.
+- The theme has a valid render path after activation: either standard WordPress templates such as `index.php`, `header.php`, `footer.php`, and `page.php`, or a verified Sage/Acorn Blade routing setup that works after `composer install`. Add `front-page.php` only when explicitly needed, and never as a hardcoded converted homepage fallback.
+- Page templates render page/editor block content as the single source of truth. No `front-page.php` or fallback template may hardcode converted homepage sections or duplicate ACF block output outside the editor.
 - Global header/footer/navigation render by default on normal pages without requiring page ACF header/footer blocks.
 - Header/footer menu locations are registered and seeded idempotently when original menu links exist, without overwriting editor-assigned menus.
 - Global ACF options are limited to real non-menu editable values, and no unused fields remain in the options page.

@@ -10,6 +10,7 @@ GLOBAL_FIELD_MINIMALISM_RULE = "Global option pages must be lean: use WordPress 
 CLONE_READINESS_RULE = "The delivered theme must work when cloned into wp-content/themes/<theme-slug> and activated: valid style.css theme header, functions.php bootstrap, render templates or verified Sage/Acorn routing, documented required plugins and install/build commands, ignored local agent/skill/cache/dependency folders, no html-to-wordpress-converter skill repo inside wp-content/themes, and final report notes for checks that could not run."
 READY_PAGES_RULE = "Generate ready-pages/ with one paste-ready .md file per WordPress page. Each file must contain the exact Gutenberg ACF block comments in the correct page order."
 MEDIA_LIBRARY_RULE = "Client-editable media from the original HTML must be imported or seedable into the WordPress Media Library and referenced through ACF attachment/file/gallery fields, options, menus, CPT fields, or other documented WordPress data. Do not rely on permanent hardcoded stock/ or theme asset URLs for editable images, icons, logos, background images, videos, documents, or galleries."
+PAGE_TEMPLATE_RULE = "Page templates must render WordPress editor/block content as the single source of truth. Do not hardcode converted homepage/page sections in front-page.php, page.php, index.php, Blade page templates, CPT templates, or fallback templates. A neutral index.php empty-state or maker-credit fallback is allowed only when no content exists and it must not contain converted client website sections."
 
 
 def ensure_state(project: Path) -> Path:
@@ -48,6 +49,6 @@ def write_initial_artifacts(project: Path) -> None:
     for filename, body in placeholders.items():
         path = state / filename
         if not path.exists():
-            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{GLOBAL_PARTS_RULE}\n\n{GLOBAL_OPTIONS_SAVE_RULE}\n\n{GLOBAL_FIELD_MINIMALISM_RULE}\n\n{CLONE_READINESS_RULE}\n\n{READY_PAGES_RULE}\n\n{MEDIA_LIBRARY_RULE}\n\n{body}")
+            write_markdown(path, filename.removesuffix(".md").replace("-", " "), f"{VISUAL_RULE}\n\n{EDITABILITY_RULE}\n\n{PAGES_RULE}\n\n{GLOBAL_PARTS_RULE}\n\n{GLOBAL_OPTIONS_SAVE_RULE}\n\n{GLOBAL_FIELD_MINIMALISM_RULE}\n\n{CLONE_READINESS_RULE}\n\n{READY_PAGES_RULE}\n\n{MEDIA_LIBRARY_RULE}\n\n{PAGE_TEMPLATE_RULE}\n\n{body}")
 
 

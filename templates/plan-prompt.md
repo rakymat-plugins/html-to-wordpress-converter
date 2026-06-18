@@ -53,6 +53,8 @@ The plan must state that global options fields are optional when defaults/fallba
 
 The plan must keep page-owned ACF block order separate from global site chrome. If a header/footer/nav appears in the original HTML file, map it in `GLOBAL-TEMPLATE-PARTS.md`, not in the page ACF block order, unless explicit page-level control was approved and documented in `DECISIONS.md`.
 
+The plan must prohibit hardcoded front-page/page fallbacks for converted site sections. Page templates must render editor/block content through `the_content()` or the Sage equivalent. Do not plan a `front-page.php` that rebuilds the homepage outside ACF blocks. If `index.php` needs an empty-site fallback, it may contain only a neutral placeholder/credit screen, not converted client website content.
+
 The plan must include a final WordPress clone-readiness phase. The phase must verify that the theme can be cloned into `wp-content/themes/<theme-slug>` and activated, with valid `style.css`, `functions.php`, render templates or verified Sage/Acorn routing, documented required plugins, documented install/build commands, and ignored local agent/skill/cache/dependency folders.
 
 The plan must explicitly distinguish the generated WordPress theme repo/folder from the reusable skill repo. It must state that `html-to-wordpress-converter` is a skill repository and must not be cloned or copied into `wp-content/themes`. If a WordPress admin screen shows a broken theme named `html-to-wordpress-converter`, the remediation is to delete that wrong folder from `wp-content/themes` and install the actual generated theme folder.

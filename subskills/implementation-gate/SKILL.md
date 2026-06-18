@@ -54,4 +54,8 @@ Fail the gate if global option pages contain unused fields, duplicate menu field
 
 Fail the gate if header/footer/navigation markup is duplicated across page templates, block templates, or CPT templates.
 
+Fail the gate if `front-page.php`, `page.php`, `index.php`, Blade page templates, CPT templates, or fallback templates duplicate converted homepage/page sections outside the editor/block content pipeline.
+
+Fail the gate if editing a Home page ACF block in WordPress does not change the frontend Home page.
+
 

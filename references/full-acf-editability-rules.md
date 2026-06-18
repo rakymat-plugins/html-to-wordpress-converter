@@ -12,6 +12,8 @@ For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every Wo
 
 Client-editable media from the original HTML must be imported or seedable into the WordPress Media Library and referenced through ACF image/file/gallery fields, global options, CPT fields, menus, or other documented WordPress data. Do not rely on permanent hardcoded theme asset URLs for images, icons, logos, background images, videos, documents, or galleries that the client may need to replace.
 
+Page templates must not become hidden second copies of the converted website. `front-page.php`, `page.php`, `index.php`, Blade page templates, CPT templates, and fallback templates must render editor/block content and shared layout. They must not hardcode converted sections, default homepage content, or alternate copies of ACF block markup outside the editor. A neutral empty-state fallback is allowed only when no content exists and it is not client website content.
+
 ## No Hardcoded Meaningful Content
 
 Never hardcode meaningful content in Blade/PHP templates:
@@ -108,6 +110,8 @@ For multi-page websites:
 Before implementation is complete, verify:
 
 - no meaningful text from original HTML remains hardcoded in templates
+- no converted page sections are duplicated in `front-page.php`, `page.php`, `index.php`, Blade templates, or fallback templates outside the editor/block content pipeline
+- changing a Home page ACF block in the WordPress editor changes the frontend Home page
 - no image URL from `stock/` is directly hardcoded in templates
 - no client-editable original media is permanently hardcoded from theme asset paths
 - `.html-to-sage/MEDIA-LIBRARY-SEED.md` exists when the source contains client-editable media

@@ -22,6 +22,7 @@ Phase 2 must always include:
 - create/verify `style.css` with a valid WordPress theme header
 - create/verify `functions.php` with Composer/autoload and theme bootstrap
 - create/verify `index.php` and standard WordPress fallback templates when Sage/Acorn routing cannot be verified
+- verify page templates render editor/block content through `the_content()` or the Sage equivalent and do not hardcode converted homepage/page sections
 - configure `vite.config.js` base path
 - `npm install`
 - `npm run build`
@@ -96,6 +97,8 @@ Add a final WordPress clone-readiness task group:
 - verify Home page block order and global header/footer/options setup are documented in `README.md`
 - verify default menu seeding is documented in `README.md`
 - verify no unused or duplicate global ACF option fields remain
+- verify no `front-page.php`, page template, Blade template, or fallback template duplicates converted ACF block sections outside the WordPress editor content pipeline
+- verify editing a Home page ACF block changes the frontend Home page, proving there is no hardcoded fallback overriding editor content
 - create `ready-pages/` and one paste-ready `.md` file per WordPress page with exact Gutenberg ACF block comments in page order
 - verify original client-editable media can be seeded into the WordPress Media Library and default ACF block previews show seeded media or documented seeded preview fallbacks
 - verify `.gitignore` excludes local agent folders (`.codex/`, `.claude/`, `.cursor/`, `.gemini/`, `.agents/`), skill source folders, uv caches, `node_modules/`, `vendor/`, and build artifacts unless explicitly intended
