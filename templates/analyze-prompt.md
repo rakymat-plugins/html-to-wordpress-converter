@@ -42,6 +42,8 @@ Check that `references/enterprise-html-to-acf-rules.md`, `references/full-acf-ed
 - no header/footer/navigation converted into normal page ACF blocks without explicit approval
 - no header/footer link columns duplicated as ACF repeaters when WordPress menus are appropriate
 - no missing idempotent default menu seeding for original menus
+- no missing optional global settings menu selectors for header/footer menu areas when a global options page exists
+- no hardcoded menu IDs in global menu rendering
 - no unused, duplicate, speculative, or non-working global option fields
 - no missing `GLOBAL-TEMPLATE-PARTS.md` for site-wide UI
 

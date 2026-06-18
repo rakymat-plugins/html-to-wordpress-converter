@@ -141,6 +141,8 @@ Keep global site chrome out of page ACF block order. Store editable global data 
 
 Use native WordPress menus for header navigation and footer link columns. If the original HTML includes menu links, register menu locations and seed default menus on activation/admin init in an idempotent way. Do not use ACF repeaters for normal menu/link columns unless the section requires non-menu metadata that Appearance > Menus cannot represent.
 
+If the theme has a global settings/options page, add optional menu selector fields for every global menu area. Those selectors must choose existing WordPress menus by menu ID, seed once from assigned default menus when empty, let editors switch header/footer menu sources without code changes, and fall back to Appearance > Menus location assignments when blank. Never hardcode menu IDs.
+
 Header and footer must show by default from the theme layout on every applicable page. Do not require editors to add header/footer blocks manually. Their meaningful content, images, links, schema data, and contact data must be editable through global options, menus, theme settings, Customizer, or approved plugins.
 
 Global option pages must stay lean. Add only fields that are actually rendered or required by an approved integration. Do not add duplicate menu fields, unused schema fields, icon/class fields, or speculative settings. Every global option field must be verified by changing it in the admin and confirming the frontend changes.
@@ -159,6 +161,7 @@ Before final delivery, make the theme usable when cloned into `wp-content/themes
 - Ensure header/footer/global UI render by default from layout/templates.
 - Verify page/editor content changes affect the frontend on the Home page and normal pages; fail delivery if a hardcoded fallback template overrides or bypasses the editor.
 - Register and seed default WordPress menus for header/footer links when the source has them, without overwriting editor-assigned menus.
+- Add global settings menu selectors when a global options page exists, while preserving Appearance > Menus as the menu item editor and fallback assignment source.
 - Keep global option field groups limited to real rendered fields and remove unused or duplicate fields.
 - Document required plugins and install/build commands in `README.md`.
 - Provide a Media Library seed/import path for original client media, with a manifest from original `stock/` file to attachment target and block/options field usage. Default ACF block previews must not be empty solely because source images were left as theme-only assets.

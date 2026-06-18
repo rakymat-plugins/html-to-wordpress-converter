@@ -74,6 +74,8 @@ Do not store normal menu/link columns in ACF repeaters when Appearance > Menus c
 
 Generated themes should seed default menus on activation when the original HTML contains menu links. The seed must be idempotent, create missing menus, assign only empty menu locations, and never overwrite an editor-assigned menu.
 
+When a generated theme includes a global settings/options page, add optional menu selector fields for each global menu area such as header navigation and footer columns. These selectors must choose existing WordPress menus by menu ID and let editors switch which menu renders in that area without code changes. Seed selector values once from the assigned default menus when selectors are empty. A blank selector must fall back to the registered Appearance > Menus location assignment, then to the seeded default fallback if no assigned menu exists. Do not hardcode menu IDs.
+
 ## ACF Options Contract
 
 Use ACF options pages for global editable content when appropriate. Document:

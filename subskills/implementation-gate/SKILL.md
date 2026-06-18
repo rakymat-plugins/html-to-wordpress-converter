@@ -50,6 +50,8 @@ Fail the gate if header navigation or footer link columns are implemented as ACF
 
 Fail the gate if default menus from the original HTML are not seeded idempotently, or if the seeder overwrites editor-assigned menus.
 
+Fail the gate if a theme with a global options page lacks optional menu selector fields for global header/footer menu areas, or if those selectors hardcode menu IDs instead of selecting existing WordPress menus and falling back to Appearance > Menus assignments.
+
 Fail the gate if global option pages contain unused fields, duplicate menu fields, speculative schema/settings fields, icon/class fields without editor need, or fields that do not change the frontend.
 
 Fail the gate if header/footer/navigation markup is duplicated across page templates, block templates, or CPT templates.

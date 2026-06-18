@@ -236,6 +236,8 @@ Editable global data belongs in WordPress menus, ACF options pages, theme option
 
 Use Appearance > Menus for header navigation and footer link columns. Generated themes should register menu locations and seed default menus from the original HTML only when a location is empty. Do not create ACF repeaters for normal label/URL menu columns.
 
+When the generated theme has a global settings/options page, add optional menu selector fields for each header/footer menu area. Editors should edit menu items in Appearance > Menus, then choose which existing menu renders in each area from global settings. Blank selectors must fall back to Appearance > Menus location assignments. Never hardcode menu IDs.
+
 Keep global ACF options lean. Every option field must be rendered by the frontend or required by an approved integration. Remove unused, duplicate, speculative, or non-working fields.
 
 ## Page Templates And Front Page

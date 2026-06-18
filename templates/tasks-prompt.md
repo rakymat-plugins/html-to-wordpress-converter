@@ -76,6 +76,8 @@ For each global template part:
 - map navigation links to WordPress menu locations
 - map footer service/page/contact link columns to WordPress menu locations when they are normal label/URL links
 - create an idempotent menu seeder for original menus that creates missing menus and assigns only empty locations without overwriting editor-assigned menus
+- add optional global settings menu selectors for each header/footer menu area when the theme has a global options page
+- make menu selectors choose existing WordPress menus by menu ID, seed once from assigned defaults when empty, and fall back to Appearance > Menus location assignments when blank
 - map logos/contact/social/legal/newsletter/form values to ACF options, theme options, Customizer, or approved plugins
 - create a global-options audit and remove any field without a real render location or approved integration
 - avoid ACF repeaters for normal menus/link columns when Appearance > Menus can manage them
@@ -96,6 +98,7 @@ Add a final WordPress clone-readiness task group:
 - verify required plugins are documented in `README.md`
 - verify Home page block order and global header/footer/options setup are documented in `README.md`
 - verify default menu seeding is documented in `README.md`
+- verify global settings menu selectors can switch header/footer menu sources without code changes and do not hardcode menu IDs
 - verify no unused or duplicate global ACF option fields remain
 - verify no `front-page.php`, page template, Blade template, or fallback template duplicates converted ACF block sections outside the WordPress editor content pipeline
 - verify editing a Home page ACF block changes the frontend Home page, proving there is no hardcoded fallback overriding editor content

@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_FIELD_MINIMALISM_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, MEDIA_LIBRARY_RULE, PAGE_TEMPLATE_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
+from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_FIELD_MINIMALISM_RULE, GLOBAL_MENU_SELECTOR_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, MEDIA_LIBRARY_RULE, PAGE_TEMPLATE_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
 from project_detector import detect_files
 
 
@@ -106,6 +106,8 @@ Global site UI MUST use Sage partials, layout SCSS, WordPress menus, ACF options
 
 {GLOBAL_FIELD_MINIMALISM_RULE}
 
+{GLOBAL_MENU_SELECTOR_RULE}
+
 ## Spec Kit Workflow
 
 Spec Kit artifacts are the planning source of truth for implementation. The workflow MUST produce and keep aligned `.specify/memory/constitution.md`, `specs/<feature>/spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `tasks.md`, and `.html-to-sage/*`.
@@ -193,6 +195,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **FR-017**: Header navigation and footer link columns MUST use WordPress menus when they are normal label/URL links, and generated default menus MUST be seeded idempotently without overwriting editor-assigned menus.
 - **FR-018**: Global option pages MUST include only fields that are rendered or required by approved integrations; unused, duplicate, speculative, or non-working fields MUST be removed.
 - **FR-019**: Page templates MUST render editor/block content as the single source of truth and MUST NOT hardcode converted homepage/page sections in `front-page.php`, `page.php`, `index.php`, Blade templates, CPT templates, or fallback templates.
+- **FR-020**: When a global settings/options page exists, header/footer menu areas MUST include optional menu selectors that choose existing WordPress menus by menu ID, seed once from assigned default menus when empty, fall back to Appearance > Menus assignments when blank, and avoid hardcoded menu IDs.
 
 ## Success Criteria
 
@@ -271,6 +274,8 @@ Convert preserved static HTML from `stock/` into `{theme_name}` using Sage, Acor
 **Page Template Content Source**: {PAGE_TEMPLATE_RULE}
 
 **Global Field Minimalism**: {GLOBAL_FIELD_MINIMALISM_RULE}
+
+**Global Menu Selectors**: {GLOBAL_MENU_SELECTOR_RULE}
 
 ## Constitution Check
 
@@ -456,6 +461,7 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T008a Register global options fields as optional when frontend defaults/fallbacks exist
 - [ ] T008b Seed original header/footer menus idempotently on activation/admin init without overwriting editor-assigned menus
 - [ ] T008c Audit global option fields and remove unused, duplicate, speculative, or non-rendered fields
+- [ ] T008d Add optional global settings menu selectors for each header/footer menu area; selectors choose menu IDs, seed once from assigned defaults when empty, and fall back to Appearance > Menus assignments when blank
 - [ ] T009 Split source CSS into common, components, layout, and blocks
 - [ ] T010 Split source JS into navigation, reveal/shared behavior, and block modules
 - [ ] T011 Confirm no CPTs are needed or document justified CPTs
@@ -478,6 +484,7 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T019a Verify no client-editable original media is permanently hardcoded from theme asset paths and default ACF previews resolve seeded Media Library attachments or documented seeded fallbacks
 - [ ] T019b Verify each global option field changes the frontend or is documented as an approved integration field
 - [ ] T019c Verify header/footer link columns are editable from Appearance > Menus, not duplicated in ACF repeaters
+- [ ] T019f Verify global menu selectors switch header/footer menu sources without code changes and do not hardcode menu IDs
 - [ ] T019d Verify no page template, `front-page.php`, `page.php`, `index.php`, Blade template, CPT template, or fallback template duplicates converted sections outside the editor/block content pipeline
 - [ ] T019e Verify editing a Home page ACF block changes the frontend Home page
 

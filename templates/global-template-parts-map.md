@@ -8,6 +8,10 @@ Every converted WordPress/Sage/ACF section must match the original HTML section 
 
 Do not list header, footer, navigation, mobile menu, or other global site chrome as page ACF blocks unless the user explicitly approved page-level editor control.
 
+Use WordPress menus for header navigation and footer link columns when they are normal label/URL links. Do not duplicate those links in ACF repeaters.
+
+If a global settings/options page exists, document optional menu selector fields for each menu area. Selectors must choose existing WordPress menus by menu ID, fall back to Appearance > Menus location assignments when blank, and avoid hardcoded menu IDs.
+
 | Source Selector | Element | WordPress Target | Template Part Path | Editable Data Source | ACF Options Fields | Menu Location | CSS Path | JS Path | Appears On | Explicit Page-Level Control Approved? | Visual Match Risk | Notes |
 |-----------------|---------|------------------|--------------------|----------------------|--------------------|---------------|----------|---------|------------|---------------------------------------|-------------------|-------|
 

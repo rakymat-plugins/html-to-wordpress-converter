@@ -153,6 +153,8 @@ Header, footer, navigation, announcement bars, mobile sticky actions, schema, an
 
 Global header/footer fields must be minimal and directly used. Use WordPress menus for navigation and footer link columns instead of ACF repeaters. Do not create unused option fields, duplicate menu fields, or schema fields that do not affect the frontend. Every global option must have a visible render location or documented integration, and implementation must verify that changing it in the admin changes the frontend.
 
+When a global settings/options page exists, provide optional menu selector fields for each global menu area, such as header navigation and footer columns. These fields must select existing WordPress menus by menu ID, seed once from assigned default menus when empty, fall back to Appearance > Menus location assignments when blank, and never hardcode menu IDs.
+
 Global options fields should be optional when defaults/fallbacks exist. Do not block saving a global settings page because logo, CTA links, footer links, contact data, or schema values are partially empty.
 
 Apply the full editability rules from `references/full-acf-editability-rules.md` to prevent hardcoded client-editable content and to require `.html-to-sage/PAGES.md` for multi-page websites.
@@ -175,6 +177,7 @@ Before final delivery, verify or document:
 - Page templates render page/editor block content as the single source of truth. No `front-page.php` or fallback template may hardcode converted homepage sections or duplicate ACF block output outside the editor.
 - Global header/footer/navigation render by default on normal pages without requiring page ACF header/footer blocks.
 - Header/footer menu locations are registered and seeded idempotently when original menu links exist, without overwriting editor-assigned menus.
+- Header/footer menu source selectors are available in global settings when the project has a global options page, and blank selectors fall back to Appearance > Menus location assignments.
 - Global ACF options are limited to real non-menu editable values, and no unused fields remain in the options page.
 - Required plugins are listed in `README.md`, especially ACF PRO.
 - Install commands are listed in `README.md`: `composer install`, `npm install`, and `npm run build` when applicable.

@@ -45,6 +45,8 @@ Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI
 
 The plan must use WordPress menus for header navigation and footer link columns when the source contains normal label/URL links. The plan must include idempotent default menu seeding on activation or admin init, and must state that seeded menus never overwrite editor-assigned menus.
 
+When a global settings/options page is planned, the plan must include optional menu selector fields for each global menu area. These selectors must choose existing WordPress menus by menu ID, seed once from assigned default menus when empty, allow switching menu sources from global settings, fall back to Appearance > Menus location assignments when blank, and avoid hardcoded menu IDs.
+
 The plan must keep global ACF option pages lean. Do not add fields that are unused, duplicate menu data, duplicate plugin/native WordPress settings, or do not affect the frontend. Every proposed global option field must include its render location or integration.
 
 The plan must state that header, footer, navigation, announcement bars, mobile sticky actions, schema, and other global site UI render by default from Sage layout partials and are editable through global options, menus, theme settings, Customizer, or approved plugins.

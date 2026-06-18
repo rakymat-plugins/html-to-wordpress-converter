@@ -37,6 +37,7 @@ Required before implementation:
 - global editable data is sourced from WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, not duplicated page-local ACF fields
 - header navigation and footer link columns use WordPress menus when they are normal label/URL links
 - default menus are seeded idempotently when original menus exist, and the seeder does not overwrite editor-assigned menus
+- global settings menu selectors exist for header/footer menu areas when a global options page exists; selectors choose existing WordPress menus by menu ID, fall back to Appearance > Menus assignments when blank, and do not hardcode menu IDs
 - global option fields are limited to real rendered fields or approved integrations; unused, duplicate, speculative, or non-working fields are removed
 - every global option field has been changed in the admin and verified on the frontend, or the skipped verification is recorded in `.html-to-sage/FINAL-REPORT.md`
 - global options pages can be saved with partial data when defaults/fallbacks exist; header/footer/logo/contact/schema option fields must not be unnecessarily required
