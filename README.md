@@ -248,6 +248,8 @@ Page templates should render editor/block content through `the_content()` or the
 
 QA must verify that editing a Home page ACF block in WordPress changes the frontend Home page. If it does not, the conversion has a hidden hardcoded template conflict and fails the implementation gate.
 
+When posts, blog, news, articles, or press content are in scope, generated themes must include branded post templates: `home.php` for the Posts page, `archive.php` for archives, `single.php` for individual posts, shared post card/pagination partials, and Sage Blade mirrors when `resources/views` exists. These templates must use the converted site's branding colors, fonts, cards, buttons, spacing, global header/footer, and responsive behavior.
+
 ## Media Library Seeding
 
 Original client-editable media must be imported or seedable into the WordPress Media Library, then referenced from ACF image/file/gallery fields, global options, CPT fields, menus, or documented WordPress data.

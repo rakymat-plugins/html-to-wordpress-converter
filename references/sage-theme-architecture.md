@@ -17,6 +17,26 @@ composer.json    PHP dependencies when Sage/Acorn is used
 package.json     frontend build scripts when Vite/SCSS/JS are used
 ```
 
+When the converted site uses WordPress posts, a blog/news area, or any source content that maps to posts, plan and implement branded WordPress post templates:
+
+```text
+home.php       Posts page / Blog index fallback
+archive.php    Category, tag, date, author, and post-type archive fallback
+single.php     Single post fallback
+```
+
+Also include Sage-style mirrors where the theme carries Blade views:
+
+```text
+resources/views/home.blade.php
+resources/views/archive.blade.php
+resources/views/single.blade.php
+resources/views/partials/post-card.blade.php
+resources/views/partials/pagination.blade.php
+```
+
+These templates must use the same branding, typography, colors, spacing, buttons, cards, global header/footer, and responsive behavior as the converted site. They must render WordPress post data and editor content, not hardcoded sample posts.
+
 When Sage/Acorn routing cannot be verified in the current environment, add standard WordPress template fallbacks such as:
 
 ```text

@@ -60,4 +60,6 @@ Fail the gate if `front-page.php`, `page.php`, `index.php`, Blade page templates
 
 Fail the gate if editing a Home page ACF block in WordPress does not change the frontend Home page.
 
+Fail the gate if posts/blog/news/articles are in scope and the theme lacks branded `home.php`, `archive.php`, and `single.php` templates that render real WordPress post data, reuse brand styles, and share global header/footer.
+
 

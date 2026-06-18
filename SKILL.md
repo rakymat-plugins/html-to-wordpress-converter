@@ -165,6 +165,8 @@ Apply the global template part rules from `references/global-template-parts-rule
 
 Page templates must not duplicate converted ACF block sections. `front-page.php`, `page.php`, Blade page templates, CPT templates, and other fallback templates must render WordPress editor/block content through the normal content pipeline (`the_content()` or the Sage equivalent) and shared global layout only. Do not hardcode a homepage rebuild, section fallback, or alternate copy of any converted page section in `front-page.php` or another template. If a generic `index.php` fallback is needed, it may show only a neutral placeholder/credit screen when no content exists; it must not contain converted client website sections.
 
+If the source or WordPress content model includes a blog/news/articles area or standard posts, plan branded WordPress post templates: `home.php` for the Posts page, `archive.php` for post archives, and `single.php` for individual posts, plus Sage Blade mirrors when the theme includes `resources/views`. These templates must use the same branding colors, fonts, spacing, cards, buttons, and global header/footer as the converted site.
+
 ## WordPress Clone Readiness Gate
 
 The delivered theme must work when the repository or theme folder is cloned into `wp-content/themes/<theme-slug>` and activated in WordPress.
@@ -175,6 +177,7 @@ Before final delivery, verify or document:
 - `functions.php` loads Composer when present and bootstraps theme setup/framework files.
 - The theme has a valid render path after activation: either standard WordPress templates such as `index.php`, `header.php`, `footer.php`, and `page.php`, or a verified Sage/Acorn Blade routing setup that works after `composer install`. Add `front-page.php` only when explicitly needed, and never as a hardcoded converted homepage fallback.
 - Page templates render page/editor block content as the single source of truth. No `front-page.php` or fallback template may hardcode converted homepage sections or duplicate ACF block output outside the editor.
+- Blog/post templates are included when posts are in scope: `home.php`, `archive.php`, `single.php`, and matching Sage Blade views when the theme has Blade views.
 - Global header/footer/navigation render by default on normal pages without requiring page ACF header/footer blocks.
 - Header/footer menu locations are registered and seeded idempotently when original menu links exist, without overwriting editor-assigned menus.
 - Header/footer menu source selectors are available in global settings when the project has a global options page, and blank selectors fall back to Appearance > Menus location assignments.

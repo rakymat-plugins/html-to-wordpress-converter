@@ -151,6 +151,8 @@ When global options have frontend defaults/fallbacks, do not mark those ACF opti
 
 Page templates must keep WordPress editor content as the single source of truth. Do not rebuild converted homepage/page sections in `front-page.php`, `page.php`, Blade page templates, CPT templates, or fallback templates. Those templates may load global header/footer/layout and call `the_content()` or the Sage equivalent; they must not contain hidden hardcoded copies of ACF block sections. If `index.php` needs an empty-site fallback, it may show only a neutral placeholder/credit screen when no posts or page content exist.
 
+When standard posts, a blog, news, articles, press updates, or source content mapped to posts are in scope, include branded post templates in the plan and implementation: `home.php`, `archive.php`, `single.php`, shared post card/pagination partials, and matching Sage Blade views when the theme uses `resources/views`. They must reuse the converted brand colors, fonts, cards, buttons, spacing, responsive rules, and global header/footer.
+
 ## WordPress Clone Readiness
 
 Before final delivery, make the theme usable when cloned into `wp-content/themes/<theme-slug>` and activated:
@@ -160,6 +162,7 @@ Before final delivery, make the theme usable when cloned into `wp-content/themes
 - Ensure a valid frontend render path exists after activation. Add standard WordPress fallbacks (`index.php`, `header.php`, `footer.php`, `page.php`) when the project cannot rely on fully verified Sage/Acorn Blade routing in the target environment. Only add `front-page.php` when there is an explicit need, and it must render editor/block content rather than hardcoded converted sections.
 - Ensure header/footer/global UI render by default from layout/templates.
 - Verify page/editor content changes affect the frontend on the Home page and normal pages; fail delivery if a hardcoded fallback template overrides or bypasses the editor.
+- Add and document branded blog index, archive, and single post templates when posts/blog content is in scope.
 - Register and seed default WordPress menus for header/footer links when the source has them, without overwriting editor-assigned menus.
 - Add global settings menu selectors when a global options page exists, while preserving Appearance > Menus as the menu item editor and fallback assignment source.
 - Keep global option field groups limited to real rendered fields and remove unused or duplicate fields.

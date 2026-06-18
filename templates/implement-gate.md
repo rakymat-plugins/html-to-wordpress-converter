@@ -26,6 +26,7 @@ Required before implementation:
 - no meaningful text, image URL, button label, or URL from the original HTML remains hardcoded in templates
 - no converted page section is duplicated in `front-page.php`, `page.php`, `index.php`, Blade page templates, CPT templates, or fallback templates outside the editor/block content pipeline
 - Home and normal page templates render WordPress editor content/ACF blocks as the single source of truth; changing a block field in the editor must change the frontend
+- when posts/blog content is in scope, `home.php`, `archive.php`, and `single.php` exist, render real WordPress post data/editor content, reuse the converted brand styles, and include global header/footer
 - `.html-to-sage/MEDIA-LIBRARY-SEED.md` maps original client-editable images, icons, logos, background images, videos, documents, and galleries to WordPress Media Library attachment targets and ACF/options/CPT field usage
 - a repeatable seed/import path exists for original client-editable media, and default ACF/options/CPT media values or editor preview fallbacks resolve from seeded Media Library attachments
 - no client-editable media is permanently hardcoded from `stock/` or theme asset paths
