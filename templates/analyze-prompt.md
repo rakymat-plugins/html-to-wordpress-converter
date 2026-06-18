@@ -38,6 +38,9 @@ Check that `references/enterprise-html-to-acf-rules.md`, `references/full-acf-ed
 - no fields created only for structural wrappers/classes/hooks without editor need
 - no missing `PAGES.md` for multi-page sites
 - no header/footer/navigation converted into normal page ACF blocks without explicit approval
+- no header/footer link columns duplicated as ACF repeaters when WordPress menus are appropriate
+- no missing idempotent default menu seeding for original menus
+- no unused, duplicate, speculative, or non-working global option fields
 - no missing `GLOBAL-TEMPLATE-PARTS.md` for site-wide UI
 
 Fail analysis if any section lacks a WordPress target, ACF contract, editable field map, CSS ownership, JS ownership, visual QA task, or security escaping notes.

@@ -46,6 +46,12 @@ Fail the gate if header/footer/navigation are included in page ACF block order w
 
 Fail the gate if editable global header/footer/navigation data is duplicated in page-local ACF fields instead of WordPress menus, ACF options pages, theme options, Customizer, or approved plugins.
 
+Fail the gate if header navigation or footer link columns are implemented as ACF repeaters when normal WordPress menus can manage them.
+
+Fail the gate if default menus from the original HTML are not seeded idempotently, or if the seeder overwrites editor-assigned menus.
+
+Fail the gate if global option pages contain unused fields, duplicate menu fields, speculative schema/settings fields, icon/class fields without editor need, or fields that do not change the frontend.
+
 Fail the gate if header/footer/navigation markup is duplicated across page templates, block templates, or CPT templates.
 
 

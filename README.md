@@ -234,6 +234,10 @@ Header, footer, navigation, mobile menus, global CTAs, language switchers, searc
 
 Editable global data belongs in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins. Do not duplicate global content in page-local ACF fields unless the user explicitly approves page-level editor control and the decision is documented.
 
+Use Appearance > Menus for header navigation and footer link columns. Generated themes should register menu locations and seed default menus from the original HTML only when a location is empty. Do not create ACF repeaters for normal label/URL menu columns.
+
+Keep global ACF options lean. Every option field must be rendered by the frontend or required by an approved integration. Remove unused, duplicate, speculative, or non-working fields.
+
 ## Media Library Seeding
 
 Original client-editable media must be imported or seedable into the WordPress Media Library, then referenced from ACF image/file/gallery fields, global options, CPT fields, menus, or documented WordPress data.
@@ -253,6 +257,8 @@ The workflow must check or document:
 - render templates or verified Sage/Acorn routing
 - required plugins and install/build commands in `README.md`
 - Home page block order and global header/footer setup in `README.md`
+- default menu seeding and menu locations in `README.md`
+- no unused or duplicate global ACF option fields
 - Media Library seed/import path for original client-editable media
 - `ready-pages/` with one paste-ready `.md` file per WordPress page containing exact Gutenberg ACF block comments in order
 - ignored local agent folders, skill folders, uv caches, dependency folders, and build outputs

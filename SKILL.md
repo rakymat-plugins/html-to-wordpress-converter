@@ -151,6 +151,8 @@ Apply the enterprise rules from `references/enterprise-html-to-acf-rules.md` to 
 
 Header, footer, navigation, announcement bars, mobile sticky actions, schema, and global site UI must render by default from the theme layout. Do not make editors add header/footer blocks to normal pages unless they explicitly approve page-level control. Make all meaningful global UI content editable through ACF options, WordPress menus, theme settings, Customizer, or approved plugins.
 
+Global header/footer fields must be minimal and directly used. Use WordPress menus for navigation and footer link columns instead of ACF repeaters. Do not create unused option fields, duplicate menu fields, or schema fields that do not affect the frontend. Every global option must have a visible render location or documented integration, and implementation must verify that changing it in the admin changes the frontend.
+
 Global options fields should be optional when defaults/fallbacks exist. Do not block saving a global settings page because logo, CTA links, footer links, contact data, or schema values are partially empty.
 
 Apply the full editability rules from `references/full-acf-editability-rules.md` to prevent hardcoded client-editable content and to require `.html-to-sage/PAGES.md` for multi-page websites.
@@ -169,6 +171,8 @@ Before final delivery, verify or document:
 - `functions.php` loads Composer when present and bootstraps theme setup/framework files.
 - The theme has a valid render path after activation: either standard WordPress templates such as `index.php`, `header.php`, `footer.php`, `front-page.php`, and `page.php`, or a verified Sage/Acorn Blade routing setup that works after `composer install`.
 - Global header/footer/navigation render by default on normal pages without requiring page ACF header/footer blocks.
+- Header/footer menu locations are registered and seeded idempotently when original menu links exist, without overwriting editor-assigned menus.
+- Global ACF options are limited to real non-menu editable values, and no unused fields remain in the options page.
 - Required plugins are listed in `README.md`, especially ACF PRO.
 - Install commands are listed in `README.md`: `composer install`, `npm install`, and `npm run build` when applicable.
 - Original client-editable media has a documented Media Library seeding/import path, a media manifest, and ACF defaults or seeded field values so default block previews are not empty after setup.

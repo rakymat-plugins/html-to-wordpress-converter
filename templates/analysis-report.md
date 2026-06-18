@@ -28,6 +28,8 @@ Confirm `references/media-library-seeding-rules.md` was enforced: original clien
 
 Confirm `references/global-template-parts-rules.md` was enforced: header/footer/navigation/global UI mapped to Sage template parts/layout partials by default, editable global data sourced from menus/options/plugins, and `GLOBAL-TEMPLATE-PARTS.md` completed when site-wide UI exists.
 
+Confirm global field minimalism was enforced: header/footer link columns use WordPress menus, default menus are seeded idempotently without overwriting editor-assigned menus, global ACF options contain only rendered/approved fields, and every global option field was verified against the frontend or recorded as skipped.
+
 ## Section Results
 
 | HTML Section | WordPress Target | Visual Status | Issues | Approved Changes |

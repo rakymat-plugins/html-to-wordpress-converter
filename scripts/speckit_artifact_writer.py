@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, MEDIA_LIBRARY_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
+from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_FIELD_MINIMALISM_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, MEDIA_LIBRARY_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
 from project_detector import detect_files
 
 
@@ -102,6 +102,8 @@ Global site UI MUST use Sage partials, layout SCSS, WordPress menus, ACF options
 
 {GLOBAL_OPTIONS_SAVE_RULE}
 
+{GLOBAL_FIELD_MINIMALISM_RULE}
+
 ## Spec Kit Workflow
 
 Spec Kit artifacts are the planning source of truth for implementation. The workflow MUST produce and keep aligned `.specify/memory/constitution.md`, `specs/<feature>/spec.md`, `plan.md`, `research.md`, `data-model.md`, `quickstart.md`, `tasks.md`, and `.html-to-sage/*`.
@@ -186,6 +188,8 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **FR-014**: Global header/footer/logo/contact/schema option fields MUST be optional when template defaults/fallbacks exist, so the options page can save partial data.
 - **FR-015**: The implementation MUST include `ready-pages/` with one paste-ready `.md` file per WordPress page containing exact Gutenberg ACF block comments in page order.
 - **FR-016**: Original client-editable media MUST be imported or seedable into the WordPress Media Library and referenced through ACF/options/CPT/menu attachment data, not permanent hardcoded `stock/` or theme asset URLs.
+- **FR-017**: Header navigation and footer link columns MUST use WordPress menus when they are normal label/URL links, and generated default menus MUST be seeded idempotently without overwriting editor-assigned menus.
+- **FR-018**: Global option pages MUST include only fields that are rendered or required by approved integrations; unused, duplicate, speculative, or non-working fields MUST be removed.
 
 ## Success Criteria
 
@@ -260,6 +264,8 @@ Convert preserved static HTML from `stock/` into `{theme_name}` using Sage, Acor
 
 **Media Library Seeding**: {MEDIA_LIBRARY_RULE}
 
+**Global Field Minimalism**: {GLOBAL_FIELD_MINIMALISM_RULE}
+
 ## Constitution Check
 
 - HTML Visual Parity First: PASS
@@ -318,6 +324,10 @@ Rationale: Use CPTs only when content needs archive/single/filter/search/reuse/a
 ## Decision: Use global template parts for site chrome
 
 Rationale: Header/footer/navigation/global CTA/schema are site-wide concerns and must not be repeated as page-local ACF blocks.
+
+## Decision: Use WordPress menus for header and footer link columns
+
+Rationale: Normal label/URL navigation belongs in Appearance > Menus. ACF option repeaters should not duplicate menu management or create extra non-working admin fields.
 
 ## Decision: Split CSS and JS by ownership
 
@@ -438,6 +448,8 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T007 Register ACF options page and global options field group
 - [ ] T008 Register WordPress menu locations for primary and footer menus
 - [ ] T008a Register global options fields as optional when frontend defaults/fallbacks exist
+- [ ] T008b Seed original header/footer menus idempotently on activation/admin init without overwriting editor-assigned menus
+- [ ] T008c Audit global option fields and remove unused, duplicate, speculative, or non-rendered fields
 - [ ] T009 Split source CSS into common, components, layout, and blocks
 - [ ] T010 Split source JS into navigation, reveal/shared behavior, and block modules
 - [ ] T011 Confirm no CPTs are needed or document justified CPTs
@@ -458,6 +470,8 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T018 Verify structural wrappers/classes/layout hooks remain in templates and are not over-modeled as fields
 - [ ] T019 Verify no frontend template or stylesheet references `stock/`
 - [ ] T019a Verify no client-editable original media is permanently hardcoded from theme asset paths and default ACF previews resolve seeded Media Library attachments or documented seeded fallbacks
+- [ ] T019b Verify each global option field changes the frontend or is documented as an approved integration field
+- [ ] T019c Verify header/footer link columns are editable from Appearance > Menus, not duplicated in ACF repeaters
 
 ## Phase 5: QA and Gates
 

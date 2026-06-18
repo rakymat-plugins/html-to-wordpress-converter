@@ -139,7 +139,11 @@ Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI
 
 Keep global site chrome out of page ACF block order. Store editable global data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins, and document those sources in `.html-to-sage/GLOBAL-TEMPLATE-PARTS.md` and `.html-to-sage/DECISIONS.md`.
 
+Use native WordPress menus for header navigation and footer link columns. If the original HTML includes menu links, register menu locations and seed default menus on activation/admin init in an idempotent way. Do not use ACF repeaters for normal menu/link columns unless the section requires non-menu metadata that Appearance > Menus cannot represent.
+
 Header and footer must show by default from the theme layout on every applicable page. Do not require editors to add header/footer blocks manually. Their meaningful content, images, links, schema data, and contact data must be editable through global options, menus, theme settings, Customizer, or approved plugins.
+
+Global option pages must stay lean. Add only fields that are actually rendered or required by an approved integration. Do not add duplicate menu fields, unused schema fields, icon/class fields, or speculative settings. Every global option field must be verified by changing it in the admin and confirming the frontend changes.
 
 When global options have frontend defaults/fallbacks, do not mark those ACF option fields as required. Editors must be able to save partial header/footer/logo/contact/schema settings without filling every field.
 
@@ -151,6 +155,8 @@ Before final delivery, make the theme usable when cloned into `wp-content/themes
 - Ensure `functions.php` loads Composer when present and boots theme setup/framework files.
 - Ensure a valid frontend render path exists after activation. Add standard WordPress fallbacks (`index.php`, `header.php`, `footer.php`, `front-page.php`, `page.php`) when the project cannot rely on fully verified Sage/Acorn Blade routing in the target environment.
 - Ensure header/footer/global UI render by default from layout/templates.
+- Register and seed default WordPress menus for header/footer links when the source has them, without overwriting editor-assigned menus.
+- Keep global option field groups limited to real rendered fields and remove unused or duplicate fields.
 - Document required plugins and install/build commands in `README.md`.
 - Provide a Media Library seed/import path for original client media, with a manifest from original `stock/` file to attachment target and block/options field usage. Default ACF block previews must not be empty solely because source images were left as theme-only assets.
 - Ignore local agent folders, skill folders, uv caches, dependency folders, and generated build folders unless the user explicitly wants them committed.

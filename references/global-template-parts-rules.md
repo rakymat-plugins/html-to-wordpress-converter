@@ -14,6 +14,8 @@ All meaningful global UI content must remain editable through WordPress menus, A
 
 Structural wrappers, layout classes, ARIA structure, animation hooks, and JS hooks stay in the template partials unless the editor explicitly needs control over them.
 
+Global fields must be minimal and directly used. Do not add option fields "just in case." Every global ACF option must map to a real rendered value or a documented integration. If a global value is better edited by a native WordPress feature, use that feature instead of ACF.
+
 Use ACF blocks for header/footer only when the user explicitly wants editors to insert, remove, reorder, or vary those elements per page. Most sites should keep them in:
 
 ```text
@@ -55,6 +57,8 @@ The default theme layout should include global partials when they exist:
 Editable global content should be stored in the right WordPress-owned place:
 
 - navigation links: WordPress menus registered in `app/setup.php`
+- footer column links: WordPress menus registered in `app/setup.php`
+- contact link lists in the footer: WordPress menus when they are simple label/URL pairs
 - logo: Customizer, theme option, ACF options page, or theme setting
 - footer contact details: ACF options page or theme options
 - social links: ACF options page or options model
@@ -65,6 +69,10 @@ Editable global content should be stored in the right WordPress-owned place:
 Template parts render this global data. They should not hardcode client-editable global content.
 
 Do not store global header/footer values in page-level ACF fields. That makes editors repeat the same data on every page and breaks global consistency.
+
+Do not store normal menu/link columns in ACF repeaters when Appearance > Menus can manage them cleanly. ACF repeaters are acceptable for non-menu repeated content such as announcement ticker items, social profiles with extra metadata, or contact cards with multiple sub-values.
+
+Generated themes should seed default menus on activation when the original HTML contains menu links. The seed must be idempotent, create missing menus, assign only empty menu locations, and never overwrite an editor-assigned menu.
 
 ## ACF Options Contract
 
@@ -79,6 +87,14 @@ Use ACF options pages for global editable content when appropriate. Document:
 - fallback behavior
 
 Global option fields should not be marked required when the theme provides defaults or fallbacks. Required global settings create a bad admin experience because editors cannot save partial changes until every logo/link/footer/schema field is filled. Prefer optional fields plus documented fallbacks for header/footer/logo/contact/schema data.
+
+Global option field groups should stay lean:
+
+- include only fields actually rendered by templates or required by approved integrations
+- avoid duplicate fields for data already managed by menus, Customizer, WordPress site settings, or plugin settings
+- avoid separate schema fields unless the user explicitly needs schema editing; derive schema from visible global content and defaults when possible
+- keep icons/classes out of options unless editors genuinely choose them
+- verify each field by changing it in the admin and confirming the frontend changes
 
 Recommended artifact:
 
@@ -127,6 +143,8 @@ Never:
 - create a `header` ACF block for normal site navigation without explicit user approval
 - create a `footer` ACF block for normal site footer without explicit user approval
 - hardcode menu links in Blade when WordPress menus are appropriate
+- create footer services/footer links/footer contact ACF repeaters when WordPress menus are appropriate
+- create unused global settings or schema fields that do not affect the frontend
 - put header/footer CSS in block SCSS files
 - duplicate header/footer markup across page templates
 - make editors rebuild global navigation on every page

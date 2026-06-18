@@ -43,6 +43,10 @@ The plan must include a WordPress Media Library seed/import strategy for all ori
 
 Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI should become Sage template parts/layout partials by default. Use WordPress menus, ACF options pages, Customizer/theme options, or approved plugins for editable global data. Do not turn them into page ACF blocks unless the user explicitly approves page-level editor control.
 
+The plan must use WordPress menus for header navigation and footer link columns when the source contains normal label/URL links. The plan must include idempotent default menu seeding on activation or admin init, and must state that seeded menus never overwrite editor-assigned menus.
+
+The plan must keep global ACF option pages lean. Do not add fields that are unused, duplicate menu data, duplicate plugin/native WordPress settings, or do not affect the frontend. Every proposed global option field must include its render location or integration.
+
 The plan must state that header, footer, navigation, announcement bars, mobile sticky actions, schema, and other global site UI render by default from Sage layout partials and are editable through global options, menus, theme settings, Customizer, or approved plugins.
 
 The plan must state that global options fields are optional when defaults/fallbacks exist. Header/footer/logo/contact/schema fields should not block saving the options page merely because one link, logo, footer item, or schema value is empty.
@@ -69,5 +73,10 @@ Also include this global-template table when global site UI exists:
 
 | Source Selector | Element | WordPress Target | Template Part Path | Editable Data Source | ACF Options Fields | Menu Location | CSS Path | JS Path | Appears On | Explicit Page-Level Control Approved? | Visual Match Risk | Notes |
 |-----------------|---------|------------------|--------------------|----------------------|--------------------|---------------|----------|---------|------------|---------------------------------------|-------------------|-------|
+
+Also include this global-options audit table:
+
+| Field | Purpose | Render Location / Integration | Native WordPress Alternative? | Keep? | Reason |
+|-------|---------|-------------------------------|-------------------------------|-------|--------|
 
 

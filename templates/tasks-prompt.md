@@ -73,13 +73,18 @@ For each global template part:
 - analyze original HTML for the global element
 - identify editable global data
 - map navigation links to WordPress menu locations
+- map footer service/page/contact link columns to WordPress menu locations when they are normal label/URL links
+- create an idempotent menu seeder for original menus that creates missing menus and assigns only empty locations without overwriting editor-assigned menus
 - map logos/contact/social/legal/newsletter/form values to ACF options, theme options, Customizer, or approved plugins
+- create a global-options audit and remove any field without a real render location or approved integration
+- avoid ACF repeaters for normal menus/link columns when Appearance > Menus can manage them
 - make global option fields optional when template defaults/fallbacks exist, so the options page can be saved with partial data
 - create or update the Sage partial path
 - migrate layout SCSS into `resources/css/layout/`
 - migrate behavior JS into `resources/js/header.js`, `resources/js/navigation.js`, or `resources/js/footer.js`
 - verify the global element is not duplicated in page templates or ACF block templates
 - verify it is not listed in page ACF block order unless page-level control was explicitly approved
+- verify each global option field by changing it in the admin and confirming the frontend changes
 - compare visually with the original across desktop, tablet, and mobile
 
 Add a final WordPress clone-readiness task group:
@@ -89,6 +94,8 @@ Add a final WordPress clone-readiness task group:
 - verify activation will not fail because `functions.php`, Composer/autoload handling, or template entry files are missing
 - verify required plugins are documented in `README.md`
 - verify Home page block order and global header/footer/options setup are documented in `README.md`
+- verify default menu seeding is documented in `README.md`
+- verify no unused or duplicate global ACF option fields remain
 - create `ready-pages/` and one paste-ready `.md` file per WordPress page with exact Gutenberg ACF block comments in page order
 - verify original client-editable media can be seeded into the WordPress Media Library and default ACF block previews show seeded media or documented seeded preview fallbacks
 - verify `.gitignore` excludes local agent folders (`.codex/`, `.claude/`, `.cursor/`, `.gemini/`, `.agents/`), skill source folders, uv caches, `node_modules/`, `vendor/`, and build artifacts unless explicitly intended
