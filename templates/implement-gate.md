@@ -21,8 +21,12 @@ Required before implementation:
 - each section has an ACF block/template/CPT/component decision
 - enterprise rules are referenced in the implementation tasks
 - full editability rules are referenced in the implementation tasks
+- media library seeding rules are referenced in the implementation tasks
 - global template part rules are referenced in the implementation tasks
 - no meaningful text, image URL, button label, or URL from the original HTML remains hardcoded in templates
+- `.html-to-sage/MEDIA-LIBRARY-SEED.md` maps original client-editable images, icons, logos, background images, videos, documents, and galleries to WordPress Media Library attachment targets and ACF/options/CPT field usage
+- a repeatable seed/import path exists for original client-editable media, and default ACF/options/CPT media values or editor preview fallbacks resolve from seeded Media Library attachments
+- no client-editable media is permanently hardcoded from `stock/` or theme asset paths
 - every repeated content group uses an ACF repeater or justified CPT
 - `PAGES.md` exists for multi-page websites
 - `GLOBAL-TEMPLATE-PARTS.md` exists when header/footer/navigation/site-wide UI is present
@@ -35,6 +39,7 @@ Required before implementation:
 - WordPress clone-readiness is verified: valid theme `style.css`, bootstrap `functions.php`, render templates or verified Sage/Acorn routing, required plugins in README, install/build commands in README, and ignored local agent/skill/cache/dependency folders
 - the reusable skill repository `html-to-wordpress-converter` is not copied into the delivered theme and is not installed as a WordPress theme; a broken WordPress theme named `html-to-wordpress-converter` is a failed readiness check
 - `ready-pages/` exists and includes one paste-ready `.md` file per WordPress page with the exact Gutenberg ACF block comments in page order
+- default block previews do not appear empty because original media was left outside the WordPress Media Library
 - if PHP, Composer, Node, WordPress, or browser checks cannot be run in the current environment, `.html-to-sage/FINAL-REPORT.md` records exactly what was skipped and why
 
 Visual mismatch is a blocker, not a minor issue.

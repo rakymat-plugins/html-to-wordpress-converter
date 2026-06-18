@@ -37,7 +37,9 @@ Do not over-dynamicize the DOM: wrappers, classes, layout containers, animation 
 
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
-Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editability-rules.md`, and `references/global-template-parts-rules.md`. The plan must include PAGES, GLOBAL-TEMPLATE-PARTS, ASSET-MAP, JS-BEHAVIOR-MAP, PERFORMANCE-RISKS, SECURITY-CHECKLIST, and VISUAL-QA artifacts.
+Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editability-rules.md`, `references/media-library-seeding-rules.md`, and `references/global-template-parts-rules.md`. The plan must include PAGES, GLOBAL-TEMPLATE-PARTS, ASSET-MAP, MEDIA-LIBRARY-SEED, JS-BEHAVIOR-MAP, PERFORMANCE-RISKS, SECURITY-CHECKLIST, and VISUAL-QA artifacts.
+
+The plan must include a WordPress Media Library seed/import strategy for all original client-editable images, icons, logos, background images, videos, documents, and galleries. Templates and ACF previews must use attachment data or seeded field values, not permanent hardcoded `stock/` or theme asset URLs for editable media.
 
 Header, footer, navigation, mobile menus, global CTAs, and site-wide repeated UI should become Sage template parts/layout partials by default. Use WordPress menus, ACF options pages, Customizer/theme options, or approved plugins for editable global data. Do not turn them into page ACF blocks unless the user explicitly approves page-level editor control.
 
@@ -52,6 +54,11 @@ The plan must include a final WordPress clone-readiness phase. The phase must ve
 The plan must explicitly distinguish the generated WordPress theme repo/folder from the reusable skill repo. It must state that `html-to-wordpress-converter` is a skill repository and must not be cloned or copied into `wp-content/themes`. If a WordPress admin screen shows a broken theme named `html-to-wordpress-converter`, the remediation is to delete that wrong folder from `wp-content/themes` and install the actual generated theme folder.
 
 The plan must include a `ready-pages/` deliverable: one `.md` file per WordPress page containing paste-ready Gutenberg ACF block comments in the exact page block order.
+
+The plan must include this media seed table in `.html-to-sage/MEDIA-LIBRARY-SEED.md`:
+
+| Original Stock Path | Media Type | WordPress Attachment Target | Used By | ACF Field/Option/CPT Field | Default Value Strategy | Alt/Title Source | Required? | Notes |
+|---------------------|------------|-----------------------------|---------|----------------------------|------------------------|------------------|-----------|-------|
 
 Include this table:
 

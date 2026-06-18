@@ -5,7 +5,7 @@ description: Approval and QA gate for starting implementation of HTML-to-Sage Wo
 
 # Implementation Gate
 
-Read `../../references/enterprise-html-to-acf-rules.md`, `../../references/full-acf-editability-rules.md`, and `../../references/global-template-parts-rules.md` before allowing implementation.
+Read `../../references/enterprise-html-to-acf-rules.md`, `../../references/full-acf-editability-rules.md`, `../../references/media-library-seeding-rules.md`, and `../../references/global-template-parts-rules.md` before allowing implementation.
 
 Do not implement until all exist:
 
@@ -18,6 +18,7 @@ Do not implement until all exist:
 - `.html-to-sage/ACF-BLOCKS.md`
 - `.html-to-sage/CPT-TAXONOMY-MAP.md`
 - `.html-to-sage/ASSET-MAP.md`
+- `.html-to-sage/MEDIA-LIBRARY-SEED.md` when the source contains client-editable media
 - `.html-to-sage/JS-BEHAVIOR-MAP.md`
 - `.html-to-sage/PERFORMANCE-RISKS.md`
 - `.html-to-sage/SECURITY-CHECKLIST.md`
@@ -34,6 +35,10 @@ All meaningful content from the original HTML must be editable through ACF field
 Fail the gate if any section lacks a comparison method or if a mismatch is accepted without user approval.
 
 Fail the gate if meaningful original content remains hardcoded without a documented user-approved exception.
+
+Fail the gate if client-editable original images, icons, logos, background images, videos, documents, or galleries remain permanent hardcoded theme assets instead of Media Library attachments or documented WordPress data.
+
+Fail the gate if default ACF media fields/previews are empty because original media was not seeded or made restorable from the Media Library.
 
 Fail the gate if header/footer/navigation were converted to page ACF blocks without explicit user approval.
 

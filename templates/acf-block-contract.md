@@ -1,6 +1,6 @@
 ﻿# ACF Block Contract
 
-Apply `references/enterprise-html-to-acf-rules.md` and `references/full-acf-editability-rules.md`.
+Apply `references/enterprise-html-to-acf-rules.md`, `references/full-acf-editability-rules.md`, and `references/media-library-seeding-rules.md`.
 
 All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
@@ -30,6 +30,11 @@ Do not create fields for wrappers, CSS classes, layout containers, animation hoo
 ## Repeaters
 
 ## Media
+
+| Field | Media Type | Original Stock Path | Attachment Source | Default Value Strategy | Alt/Title Source | Preview Expected? | Notes |
+|-------|------------|---------------------|-------------------|------------------------|------------------|-------------------|-------|
+
+Client-editable media must use WordPress Media Library attachments. Do not hardcode a frontend image/icon/video/document while leaving the related ACF field empty.
 
 ## Links and Buttons
 

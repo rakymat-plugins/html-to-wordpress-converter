@@ -4,13 +4,15 @@ This reference is mandatory for every HTML-to-Sage WordPress conversion. Read it
 
 Also read `full-acf-editability-rules.md` before mapping content to fields or deciding whether any content can remain hardcoded.
 
+Also read `media-library-seeding-rules.md` before planning asset migration, ACF image/file/gallery fields, default media values, or final QA.
+
 Also read `global-template-parts-rules.md` before mapping header, footer, navigation, global CTA, or any site-wide repeated UI.
 
 ## Non-Breakable Rules
 
 The original HTML is the visual source of truth.
 
-Never flatten all HTML into one giant ACF block, put all CSS into `app.scss`, put all JS into `app.js` without ownership, create CPTs without justification, hardcode editable content inside templates, edit files inside `stock/`, remove classes needed for styling, rename classes randomly, change spacing/typography/colors/image ratios/animations/breakpoints/layout, replace working static behavior with worse WordPress behavior, depend on manual-only WordPress admin setup, create ACF fields only from the dashboard, use Elementor/WPBakery/page builders, create bloated blocks with 40 unrelated fields, load sliders or animation libraries globally if used by only one block, query all posts without pagination, use `get_posts(-1)` for public sections, load full-size images when thumbnails are enough, ignore escaping/sanitization, or ignore responsive behavior.
+Never flatten all HTML into one giant ACF block, put all CSS into `app.scss`, put all JS into `app.js` without ownership, create CPTs without justification, hardcode editable content inside templates, hardcode client-editable media from `stock/` or theme asset URLs, edit files inside `stock/`, remove classes needed for styling, rename classes randomly, change spacing/typography/colors/image ratios/animations/breakpoints/layout, replace working static behavior with worse WordPress behavior, depend on manual-only WordPress admin setup, create ACF fields only from the dashboard, use Elementor/WPBakery/page builders, create bloated blocks with 40 unrelated fields, load sliders or animation libraries globally if used by only one block, query all posts without pagination, use `get_posts(-1)` for public sections, load full-size images when thumbnails are enough, ignore escaping/sanitization, or ignore responsive behavior.
 
 Every converted WordPress/Sage/ACF section must match the original HTML section 100% in layout, spacing, typography, colors, responsive behavior, animations, image ratios, hover states, and visual hierarchy unless the user explicitly approves a change.
 
@@ -64,6 +66,8 @@ Editable content becomes ACF fields. Structural markup stays in templates. Behav
 Headers, footers, navigation, mobile menus, global CTAs, and repeated site-wide UI should become Sage template parts/layout partials by default. Their editable data should come from WordPress menus, ACF options pages, Customizer/theme options, or approved plugins, not page-local ACF blocks.
 
 Do not over-dynamicize everything. Not every div needs a field.
+
+Client-editable images, icons, logos, background images, videos, documents, and galleries must be imported or seedable into the WordPress Media Library and referenced through ACF attachment/file/gallery fields, options, CPT fields, menus, or documented WordPress data. Technical non-editable decorative assets may stay in theme resources.
 
 ## CPT Decision Rules
 
@@ -144,6 +148,7 @@ The skill must generate or update:
 .html-to-sage/CPT-TAXONOMY-MAP.md
 .html-to-sage/GLOBAL-TEMPLATE-PARTS.md
 .html-to-sage/ASSET-MAP.md
+.html-to-sage/MEDIA-LIBRARY-SEED.md
 .html-to-sage/JS-BEHAVIOR-MAP.md
 .html-to-sage/PERFORMANCE-RISKS.md
 .html-to-sage/SECURITY-CHECKLIST.md

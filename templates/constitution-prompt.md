@@ -10,6 +10,8 @@ Every converted WordPress/Sage/ACF section must match the original HTML section 
 
 All meaningful content from the original HTML must be editable through ACF fields or justified CPT fields. Templates may contain structure, layout, and behavior hooks, but must not hardcode client-editable content.
 
+Client-editable media from the original HTML must be imported or seedable into the WordPress Media Library and referenced through ACF image/file/gallery fields, global options, CPT fields, menus, or documented WordPress data. Do not rely on permanent hardcoded `stock/` or theme asset URLs for editable images, icons, logos, background images, videos, documents, or galleries.
+
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
 Constitution articles:
@@ -43,5 +45,7 @@ Also include secure escaping/sanitization in PHP templates, responsive QA, acces
 Also enforce `references/enterprise-html-to-acf-rules.md`: no giant catch-all blocks, no unowned global CSS/JS, no page builders, no manual-only ACF setup, no random class renames, no unjustified packages, no unpaginated public queries, and no raw ACF output.
 
 Also enforce `references/full-acf-editability-rules.md`: no hardcoded meaningful content, clear ACF field mirroring, original HTML values in field maps, page-level ACF documentation, and editor rebuildability.
+
+Also enforce `references/media-library-seeding-rules.md`: Media Library seeding for original client media, `.html-to-sage/MEDIA-LIBRARY-SEED.md`, attachment-based ACF fields, restorable default media, and non-empty default block previews after setup.
 
 

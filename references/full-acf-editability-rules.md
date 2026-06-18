@@ -10,6 +10,8 @@ This does not mean every HTML node becomes an ACF field. Only client-editable co
 
 For multi-page HTML websites, generate `.html-to-sage/PAGES.md` showing every WordPress page, the exact ACF block order, the field groups used, and the original HTML source section for each block.
 
+Client-editable media from the original HTML must be imported or seedable into the WordPress Media Library and referenced through ACF image/file/gallery fields, global options, CPT fields, menus, or other documented WordPress data. Do not rely on permanent hardcoded theme asset URLs for images, icons, logos, background images, videos, documents, or galleries that the client may need to replace.
+
 ## No Hardcoded Meaningful Content
 
 Never hardcode meaningful content in Blade/PHP templates:
@@ -107,6 +109,9 @@ Before implementation is complete, verify:
 
 - no meaningful text from original HTML remains hardcoded in templates
 - no image URL from `stock/` is directly hardcoded in templates
+- no client-editable original media is permanently hardcoded from theme asset paths
+- `.html-to-sage/MEDIA-LIBRARY-SEED.md` exists when the source contains client-editable media
+- default ACF block previews show seeded Media Library assets or documented seeded preview fallbacks
 - no button label or URL is hardcoded
 - every section has a matching ACF field group
 - every repeated content group uses repeater/CPT correctly

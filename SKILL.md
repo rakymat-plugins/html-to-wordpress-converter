@@ -25,6 +25,7 @@ Layer 2: HTML-to-Sage WordPress Extension
 - ACF block mapping
 - CPT/taxonomy decisions
 - CSS/JS/assets migration
+- WordPress Media Library seeding for editable images, icons, videos, documents, and other client media
 - visual parity requirements
 
 Layer 3: Agent Adapters
@@ -134,6 +135,7 @@ This archives the static website files into `stock/` and removes the old root co
 - Read `developer-wordpress-from-html/SKILL.md` for the end-to-end command.
 - Read `references/enterprise-html-to-acf-rules.md` before any planning, mapping, package decision, implementation, or QA work.
 - Read `references/full-acf-editability-rules.md` before mapping content into fields or writing implementation tasks.
+- Read `references/media-library-seeding-rules.md` before asset planning, ACF field defaults, implementation, or final QA.
 - Read `references/global-template-parts-rules.md` before mapping header, footer, navigation, global CTAs, or site-wide repeated UI.
 - Read `references/sage-theme-architecture.md` before designing the theme structure.
 - Read `references/acf-block-rules.md` before mapping sections into ACF blocks.
@@ -153,6 +155,8 @@ Global options fields should be optional when defaults/fallbacks exist. Do not b
 
 Apply the full editability rules from `references/full-acf-editability-rules.md` to prevent hardcoded client-editable content and to require `.html-to-sage/PAGES.md` for multi-page websites.
 
+Apply the media library seeding rules from `references/media-library-seeding-rules.md`. Any original image, icon, logo, background image, gallery item, video, document, or other client-editable media must be imported or seedable into the WordPress Media Library and referenced through ACF attachment/file/gallery fields, options, menus, CPT fields, or documented WordPress data. Do not rely on permanent hardcoded theme asset URLs for client media.
+
 Apply the global template part rules from `references/global-template-parts-rules.md` so headers, footers, navigation, and site-wide UI become Sage partials/layout template parts by default, not page ACF blocks. Keep their editable data in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins; do not duplicate global values in page-local ACF fields.
 
 ## WordPress Clone Readiness Gate
@@ -167,6 +171,7 @@ Before final delivery, verify or document:
 - Global header/footer/navigation render by default on normal pages without requiring page ACF header/footer blocks.
 - Required plugins are listed in `README.md`, especially ACF PRO.
 - Install commands are listed in `README.md`: `composer install`, `npm install`, and `npm run build` when applicable.
+- Original client-editable media has a documented Media Library seeding/import path, a media manifest, and ACF defaults or seeded field values so default block previews are not empty after setup.
 - No local agent folders, skill source folders, uv caches, `node_modules/`, `vendor/`, or build artifacts are committed unless explicitly intended.
 - The reusable skill repository itself (`html-to-wordpress-converter`) is never copied, nested, or cloned into `wp-content/themes`; if WordPress shows `html-to-wordpress-converter` as a broken theme, that folder is the skill repo in the wrong place and must be removed from the WordPress themes directory.
 - `ready-pages/` exists with one paste-ready `.md` file per WordPress page, containing the exact Gutenberg/ACF block markup in page order.

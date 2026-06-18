@@ -5,7 +5,7 @@ Spec Kit-backed skill for converting static HTML/CSS/JS websites into planned Wo
 This repository is not a standalone website converter. It is a reusable agent workflow layer:
 
 - **Spec Kit Core**: constitution, specify, clarify, plan, tasks, analyze, implement.
-- **HTML-to-Sage WordPress Extension**: source audit, `stock/`, Sage setup, ACF block mapping, CPT/taxonomy decisions, CSS/JS/assets migration, and visual QA.
+- **HTML-to-Sage WordPress Extension**: source audit, `stock/`, Sage setup, ACF block mapping, CPT/taxonomy decisions, CSS/JS/assets migration, Media Library seeding, and visual QA.
 - **Agent Adapters**: Claude Code commands, Codex skill files, and generic `SKILL.md` instructions.
 
 ## Installation
@@ -234,6 +234,14 @@ Header, footer, navigation, mobile menus, global CTAs, language switchers, searc
 
 Editable global data belongs in WordPress menus, ACF options pages, theme options, Customizer, or approved plugins. Do not duplicate global content in page-local ACF fields unless the user explicitly approves page-level editor control and the decision is documented.
 
+## Media Library Seeding
+
+Original client-editable media must be imported or seedable into the WordPress Media Library, then referenced from ACF image/file/gallery fields, global options, CPT fields, menus, or documented WordPress data.
+
+This includes logos, hero images, background images, profile photos, card icons, gallery items, video posters, local videos, PDFs, and downloadable files. Purely technical decorative SVG/CSS assets and fonts may stay in theme resources.
+
+Generated themes must document a repeatable seed/import path, preferably a WP-CLI command, and must create `.html-to-sage/MEDIA-LIBRARY-SEED.md`. Default block previews should show seeded original media or documented seeded preview fallbacks, not empty image fields caused by hardcoded theme assets.
+
 ## WordPress Clone Readiness
 
 Final delivery must verify that the theme works when cloned into `wp-content/themes/<theme-slug>` and activated.
@@ -245,6 +253,7 @@ The workflow must check or document:
 - render templates or verified Sage/Acorn routing
 - required plugins and install/build commands in `README.md`
 - Home page block order and global header/footer setup in `README.md`
+- Media Library seed/import path for original client-editable media
 - `ready-pages/` with one paste-ready `.md` file per WordPress page containing exact Gutenberg ACF block comments in order
 - ignored local agent folders, skill folders, uv caches, dependency folders, and build outputs
 - the reusable skill repo `html-to-wordpress-converter` is not placed in `wp-content/themes`; if WordPress shows a broken theme named `html-to-wordpress-converter`, delete that wrong folder and clone the actual generated theme repository instead
@@ -265,6 +274,7 @@ stock/
   CPT-TAXONOMY-MAP.md
   ACF-BLOCKS.md
   ASSET-MAP.md
+  MEDIA-LIBRARY-SEED.md
   JS-BEHAVIOR-MAP.md
   PERFORMANCE-RISKS.md
   SECURITY-CHECKLIST.md

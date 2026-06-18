@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
+from artifact_writer import CLONE_READINESS_RULE, EDITABILITY_RULE, GLOBAL_OPTIONS_SAVE_RULE, GLOBAL_PARTS_RULE, MEDIA_LIBRARY_RULE, PAGES_RULE, READY_PAGES_RULE, VISUAL_RULE
 from project_detector import detect_files
 
 
@@ -88,6 +88,8 @@ The WordPress theme MUST use Sage, Acorn, Blade, Vite, SCSS, ACF Pro, and code-o
 
 Wrappers, container classes, grid classes, animation hooks, JS hooks, ARIA structure, and technical layout markup SHOULD remain in templates unless the editor explicitly needs control over them.
 
+{MEDIA_LIBRARY_RULE}
+
 ### V. Justified CPTs Only
 
 Custom post types and taxonomies are allowed only when content is repeatable across pages, independently managed, filterable, archiveable, searchable, requires its own URL, or needs a separate admin workflow.
@@ -113,6 +115,8 @@ Implementation MUST NOT begin until stock source is preserved, every HTML sectio
 {CLONE_READINESS_RULE}
 
 {READY_PAGES_RULE}
+
+{MEDIA_LIBRARY_RULE}
 
 ## Governance
 
@@ -181,6 +185,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **FR-013**: The delivered theme MUST work when cloned into `wp-content/themes/<theme-slug>` and activated, or the final report MUST document exactly which runtime checks could not be run and why.
 - **FR-014**: Global header/footer/logo/contact/schema option fields MUST be optional when template defaults/fallbacks exist, so the options page can save partial data.
 - **FR-015**: The implementation MUST include `ready-pages/` with one paste-ready `.md` file per WordPress page containing exact Gutenberg ACF block comments in page order.
+- **FR-016**: Original client-editable media MUST be imported or seedable into the WordPress Media Library and referenced through ACF/options/CPT/menu attachment data, not permanent hardcoded `stock/` or theme asset URLs.
 
 ## Success Criteria
 
@@ -191,6 +196,7 @@ A reviewer can verify implementation is complete only after visual parity, edita
 - **SC-005**: 0 unjustified CPTs or taxonomies are introduced.
 - **SC-006**: 0 live frontend template references point to `stock/`.
 - **SC-007**: WordPress recognizes the cloned theme from `style.css`, and activation has a valid bootstrap/render path.
+- **SC-008**: Default ACF block previews show seeded original media or documented seeded preview fallbacks after the media seed/import step.
 
 ## Assumptions
 
@@ -251,6 +257,8 @@ Convert preserved static HTML from `stock/` into `{theme_name}` using Sage, Acor
 **Constraints**: No redesign; no page builders; no hardcoded meaningful content; no unjustified CPTs; no live `stock/` references; visual mismatch fails the task.
 
 **WordPress Clone Readiness**: {CLONE_READINESS_RULE}
+
+**Media Library Seeding**: {MEDIA_LIBRARY_RULE}
 
 ## Constitution Check
 
@@ -318,6 +326,10 @@ Rationale: Preserve maintainability while keeping visual output identical.
 ## Decision: Preserve original source in stock
 
 Rationale: `stock/` is the immutable source of visual truth and QA comparison baseline.
+
+## Decision: Seed client-editable media into WordPress Media Library
+
+Rationale: Editors must be able to replace and restore original images/icons/videos/documents from WordPress. ACF previews should not be empty because defaults were left as hardcoded theme assets.
 """,
     )
     write(
@@ -357,6 +369,17 @@ Rationale: `stock/` is the immutable source of visual truth and QA comparison ba
 - SCSS path
 - JS path
 
+## Media Seed Item
+- original stock path
+- media type
+- WordPress attachment target
+- used by
+- ACF/options/CPT field
+- default value strategy
+- alt/title source
+- required
+- notes
+
 ## CPT Decision
 - candidate
 - decision
@@ -383,6 +406,7 @@ Rationale: `stock/` is the immutable source of visual truth and QA comparison ba
 5. Confirm no meaningful content is hardcoded and no frontend path references `stock/`.
 6. Confirm the theme can be cloned into `wp-content/themes/<theme-slug>` and activated, or record skipped runtime checks in `.html-to-sage/FINAL-REPORT.md`.
 7. Paste the matching `ready-pages/<page>.md` content into the WordPress Code Editor to create the page block structure.
+8. Run or document the Media Library seed/import path so original client-editable media appears in the Media Library and default ACF previews are populated.
 
 ## Pass Condition
 
@@ -417,6 +441,8 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T009 Split source CSS into common, components, layout, and blocks
 - [ ] T010 Split source JS into navigation, reveal/shared behavior, and block modules
 - [ ] T011 Confirm no CPTs are needed or document justified CPTs
+- [ ] T011a Create `.html-to-sage/MEDIA-LIBRARY-SEED.md` mapping original client-editable media to WordPress Media Library attachment targets and ACF/options/CPT field usage
+- [ ] T011b Implement or document an idempotent Media Library seed/import path for original images, icons, logos, background images, videos, documents, and galleries
 
 ## Phase 3: Page and Section Conversion
 
@@ -431,6 +457,7 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T017 Verify every meaningful image, icon, alt text, button label, URL, card, stat, testimonial, FAQ, contact detail, and legal text is editable or documented as approved exception
 - [ ] T018 Verify structural wrappers/classes/layout hooks remain in templates and are not over-modeled as fields
 - [ ] T019 Verify no frontend template or stylesheet references `stock/`
+- [ ] T019a Verify no client-editable original media is permanently hardcoded from theme asset paths and default ACF previews resolve seeded Media Library attachments or documented seeded fallbacks
 
 ## Phase 5: QA and Gates
 
@@ -453,7 +480,8 @@ def write_tasks(feature_dir: Path, theme_name: str) -> None:
 - [ ] T033 Verify the reusable skill repo/folder `html-to-wordpress-converter` is not inside the delivered theme and is not installed under `wp-content/themes`
 - [ ] T034 If WordPress reports a broken theme named `html-to-wordpress-converter`, delete that wrong folder from `wp-content/themes` and install the generated theme repo/folder instead
 - [ ] T035 Create `ready-pages/` and one paste-ready `.md` file per WordPress page with exact Gutenberg ACF block comments in page order
-- [ ] T036 Run or document Composer, Node, PHP syntax, WordPress activation, and frontend smoke checks in `.html-to-sage/FINAL-REPORT.md`
+- [ ] T036 Verify the Media Library seed/import path is documented in `README.md` and `.html-to-sage/FINAL-REPORT.md`
+- [ ] T037 Run or document Composer, Node, PHP syntax, WordPress activation, and frontend smoke checks in `.html-to-sage/FINAL-REPORT.md`
 
 ## Dependencies
 
@@ -489,6 +517,7 @@ def write_analyze(project: Path, feature_dir: Path) -> None:
 | Spec Kit artifacts | yes | Constitution, spec, plan, research, data model, quickstart, tasks are generated. |
 | Sage architecture | yes | Covered by plan and tasks. |
 | ACF editability | yes | Covered by plan and tasks. |
+| Media Library seeding | yes | Covered by plan and tasks. |
 | Global template parts | yes | Covered by plan and tasks. |
 | Visual QA | yes | Covered by plan and tasks. |
 | WordPress clone-readiness | yes | Covered by plan and tasks. |

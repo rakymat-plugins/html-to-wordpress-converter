@@ -1,9 +1,28 @@
 asset_migration:
   stock_folder: "read-only source of truth"
   never_edit_stock: true
+  client_editable_media_destination: "wordpress_media_library"
+  require_media_library_seed: true
+  require_media_manifest: ".html-to-sage/MEDIA-LIBRARY-SEED.md"
+  acf_media_fields_reference: "attachment_id_or_array"
+  forbid_client_media_hardcoded_from:
+    - stock
+    - resources/images
+    - public/build/assets
+  allow_theme_assets_only_for:
+    - fonts
+    - non_editable_decorative_svg_shapes
+    - technical_ui_sprites
+    - css_patterns_or_masks
+    - approved_code_icon_library_assets
+  seed_path_requirements:
+    idempotent: true
+    preserve_alt_text: true
+    preserve_titles: true
+    avoid_duplicate_uploads: true
+    document_in_readme: true
   organize_theme_assets_under:
     - resources/images
     - resources/fonts
   preserve_filenames_when_possible: true
   update_urls_in_templates: true
-

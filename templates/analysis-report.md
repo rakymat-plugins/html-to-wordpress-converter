@@ -24,6 +24,8 @@ Confirm `references/enterprise-html-to-acf-rules.md` was enforced: no giant catc
 
 Confirm `references/full-acf-editability-rules.md` was enforced: no hardcoded meaningful content, every original content item mapped to ACF or justified CPT fields, original HTML values documented, and `PAGES.md` generated for multi-page websites.
 
+Confirm `references/media-library-seeding-rules.md` was enforced: original client-editable media imported or seedable into the WordPress Media Library, `.html-to-sage/MEDIA-LIBRARY-SEED.md` completed, ACF media fields use attachment data, default previews show seeded media or documented fallbacks, and no editable media is permanently hardcoded from `stock/` or theme assets.
+
 Confirm `references/global-template-parts-rules.md` was enforced: header/footer/navigation/global UI mapped to Sage template parts/layout partials by default, editable global data sourced from menus/options/plugins, and `GLOBAL-TEMPLATE-PARTS.md` completed when site-wide UI exists.
 
 ## Section Results
