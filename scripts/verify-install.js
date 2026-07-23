@@ -53,7 +53,7 @@ console.log("");
 if (found === 0) {
   console.log("No registered files were found.");
   console.log("Troubleshooting:");
-  console.log("  1. Re-run: npx skills add yousefabdallah171/html-to-wordpress-converter");
+  console.log("  1. Re-run: npx skills add rakymat-plugins/html-to-wordpress-converter");
   console.log("  2. Restart your agent.");
   console.log("  3. Claude fallback: copy commands/*.md into ~/.claude/commands/");
   console.log("  4. Codex fallback: copy developer-wordpress-from-html/SKILL.md into ~/.codex/skills/developer-wordpress-from-html/SKILL.md");

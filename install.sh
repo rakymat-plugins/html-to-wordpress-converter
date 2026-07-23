@@ -2,7 +2,7 @@
 set -eu
 
 echo "Recommended install:"
-echo "  npx skills add yousefabdallah171/html-to-wordpress-converter"
+echo "  npx skills add rakymat-plugins/html-to-wordpress-converter"
 echo ""
 echo "Running manual fallback installer..."
 

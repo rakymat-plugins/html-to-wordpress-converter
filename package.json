@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yousefabdallah171/html-to-wordpress-converter.git"
+    "url": "git+https://github.com/rakymat-plugins/html-to-wordpress-converter.git"
   },
-  "homepage": "https://github.com/yousefabdallah171/html-to-wordpress-converter#readme",
+  "homepage": "https://github.com/rakymat-plugins/html-to-wordpress-converter#readme",
   "bugs": {
-    "url": "https://github.com/yousefabdallah171/html-to-wordpress-converter/issues"
+    "url": "https://github.com/rakymat-plugins/html-to-wordpress-converter/issues"
   },
   "files": [
     "SKILL.md",

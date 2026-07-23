@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host "Recommended install:"
-Write-Host "  npx skills add yousefabdallah171/html-to-wordpress-converter"
+Write-Host "  npx skills add rakymat-plugins/html-to-wordpress-converter"
 Write-Host ""
 Write-Host "Running manual fallback installer..."
 

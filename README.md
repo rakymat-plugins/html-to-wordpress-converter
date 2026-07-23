@@ -13,7 +13,7 @@ This repository is not a standalone website converter. It is a reusable agent wo
 ### Recommended
 
 ```bash
-npx skills add yousefabdallah171/html-to-wordpress-converter
+npx skills add rakymat-plugins/html-to-wordpress-converter
 ```
 
 Then restart the agent.
@@ -48,7 +48,7 @@ Different agents expose commands differently:
 - Codex CLI: skill command may appear as `$command`
 - Cursor/Gemini/generic agents: tell the agent to use the `developer-wordpress-from-html` skill
 
-The recommended install path is `npx skills add yousefabdallah171/html-to-wordpress-converter`. Do not manually clone the repository unless you need an advanced/manual setup.
+The recommended install path is `npx skills add rakymat-plugins/html-to-wordpress-converter`. Do not manually clone the repository unless you need an advanced/manual setup.
 
 ### Advanced / Manual
 
@@ -165,7 +165,7 @@ If the command does not appear:
 2. Re-run:
 
    ```bash
-   npx skills add yousefabdallah171/html-to-wordpress-converter
+   npx skills add rakymat-plugins/html-to-wordpress-converter
    ```
 
 3. Verify install:
